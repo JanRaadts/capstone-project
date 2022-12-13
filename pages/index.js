@@ -1,8 +1,10 @@
+import React from "react";
+import dynamic from "next/dynamic";
 import { useState } from "react";
+import { nanoid } from "nanoid";
 import ListSurfspots from "../components/ListSurfspots";
 import ListSurfspotsItems from "../components/ListSurfspotsItems";
-import { nanoid } from "nanoid";
-
+const Map = dynamic(() => import("../components/Map"), { ssr: false });
 export default function Home() {
   const [surfspots, setSurfspots] = useState([
     {
@@ -57,6 +59,7 @@ export default function Home() {
 
   return (
     <>
+      <Map></Map>
       <ListSurfspots>
         {surfspots.map((surfspot) => {
           return <ListSurfspotsItems name={surfspot.name} key={surfspot.ID} />;
