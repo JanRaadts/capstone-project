@@ -1,10 +1,12 @@
 import { useState } from "react";
 import ListSurfspots from "../components/ListSurfspots";
 import ListSurfspotsItems from "../components/ListSurfspotsItems";
+import { nanoid } from "nanoid";
 
 export default function Home() {
   const [surfspots, setSurfspots] = useState([
     {
+      ID: nanoid(),
       name: "Wackerballig",
       image: null,
       country: "Germany",
@@ -20,6 +22,7 @@ export default function Home() {
       camping: "directly at the spot",
     },
     {
+      ID: nanoid(),
       name: "Heidkate",
       image: null,
       country: "Germany",
@@ -35,6 +38,7 @@ export default function Home() {
       camping: "directly at the spot",
     },
     {
+      ID: nanoid(),
       name: "Gollendorf",
       image: null,
       country: "Germany",
@@ -55,9 +59,7 @@ export default function Home() {
     <>
       <ListSurfspots>
         {surfspots.map((surfspot) => {
-          return (
-            <ListSurfspotsItems name={surfspot.name} key={surfspot.name} />
-          );
+          return <ListSurfspotsItems name={surfspot.name} key={surfspot.ID} />;
         })}
       </ListSurfspots>
     </>

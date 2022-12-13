@@ -3,9 +3,9 @@ import styled from "styled-components";
 styled;
 export default function ListSurfspotsItems({ name }) {
   return (
-    <>
+    <li>
       <StyledH2>{name}</StyledH2>
-    </>
+    </li>
   );
 }
 
