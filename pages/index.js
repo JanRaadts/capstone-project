@@ -4,7 +4,9 @@ import { useState } from "react";
 import { nanoid } from "nanoid";
 import ListSurfspots from "../components/ListSurfspots";
 import ListSurfspotsItems from "../components/ListSurfspotsItems";
+import Header from "../components/Header";
 const Map = dynamic(() => import("../components/Map"), { ssr: false });
+
 export default function Home() {
   const [surfspots, setSurfspots] = useState([
     {
@@ -57,14 +59,27 @@ export default function Home() {
     },
   ]);
 
+  const [mapShown, setMapShown] = useState(true);
+  console.log(mapShown);
+
+  function handleMapShown() {
+    setMapShown(!mapShown);
+  }
+
   return (
     <>
-      <Map></Map>
-      <ListSurfspots>
-        {surfspots.map((surfspot) => {
-          return <ListSurfspotsItems name={surfspot.name} key={surfspot.ID} />;
-        })}
-      </ListSurfspots>
+      <Header mapShown={handleMapShown} />
+      {mapShown ? (
+        <Map></Map>
+      ) : (
+        <ListSurfspots>
+          {surfspots.map((surfspot) => {
+            return (
+              <ListSurfspotsItems name={surfspot.name} key={surfspot.ID} />
+            );
+          })}
+        </ListSurfspots>
+      )}
     </>
   );
 }
