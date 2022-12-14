@@ -2,12 +2,12 @@ import Image from "next/image";
 import styled from "styled-components";
 import menue from "../public/images/menü_btn.jpg";
 
-export default function Header({ mapShown }) {
+export default function Header({ onMapShown }) {
   return (
     <>
       <StyledHeader>
         <StyledImage
-          onClick={mapShown}
+          onClick={onMapShown}
           src={menue}
           alt="Menü_Btn"
           width={40}

@@ -60,7 +60,6 @@ export default function Home() {
   ]);
 
   const [mapShown, setMapShown] = useState(true);
-  console.log(mapShown);
 
   function handleMapShown() {
     setMapShown(!mapShown);
@@ -68,7 +67,7 @@ export default function Home() {
 
   return (
     <>
-      <Header mapShown={handleMapShown} />
+      <Header onMapShown={handleMapShown} />
       {mapShown ? (
         <Map></Map>
       ) : (
