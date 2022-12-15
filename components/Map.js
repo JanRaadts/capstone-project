@@ -8,6 +8,7 @@ import {
 import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import MarkerIcon from "./MarkerIcon";
+import { Point } from "leaflet";
 
 export default function Map({ surfspots }) {
   function onPopup() {
