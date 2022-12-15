@@ -8,8 +8,13 @@ import {
 import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import MarkerIcon from "./MarkerIcon";
+import { Point } from "leaflet";
 
 export default function Map({ surfspots }) {
+  function onPopup() {
+    console.log("test");
+  }
+
   return (
     <>
       <StyledMapContainer
@@ -32,7 +37,12 @@ export default function Map({ surfspots }) {
               ID={surfspot.ID}
               icon={MarkerIcon}
             >
-              <Popup>Coming soon...</Popup>
+              <Popup keepInView={true} maxHeight={200}>
+                <StyledPopupContent onClick={onPopup}>
+                  <h1>{surfspot.name}</h1>
+                  <p>{surfspot.description}</p>
+                </StyledPopupContent>
+              </Popup>
             </Marker>
           );
         })}
@@ -46,4 +56,12 @@ const StyledMapContainer = styled(MapContainer)`
   width: 100vw;
   margin: 0 auto;
   z-index: 0;
+`;
+
+const StyledPopupContent = styled.div`
+  h1 {
+    text-align: center;
+    font-weight: 400;
+  }
+  font-size: medium;
 `;
