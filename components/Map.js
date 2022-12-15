@@ -24,7 +24,7 @@ export default function Map({ surfspots }) {
         zoomControl={false}
       >
         <TileLayer
-          url={`https://api.mapbox.com/styles/v1/jarakle/clbpaiuf5000414s3tgklaqtr/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamFyYWtsZSIsImEiOiJjbGJtbzlsYXkwNnY3M29yeDZhOGFsZW15In0.RFqqOxiya31Sjc70F1fmFg`}
+          url={`https://api.mapbox.com/styles/v1/jarakle/clbpbe5ii000z14msirbrwos5/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamFyYWtsZSIsImEiOiJjbGJtbzlsYXkwNnY3M29yeDZhOGFsZW15In0.RFqqOxiya31Sjc70F1fmFg`}
           attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
         />
 
@@ -38,11 +38,15 @@ export default function Map({ surfspots }) {
               icon={MarkerIcon}
             >
               <Popup keepInView={true}>
-                <StyledPopupContent>
-                  <h1>{surfspot.name}</h1>
-                  <p>{surfspot.description}</p>
-                  <Link href={surfspot.slug}>mehr..</Link>
-                </StyledPopupContent>
+                <StyledLink href={surfspot.slug}>
+                  <StyledPopupContent>
+                    <h1>{surfspot.name}</h1>
+                    <p>
+                      {surfspot.description}
+                      <span></span>
+                    </p>
+                  </StyledPopupContent>
+                </StyledLink>
               </Popup>
             </Marker>
           );
@@ -63,6 +67,14 @@ const StyledPopupContent = styled.div`
   h1 {
     text-align: center;
     font-weight: 400;
+    color: black;
+  }
+  p {
+    color: #787777;
   }
   font-size: medium;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
