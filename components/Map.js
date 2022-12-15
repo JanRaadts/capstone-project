@@ -19,11 +19,11 @@ export default function Map({ surfspots }) {
       <StyledMapContainer
         center={[54.452217, 11.069011]}
         zoom={9}
-        scrollWheelZoom={false}
+        scrollWheelZoom={true}
         zoomControl={false}
       >
         <TileLayer
-          url={`https://api.mapbox.com/styles/v1/jarakle/clbmsc8mz000w14o4oil6s70z/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamFyYWtsZSIsImEiOiJjbGJtbzlsYXkwNnY3M29yeDZhOGFsZW15In0.RFqqOxiya31Sjc70F1fmFg`}
+          url={`https://api.mapbox.com/styles/v1/jarakle/clbmtjmr7000p14pgicyk8q8k/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamFyYWtsZSIsImEiOiJjbGJtbzlsYXkwNnY3M29yeDZhOGFsZW15In0.RFqqOxiya31Sjc70F1fmFg`}
           attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
         />
 
@@ -51,7 +51,7 @@ export default function Map({ surfspots }) {
 }
 
 const StyledMapContainer = styled(MapContainer)`
-  height: 100vh;
+  height: calc(100vh - 60px) !important;
   width: 100vw;
   margin: 0 auto;
   z-index: 0;
