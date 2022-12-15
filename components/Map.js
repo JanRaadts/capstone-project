@@ -8,6 +8,7 @@ import {
 import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import MarkerIcon from "./MarkerIcon";
+import Link from "next/link";
 
 export default function Map({ surfspots }) {
   function onPopup() {
@@ -36,10 +37,11 @@ export default function Map({ surfspots }) {
               ID={surfspot.ID}
               icon={MarkerIcon}
             >
-              <Popup keepInView={true} maxHeight={200}>
-                <StyledPopupContent onClick={onPopup}>
+              <Popup keepInView={true}>
+                <StyledPopupContent>
                   <h1>{surfspot.name}</h1>
                   <p>{surfspot.description}</p>
+                  <Link href={surfspot.slug}>mehr..</Link>
                 </StyledPopupContent>
               </Popup>
             </Marker>
