@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useState } from "react";
 import surfspots from "../lib/surfspots";
-import Router from "next/router";
 import ListSurfspots from "../components/ListSurfspots";
 import ListSurfspotsItems from "../components/ListSurfspotsItems";
 import Header from "../components/Header";

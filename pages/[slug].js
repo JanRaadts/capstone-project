@@ -27,7 +27,7 @@ export default function SpotDetails() {
         <StyledTitle>{currentSpot.name}</StyledTitle>
       </StyledImage>
       <Link href="/">
-        <StyledBackButton
+        <StyledImageBack
           src={back_button}
           alt="Back_Btn"
           width={30}
@@ -75,8 +75,6 @@ const StyledTitle = styled.h1`
   padding: 10px;
   margin: 0;
   text-align: center;
-  /* margin-left: 15%;
-  margin-right: 15%; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   font-weight: normal;
@@ -95,10 +93,7 @@ const StyledButtonSection = styled.section`
 `;
 
 const StyledButton = styled.button`
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding: 2px 20px;
   font-size: 20px;
   color: white;
   background: #fa9a94;
@@ -108,15 +103,13 @@ const StyledButton = styled.button`
 `;
 
 const StyledDescriptionSection = styled.section`
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 0 20px;
   border-bottom: 2px solid #d4d4d4;
   border-top: 2px solid #d4d4d4;
 `;
 
 const StyledSpecsSection = styled.section`
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 0 20px;
   border-bottom: 2px solid #d4d4d4;
 `;
 
@@ -124,7 +117,7 @@ const StyledSpan = styled.span`
   color: #495f73;
 `;
 
-const StyledBackButton = styled(Image)`
+const StyledImageBack = styled(Image)`
   position: absolute;
   left: 20px;
   top: 10px;
