@@ -1,15 +1,22 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 styled;
-export default function ListSurfspotsItems({ name }) {
+export default function ListSurfspotsItems({ name, link }) {
   return (
-    <li>
-      <StyledH2>{name}</StyledH2>
-    </li>
+    <StyledLi>
+      <StyledLink href={link}>{name}</StyledLink>
+    </StyledLi>
   );
 }
 
-const StyledH2 = styled.h2`
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #343436;
+  font-size: 20px;
+`;
+
+const StyledLi = styled.li`
   margin: 0;
   margin-top: 10px;
   margin-bottom: 10px;

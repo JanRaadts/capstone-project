@@ -8,22 +8,19 @@ import {
 import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import MarkerIcon from "./MarkerIcon";
+import Link from "next/link";
 
 export default function Map({ surfspots }) {
-  function onPopup() {
-    console.log("test");
-  }
-
   return (
     <>
       <StyledMapContainer
-        center={[54.452217, 11.069011]}
-        zoom={9}
+        center={[54.434051, 10.318242]}
+        zoom={15}
         scrollWheelZoom={true}
         zoomControl={false}
       >
         <TileLayer
-          url={`https://api.mapbox.com/styles/v1/jarakle/clbmtjmr7000p14pgicyk8q8k/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamFyYWtsZSIsImEiOiJjbGJtbzlsYXkwNnY3M29yeDZhOGFsZW15In0.RFqqOxiya31Sjc70F1fmFg`}
+          url={`https://api.mapbox.com/styles/v1/jarakle/clbpbe5ii000z14msirbrwos5/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamFyYWtsZSIsImEiOiJjbGJtbzlsYXkwNnY3M29yeDZhOGFsZW15In0.RFqqOxiya31Sjc70F1fmFg`}
           attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
         />
 
@@ -36,11 +33,16 @@ export default function Map({ surfspots }) {
               ID={surfspot.ID}
               icon={MarkerIcon}
             >
-              <Popup keepInView={true} maxHeight={200}>
-                <StyledPopupContent onClick={onPopup}>
-                  <h1>{surfspot.name}</h1>
-                  <p>{surfspot.description}</p>
-                </StyledPopupContent>
+              <Popup keepInView={true}>
+                <StyledLink href={surfspot.slug}>
+                  <StyledPopupContent>
+                    <h1>{surfspot.name}</h1>
+                    <p>
+                      {surfspot.description}
+                      <span></span>
+                    </p>
+                  </StyledPopupContent>
+                </StyledLink>
               </Popup>
             </Marker>
           );
@@ -61,6 +63,14 @@ const StyledPopupContent = styled.div`
   h1 {
     text-align: center;
     font-weight: 400;
+    color: black;
+  }
+  p {
+    color: #787777;
   }
   font-size: medium;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `;

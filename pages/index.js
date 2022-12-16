@@ -26,7 +26,11 @@ export default function Home() {
         <ListSurfspots>
           {surfspots.map((surfspot) => {
             return (
-              <ListSurfspotsItems name={surfspot.name} key={surfspot.ID} />
+              <ListSurfspotsItems
+                link={surfspot.slug}
+                name={surfspot.name}
+                key={surfspot.ID}
+              />
             );
           })}
         </ListSurfspots>
