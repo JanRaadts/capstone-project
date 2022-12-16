@@ -11,15 +11,11 @@ import MarkerIcon from "./MarkerIcon";
 import Link from "next/link";
 
 export default function Map({ surfspots }) {
-  function onPopup() {
-    console.log("test");
-  }
-
   return (
     <>
       <StyledMapContainer
-        center={[54.452217, 11.069011]}
-        zoom={9}
+        center={[54.434051, 10.318242]}
+        zoom={15}
         scrollWheelZoom={true}
         zoomControl={false}
       >
