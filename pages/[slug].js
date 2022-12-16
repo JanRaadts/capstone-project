@@ -39,7 +39,7 @@ export default function SpotDetails() {
         />
       </Link>
       <StyledButtonSection>
-        <StyledButton>Infos</StyledButton>
+        <StyledButton>Info</StyledButton>
       </StyledButtonSection>
       <StyledDescriptionSection>
         <p>{currentSpot.description}</p>
