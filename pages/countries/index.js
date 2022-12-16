@@ -14,7 +14,7 @@ export default function Countries() {
   return (
     <>
       <Head>
-        <title>MySurfSpot</title>
+        <title>SpotiFinder</title>
       </Head>
       <Header onMapShown={handleMapShown} />
       <ListSurfspots>

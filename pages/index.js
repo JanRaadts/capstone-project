@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>MySurfSpot</title>
+        <title>SpotiFinder</title>
       </Head>
       <Header onMapShown={handleMapShown} />
       <Map surfspots={surfspots}></Map>

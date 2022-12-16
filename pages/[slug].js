@@ -19,7 +19,7 @@ export default function SpotDetails() {
   return (
     <>
       <Head>
-        <title>MySurfspot: {currentSpot.name}</title>
+        <title>SpotiFinder: {currentSpot.name}</title>
       </Head>
       <StyledImage>
         <Image
