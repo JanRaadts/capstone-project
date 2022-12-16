@@ -25,7 +25,7 @@ export default function Header({ onMapShown }) {
 
 const StyledLogo = styled.div`
   img {
-    width: 40vw;
+    width: 220px;
     height: auto;
   }
   position: relative;
