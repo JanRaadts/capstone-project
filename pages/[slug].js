@@ -4,6 +4,7 @@ import surfspots from "../lib/surfspots";
 import styled from "styled-components";
 import Link from "next/link";
 import back_button from "../public/images/back_button.png";
+import Head from "next/head";
 
 export default function SpotDetails() {
   const router = useRouter();
@@ -17,6 +18,9 @@ export default function SpotDetails() {
 
   return (
     <>
+      <Head>
+        <title>MySurfspot: {currentSpot.name}</title>
+      </Head>
       <StyledImage>
         <Image
           src={currentSpot.image}
