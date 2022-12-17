@@ -57,8 +57,8 @@ const StyledMapContainer = styled(MapContainer)`
   width: 100vw;
   margin: 0 auto;
   z-index: 0;
-  position: absolute;
-  bottom: 0;
+  /* position: absolute;
+  bottom: 0; */
 `;
 
 const StyledPopupContent = styled.div`
