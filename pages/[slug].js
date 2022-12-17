@@ -79,7 +79,7 @@ const StyledTitle = styled.h1`
   padding: 10px;
   margin: 0;
   text-align: center;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   font-weight: normal;
   position: absolute;
@@ -101,7 +101,7 @@ const StyledButton = styled.button`
   font-size: 20px;
   color: white;
   background: #fa9a94;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   border-radius: 16.5px;
   border: none;
 `;
