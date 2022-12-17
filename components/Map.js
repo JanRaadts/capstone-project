@@ -56,6 +56,7 @@ const StyledMapContainer = styled(MapContainer)`
   height: calc(100vh - 60px) !important;
   width: 100vw;
   margin: 0 auto;
+  z-index: 0;
   position: absolute;
   bottom: 0;
 `;
