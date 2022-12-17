@@ -1,4 +1,5 @@
 import { useRouter } from "next/router.js";
+import { useState } from "react";
 import Image from "next/image";
 import surfspots from "../lib/surfspots";
 import styled from "styled-components";
@@ -9,11 +10,18 @@ import Head from "next/head";
 export default function SpotDetails() {
   const router = useRouter();
   const { slug } = router.query;
-
   const currentSpot = surfspots.find((spot) => spot.slug === slug);
-
   if (!currentSpot) {
     return <p>Not found</p>;
+  }
+
+  const [infoOrSocial, setInfoOrSocial] = useState(true);
+
+  function handleInfo() {
+    setInfoOrSocial(true);
+  }
+  function handleSocial() {
+    setInfoOrSocial(false);
   }
 
   return (
@@ -39,29 +47,36 @@ export default function SpotDetails() {
         />
       </Link>
       <StyledButtonSection>
-        <StyledButton>Info</StyledButton>
+        <StyledButton onClick={handleInfo}>Info</StyledButton>
+        <StyledButton onClick={handleSocial}>Social</StyledButton>
       </StyledButtonSection>
-      <StyledDescriptionSection>
-        <p>{currentSpot.description}</p>
-      </StyledDescriptionSection>
-      <StyledSpecsSection>
-        <p>
-          <StyledSpan>Surfbare Windrichtungen: </StyledSpan>
-          {currentSpot.winddirection}
-        </p>
-        <p>
-          <StyledSpan>Center/Schule: </StyledSpan>
-          {currentSpot.surfcenter}
-        </p>
-        <p>
-          <StyledSpan>Parken: </StyledSpan>
-          {currentSpot.parking}
-        </p>
-        <p>
-          <StyledSpan>Übernachten: </StyledSpan>
-          {currentSpot.camping}
-        </p>
-      </StyledSpecsSection>
+      {infoOrSocial ? (
+        <section>
+          <StyledDescriptionSection>
+            <p>{currentSpot.description}</p>
+          </StyledDescriptionSection>
+          <StyledSpecsSection>
+            <p>
+              <StyledSpan>Surfbare Windrichtungen: </StyledSpan>
+              {currentSpot.winddirection}
+            </p>
+            <p>
+              <StyledSpan>Center/Schule: </StyledSpan>
+              {currentSpot.surfcenter}
+            </p>
+            <p>
+              <StyledSpan>Parken: </StyledSpan>
+              {currentSpot.parking}
+            </p>
+            <p>
+              <StyledSpan>Übernachten: </StyledSpan>
+              {currentSpot.camping}
+            </p>
+          </StyledSpecsSection>
+        </section>
+      ) : (
+        <p>Test</p>
+      )}
     </>
   );
 }
@@ -92,11 +107,12 @@ const StyledButtonSection = styled.section`
   margin-top: 30px;
   height: 60px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 `;
 
 const StyledButton = styled.button`
+  width: 100px;
   padding: 2px 20px;
   font-size: 20px;
   color: white;
