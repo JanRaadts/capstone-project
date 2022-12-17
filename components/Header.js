@@ -37,7 +37,6 @@ const StyledHeader = styled.section`
   width: 100%;
   position: fixed;
   top: 0;
-  // 38 und 39 weg
   z-index: 1;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
