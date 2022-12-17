@@ -4,6 +4,7 @@ import surfspots from "../lib/surfspots";
 import styled from "styled-components";
 import Link from "next/link";
 import back_button from "../public/images/back_button.png";
+import Head from "next/head";
 
 export default function SpotDetails() {
   const router = useRouter();
@@ -17,6 +18,9 @@ export default function SpotDetails() {
 
   return (
     <>
+      <Head>
+        <title>SpotiFinder: {currentSpot.name}</title>
+      </Head>
       <StyledImage>
         <Image
           src={currentSpot.image}
@@ -35,7 +39,7 @@ export default function SpotDetails() {
         />
       </Link>
       <StyledButtonSection>
-        <StyledButton>Infos</StyledButton>
+        <StyledButton>Info</StyledButton>
       </StyledButtonSection>
       <StyledDescriptionSection>
         <p>{currentSpot.description}</p>
@@ -75,7 +79,7 @@ const StyledTitle = styled.h1`
   padding: 10px;
   margin: 0;
   text-align: center;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   font-weight: normal;
   position: absolute;
@@ -97,7 +101,7 @@ const StyledButton = styled.button`
   font-size: 20px;
   color: white;
   background: #fa9a94;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   border-radius: 16.5px;
   border: none;
 `;
