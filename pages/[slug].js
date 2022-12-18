@@ -1,10 +1,9 @@
 import { useRouter } from "next/router.js";
 import { useState } from "react";
-import Image from "next/image";
 import surfspots from "../lib/surfspots";
 import styled from "styled-components";
 import Head from "next/head";
-import SpotSocial from "../components/SpotDetails/SpotSocial";
+import SpotSocial from "../components/SpotDetails/SpotSocial/SpotSocial";
 import SpotInfo from "../components/SpotDetails/SpotInfo";
 import SpotDetailsHead from "../components/SpotDetails/SpotDetailsHead";
 
@@ -16,15 +15,17 @@ export default function SpotDetails() {
     return <p>Not found</p>;
   }
 
-  let infoOrSocial = true;
+  const [infoOrSocial, setInfoOrSocial] = useState(true);
 
   function handleInfo() {
-    let infoOrSocial = true;
-    return infoOrSocial;
+    setInfoOrSocial(true);
   }
   function handleSocial() {
-    let infoOrSocial = false;
-    return infoOrSocial;
+    setInfoOrSocial(false);
+  }
+
+  function handleNewComment(comment) {
+    console.log(comment);
   }
 
   return (
@@ -46,7 +47,7 @@ export default function SpotDetails() {
           camping={currentSpot.camping}
         />
       ) : (
-        <SpotSocial />
+        <SpotSocial ID={currentSpot.ID} newComment={handleNewComment} />
       )}
     </>
   );
