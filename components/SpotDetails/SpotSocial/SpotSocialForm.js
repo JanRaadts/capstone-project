@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import Image from "next/image";
 import addMessage from "../../../public/images/addMessage.png";
+import { nanoid } from "nanoid";
 
 export default function SpotSocialForm({ ID, newComment }) {
   function handleNewEntry(event) {
     event.preventDefault();
     let inputData = {
-      id: ID,
+      id: nanoid(),
+      spotid: ID,
       text: event.target.elements.varText.value,
     };
     event.target.reset();
@@ -49,7 +51,8 @@ const StyledForm = styled.form`
 `;
 
 const StyledInputText = styled.input`
-  padding: 5px;
+  /* padding: 5px; */
+  padding-left: 5%;
   width: 80vw;
   height: 70%;
   border: none;
@@ -57,10 +60,8 @@ const StyledInputText = styled.input`
   border: 2px solid #787777;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   border-radius: 33.5px;
-  font-size: 15px;
+  font-size: 18px;
   ::placeholder {
-    text-align: center;
-    font-size: larger;
   }
   &:focus {
     outline: none;

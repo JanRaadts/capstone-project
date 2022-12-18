@@ -24,10 +24,6 @@ export default function SpotDetails() {
     setInfoOrSocial(false);
   }
 
-  function handleNewComment(comment) {
-    console.log(comment);
-  }
-
   return (
     <>
       <Head>
@@ -47,7 +43,7 @@ export default function SpotDetails() {
           camping={currentSpot.camping}
         />
       ) : (
-        <SpotSocial ID={currentSpot.ID} newComment={handleNewComment} />
+        <SpotSocial ID={currentSpot.ID} />
       )}
     </>
   );
