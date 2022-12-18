@@ -3,9 +3,10 @@ import { useState } from "react";
 import Image from "next/image";
 import surfspots from "../lib/surfspots";
 import styled from "styled-components";
-import Link from "next/link";
-import back_button from "../public/images/back_button.png";
 import Head from "next/head";
+import SpotSocial from "../components/SpotDetails/SpotSocial";
+import SpotInfo from "../components/SpotDetails/SpotInfo";
+import SpotDetailsHead from "../components/SpotDetails/SpotDetailsHead";
 
 export default function SpotDetails() {
   const router = useRouter();
@@ -15,13 +16,15 @@ export default function SpotDetails() {
     return <p>Not found</p>;
   }
 
-  const [infoOrSocial, setInfoOrSocial] = useState(true);
+  let infoOrSocial = true;
 
   function handleInfo() {
-    setInfoOrSocial(true);
+    let infoOrSocial = true;
+    return infoOrSocial;
   }
   function handleSocial() {
-    setInfoOrSocial(false);
+    let infoOrSocial = false;
+    return infoOrSocial;
   }
 
   return (
@@ -29,79 +32,25 @@ export default function SpotDetails() {
       <Head>
         <title>SpotiFinder: {currentSpot.name}</title>
       </Head>
-      <StyledImage>
-        <Image
-          src={currentSpot.image}
-          alt={`cover image of ${currentSpot.name}`}
-          width={800}
-          height={600}
-        />
-        <StyledTitle>{currentSpot.name}</StyledTitle>
-      </StyledImage>
-      <Link href="/">
-        <StyledImageBack
-          src={back_button}
-          alt="Back_Btn"
-          width={30}
-          height={30}
-        />
-      </Link>
+      <SpotDetailsHead image={currentSpot.image} name={currentSpot.name} />
       <StyledButtonSection>
         <StyledButton onClick={handleInfo}>Info</StyledButton>
         <StyledButton onClick={handleSocial}>Social</StyledButton>
       </StyledButtonSection>
       {infoOrSocial ? (
-        <section>
-          <StyledDescriptionSection>
-            <p>{currentSpot.description}</p>
-          </StyledDescriptionSection>
-          <StyledSpecsSection>
-            <p>
-              <StyledSpan>Surfbare Windrichtungen: </StyledSpan>
-              {currentSpot.winddirection}
-            </p>
-            <p>
-              <StyledSpan>Center/Schule: </StyledSpan>
-              {currentSpot.surfcenter}
-            </p>
-            <p>
-              <StyledSpan>Parken: </StyledSpan>
-              {currentSpot.parking}
-            </p>
-            <p>
-              <StyledSpan>Übernachten: </StyledSpan>
-              {currentSpot.camping}
-            </p>
-          </StyledSpecsSection>
-        </section>
+        <SpotInfo
+          description={currentSpot.description}
+          winddirection={currentSpot.winddirection}
+          surfcenter={currentSpot.surfcenter}
+          parking={currentSpot.parking}
+          camping={currentSpot.camping}
+        />
       ) : (
-        <p>Test</p>
+        <SpotSocial />
       )}
     </>
   );
 }
-
-const StyledImage = styled.div`
-  img {
-    width: 100vw;
-    height: auto;
-  }
-  position: relative;
-`;
-
-const StyledTitle = styled.h1`
-  background-color: white;
-  padding: 10px;
-  margin: 0;
-  text-align: center;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  font-weight: normal;
-  position: absolute;
-  bottom: -25px;
-  left: 50%;
-  transform: translate(-50%);
-`;
 
 const StyledButtonSection = styled.section`
   margin-top: 30px;
@@ -120,25 +69,4 @@ const StyledButton = styled.button`
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   border-radius: 16.5px;
   border: none;
-`;
-
-const StyledDescriptionSection = styled.section`
-  margin: 0 20px;
-  border-bottom: 2px solid #d4d4d4;
-  border-top: 2px solid #d4d4d4;
-`;
-
-const StyledSpecsSection = styled.section`
-  margin: 0 20px;
-  border-bottom: 2px solid #d4d4d4;
-`;
-
-const StyledSpan = styled.span`
-  color: #495f73;
-`;
-
-const StyledImageBack = styled(Image)`
-  position: absolute;
-  left: 20px;
-  top: 10px;
 `;
