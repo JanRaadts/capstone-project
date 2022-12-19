@@ -9,8 +9,11 @@ import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import MarkerIcon from "./MarkerIcon";
 import Link from "next/link";
+import useFetch from "../lib/fetch";
 
-export default function Map({ surfspots }) {
+export default function Map() {
+  const surfspots = useFetch("http://localhost:3000/api/");
+
   return (
     <>
       <StyledMapContainer
