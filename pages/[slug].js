@@ -8,14 +8,13 @@ import SpotInfo from "../components/SpotDetails/SpotInfo";
 import SpotDetailsHead from "../components/SpotDetails/SpotDetailsHead";
 
 export default function SpotDetails() {
+  const [infoOrSocial, setInfoOrSocial] = useState(true);
   const router = useRouter();
   const { slug } = router.query;
   const currentSpot = surfspots.find((spot) => spot.slug === slug);
   if (!currentSpot) {
     return <p>Not found</p>;
   }
-
-  const [infoOrSocial, setInfoOrSocial] = useState(true);
 
   function handleInfo() {
     setInfoOrSocial(true);
