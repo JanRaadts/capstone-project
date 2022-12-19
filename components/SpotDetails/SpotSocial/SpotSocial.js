@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 export default function SpotSocial({ ID }) {
   const [comments, setComments] = useState([]);
-  console.log(comments);
 
   function handleNewComment(comment) {
     setComments([...comments, comment]);
