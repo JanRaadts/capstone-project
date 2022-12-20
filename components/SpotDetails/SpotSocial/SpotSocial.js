@@ -7,7 +7,7 @@ export default function SpotSocial({ SpotData }) {
     let dbComments = SpotData.comments.map((comment) => {
       return { text: comment.text, _id: comment._id };
     });
-    kommentare.push(comment);
+    dbComments.push(comment);
 
     const updatedSpot = {
       _id: SpotData._id,
