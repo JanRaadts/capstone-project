@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export default function SpotSocial({ SpotData }) {
   function handleNewComment(comment) {
-    let kommentare = SpotData.comments.map((comment) => {
+    let dbComments = SpotData.comments.map((comment) => {
       return { text: comment.text, _id: comment._id };
     });
     kommentare.push(comment);
@@ -26,10 +26,9 @@ export default function SpotSocial({ SpotData }) {
       surfcenter: SpotData.surfcenter,
       parking: SpotData.parking,
       camping: SpotData.camping,
-      comments: kommentare,
+      comments: dbComments,
     };
 
-    console.log(kommentare);
     useChange(updatedSpot);
     window.location.reload(false);
   }
