@@ -43,7 +43,7 @@ export default function SpotDetails() {
           camping={currentSpot.camping}
         />
       ) : (
-        <SpotSocial ID={currentSpot.ID} />
+        <SpotSocial SpotData={currentSpot} />
       )}
     </>
   );

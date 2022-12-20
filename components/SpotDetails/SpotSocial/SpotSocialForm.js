@@ -1,15 +1,13 @@
 import styled from "styled-components";
 import Image from "next/image";
 import addMessage from "../../../public/images/addMessage.png";
-import { nanoid } from "nanoid";
 
-export default function SpotSocialForm({ ID, newComment }) {
+export default function SpotSocialForm({ newComment, SpotData }) {
   function handleNewEntry(event) {
     event.preventDefault();
     let inputData = {
-      id: nanoid(),
-      spotid: ID,
       text: event.target.elements.varText.value,
+      _id: SpotData._id,
     };
     event.target.reset();
     event.target.elements.varText.focus();

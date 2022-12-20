@@ -36,7 +36,7 @@ export default function SpotDetails() {
             <ListSurfspotsItems
               link={`/${surfspot.slug}`}
               name={surfspot.name}
-              key={surfspot.ID}
+              key={surfspot._id}
             />
           );
         })}

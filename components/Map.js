@@ -32,8 +32,8 @@ export default function Map() {
           return (
             <Marker
               position={[surfspot.latitude, surfspot.longitude]}
-              key={surfspot.ID}
-              ID={surfspot.ID}
+              key={surfspot._id}
+              ID={surfspot._id}
               icon={MarkerIcon}
             >
               <Popup keepInView={true}>

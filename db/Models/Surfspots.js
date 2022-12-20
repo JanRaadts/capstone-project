@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
+const commentsChildren = new Schema({
+  text: { type: String, required: true },
+});
+
 const surfspotsSchema = new Schema({
   ID: { type: String, required: true },
   slug: { type: String, required: true },
@@ -19,6 +23,7 @@ const surfspotsSchema = new Schema({
   surfcenter: { type: String, required: true },
   parking: { type: String, required: true },
   camping: { type: String, required: true },
+  comments: [commentsChildren],
 });
 
 const Surfspots =
