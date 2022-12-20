@@ -15,24 +15,17 @@ export default function SpotSocialForm({ newComment, SpotData }) {
   }
 
   return (
-    <>
-      <StyledForm onSubmit={handleNewEntry}>
-        <StyledInputText
-          type="text"
-          name="varText"
-          placeholder="Tell us more about the Spot..."
-          required
-        ></StyledInputText>
-        <StyledButton type="submit">
-          <Image
-            src={addMessage}
-            alt="addMessageButton"
-            width={40}
-            height={40}
-          />
-        </StyledButton>
-      </StyledForm>
-    </>
+    <StyledForm onSubmit={handleNewEntry}>
+      <StyledInputText
+        type="text"
+        name="varText"
+        placeholder="Tell us more about the Spot..."
+        required
+      ></StyledInputText>
+      <StyledButton type="submit">
+        <Image src={addMessage} alt="addMessageButton" width={40} height={40} />
+      </StyledButton>
+    </StyledForm>
   );
 }
 
@@ -49,7 +42,6 @@ const StyledForm = styled.form`
 `;
 
 const StyledInputText = styled.input`
-  /* padding: 5px; */
   padding-left: 5%;
   width: 80vw;
   height: 70%;

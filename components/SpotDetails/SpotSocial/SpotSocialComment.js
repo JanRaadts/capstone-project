@@ -2,11 +2,9 @@ import styled from "styled-components";
 
 export default function SpotSocialComment({ text }) {
   return (
-    <>
-      <StyledEntry>
-        <StyledText>{text}</StyledText>
-      </StyledEntry>
-    </>
+    <StyledEntry>
+      <StyledText>{text}</StyledText>
+    </StyledEntry>
   );
 }
 
