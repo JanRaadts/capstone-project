@@ -12,7 +12,7 @@ import Link from "next/link";
 import useFetch from "../lib/fetch";
 
 export default function Map() {
-  const surfspots = useFetch("http://localhost:3000/api/");
+  const surfspots = useFetch("/api/");
 
   return (
     <>

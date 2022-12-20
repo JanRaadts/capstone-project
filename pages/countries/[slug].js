@@ -6,7 +6,7 @@ import Head from "next/head";
 import useFetch from "../../lib/fetch";
 
 export default function SpotDetails() {
-  const surfspots = useFetch("http://localhost:3000/api/");
+  const surfspots = useFetch("/api/");
   const router = useRouter();
   const { slug } = router.query;
 

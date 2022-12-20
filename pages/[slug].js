@@ -8,7 +8,7 @@ import SpotDetailsHead from "../components/SpotDetails/SpotDetailsHead";
 import useFetch from "../lib/fetch";
 
 export default function SpotDetails() {
-  const surfspots = useFetch("http://localhost:3000/api/");
+  const surfspots = useFetch("/api/");
   const [infoOrSocial, setInfoOrSocial] = useState(true);
   const router = useRouter();
   const { slug } = router.query;
