@@ -1,19 +1,20 @@
 import { useRouter } from "next/router.js";
 import { useState } from "react";
-import surfspots from "../lib/surfspots";
 import styled from "styled-components";
 import Head from "next/head";
 import SpotSocial from "../components/SpotDetails/SpotSocial/SpotSocial";
 import SpotInfo from "../components/SpotDetails/SpotInfo";
 import SpotDetailsHead from "../components/SpotDetails/SpotDetailsHead";
+import useFetch from "../lib/fetch";
 
 export default function SpotDetails() {
+  const surfspots = useFetch("/api");
   const [infoOrSocial, setInfoOrSocial] = useState(true);
   const router = useRouter();
   const { slug } = router.query;
   const currentSpot = surfspots.find((spot) => spot.slug === slug);
   if (!currentSpot) {
-    return <p>Not found</p>;
+    return <p></p>;
   }
 
   function handleInfo() {
@@ -42,7 +43,7 @@ export default function SpotDetails() {
           camping={currentSpot.camping}
         />
       ) : (
-        <SpotSocial ID={currentSpot.ID} />
+        <SpotSocial spotData={currentSpot} />
       )}
     </>
   );

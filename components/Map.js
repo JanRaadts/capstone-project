@@ -9,8 +9,11 @@ import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import MarkerIcon from "./MarkerIcon";
 import Link from "next/link";
+import useFetch from "../lib/fetch";
 
-export default function Map({ surfspots }) {
+export default function Map() {
+  const surfspots = useFetch("/api");
+
   return (
     <>
       <StyledMapContainer
@@ -29,8 +32,8 @@ export default function Map({ surfspots }) {
           return (
             <Marker
               position={[surfspot.latitude, surfspot.longitude]}
-              key={surfspot.ID}
-              ID={surfspot.ID}
+              key={surfspot._id}
+              ID={surfspot._id}
               icon={MarkerIcon}
             >
               <Popup keepInView={true}>
