@@ -2,38 +2,23 @@ import SpotSocialComment from "./SpotSocialComment";
 import SpotSocialForm from "./SpotSocialForm";
 import styled from "styled-components";
 
-export default function SpotSocial({ SpotData }) {
+export default function SpotSocial({ spotData }) {
   function handleNewComment(comment) {
-    let dbComments = SpotData.comments.map((comment) => {
+    let dbComments = spotData.comments.map((comment) => {
       return { text: comment.text, _id: comment._id };
     });
     dbComments.push(comment);
 
     const updatedSpot = {
-      _id: SpotData._id,
-      slug: SpotData.slug,
-      name: SpotData.name,
-      image: SpotData.image,
-      country: SpotData.country,
-      city: SpotData.city,
-      zip: SpotData.zip,
-      street: SpotData.street,
-      coordinates: SpotData.coordinates,
-      latitude: SpotData.latitude,
-      longitude: SpotData.longitude,
-      description: SpotData.description,
-      winddirection: SpotData.winddirection,
-      surfcenter: SpotData.surfcenter,
-      parking: SpotData.parking,
-      camping: SpotData.camping,
+      ...spotData,
       comments: dbComments,
     };
 
-    useChange(updatedSpot);
+    uploadChange(updatedSpot);
     window.location.reload(false);
   }
 
-  async function useChange(data) {
+  async function uploadChange(data) {
     await fetch("/api/" + data._id, {
       method: "PUT",
       headers: {
@@ -46,12 +31,12 @@ export default function SpotSocial({ SpotData }) {
   return (
     <>
       <StyledCommentsList>
-        {SpotData.comments.map((comment) => {
+        {spotData.comments.map((comment) => {
           return <SpotSocialComment text={comment.text} key={comment.text} />;
         })}
       </StyledCommentsList>
 
-      <SpotSocialForm newComment={handleNewComment} SpotData={SpotData} />
+      <SpotSocialForm newComment={handleNewComment} spotData={spotData} />
     </>
   );
 }

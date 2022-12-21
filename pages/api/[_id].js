@@ -6,16 +6,16 @@ export default async function handler(req, res) {
 
   if (req.method === "PUT") {
     const id = req.query._id;
-    const updatedDocument = await Surfspots.findByIdAndUpdate(
-      id,
-      { comments: req.body.comments },
-      { returnDocument: "after" }
-    );
 
-    if (updatedDocument) {
+    try {
+      const updatedDocument = await Surfspots.findByIdAndUpdate(
+        id,
+        { comments: req.body.comments },
+        { returnDocument: "after" }
+      );
       res.status(200).json(updatedDocument);
-    } else {
-      res.status(404).json({ message: "document not found" });
+    } catch (error) {
+      res.status(500).json({ antwort: error });
     }
   }
 }

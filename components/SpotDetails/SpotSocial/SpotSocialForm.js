@@ -2,12 +2,12 @@ import styled from "styled-components";
 import Image from "next/image";
 import addMessage from "../../../public/images/addMessage.png";
 
-export default function SpotSocialForm({ newComment, SpotData }) {
+export default function SpotSocialForm({ newComment, spotData }) {
   function handleNewEntry(event) {
     event.preventDefault();
     let inputData = {
       text: event.target.elements.varText.value,
-      _id: SpotData._id,
+      _id: spotData._id,
     };
     event.target.reset();
     event.target.elements.varText.focus();

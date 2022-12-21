@@ -14,7 +14,7 @@ export default function SpotDetails() {
   const { slug } = router.query;
   const currentSpot = surfspots.find((spot) => spot.slug === slug);
   if (!currentSpot) {
-    return console.log("seite noch nicht geladen");
+    return <p></p>;
   }
 
   function handleInfo() {
@@ -43,7 +43,7 @@ export default function SpotDetails() {
           camping={currentSpot.camping}
         />
       ) : (
-        <SpotSocial SpotData={currentSpot} />
+        <SpotSocial spotData={currentSpot} />
       )}
     </>
   );

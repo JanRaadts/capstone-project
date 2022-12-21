@@ -13,7 +13,6 @@ export default function SpotDetails() {
   const currentSpot = surfspots.find((spot) => spot.country === slug);
 
   if (!currentSpot) {
-    return console.log("seite noch nicht geladen");
   }
 
   const spotsincountry = surfspots.filter(

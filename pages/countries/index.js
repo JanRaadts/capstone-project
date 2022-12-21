@@ -12,7 +12,6 @@ export default function Countries() {
     return surfspot.country;
   });
   const uniqueCountrys = Array.from(new Set(allCountrys));
-  console.log(allCountrys);
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
