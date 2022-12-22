@@ -11,7 +11,7 @@ import styled from "styled-components";
 import MarkerIcon from "./MarkerIcon";
 import Link from "next/link";
 import useFetch from "../lib/fetch";
-import useGeoLocation from "./Hooks/UseGeoLocation";
+import useGeoLocation from "./Hooks/useGeoLocation";
 import Image from "next/image";
 import locateMeButton from "../public/images/locateMeButton.png";
 
