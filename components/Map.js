@@ -24,7 +24,7 @@ export default function Map() {
   function handleSetView() {
     const { current = {} } = mapRef;
     const map = current;
-    map.flyTo(myLocation.coordinates);
+    map.flyTo(myLocation);
   }
 
   return (
