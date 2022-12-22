@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import back_button from "../../public/images/back_button.png";
-import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function SpotDetailsHead({ image, name }) {
+  const router = useRouter();
   return (
     <>
       <StyledImage>
@@ -15,14 +16,9 @@ export default function SpotDetailsHead({ image, name }) {
         />
         <StyledTitle>{name}</StyledTitle>
       </StyledImage>
-      <Link href="/">
-        <StyledImageBack
-          src={back_button}
-          alt="Back_Btn"
-          width={30}
-          height={30}
-        />
-      </Link>
+      <StyledBackButton onClick={() => router.back()}>
+        <Image src={back_button} alt="Back_Btn" width={30} height={30} />{" "}
+      </StyledBackButton>
     </>
   );
 }
@@ -49,8 +45,10 @@ const StyledTitle = styled.h1`
   transform: translate(-50%);
 `;
 
-const StyledImageBack = styled(Image)`
+const StyledBackButton = styled.button`
   position: absolute;
-  left: 20px;
+  left: 10px;
   top: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0);
 `;
