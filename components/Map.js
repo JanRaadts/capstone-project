@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
+import { useRouter } from "next/router";
 import {
   MapContainer,
   TileLayer,
@@ -12,14 +13,23 @@ import MarkerIcon from "./MarkerIcon";
 import Link from "next/link";
 import useFetch from "../lib/fetch";
 import useGeoLocation from "./Hooks/useGeoLocation";
-import Image from "next/image";
-import locateMeButton from "../public/images/locateMeButton.png";
+import Header from "./Header";
 
 export default function Map() {
   const mapRef = useRef(0);
   const surfspots = useFetch("/api");
   const [center, setCenter] = useState([54.434051, 10.318242]);
   const myLocation = useGeoLocation();
+
+  function handleMapShown() {
+    router.push(`/countries`);
+  }
+
+  function handleLocateMe() {
+    handleSetView();
+  }
+
+  const router = useRouter();
 
   function handleSetView() {
     if (myLocation == "error") {
@@ -33,6 +43,7 @@ export default function Map() {
 
   return (
     <>
+      <Header onMapShown={handleMapShown} onLocateMe={handleLocateMe} />
       <StyledMapContainer
         ref={mapRef}
         center={center}
@@ -69,14 +80,6 @@ export default function Map() {
           );
         })}
       </StyledMapContainer>
-      <StyledPositionBtn onClick={handleSetView}>
-        <Image
-          src={locateMeButton}
-          alt="locate my position"
-          width={40}
-          height={40}
-        ></Image>
-      </StyledPositionBtn>
     </>
   );
 }
@@ -103,13 +106,4 @@ const StyledPopupContent = styled.div`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-`;
-
-const StyledPositionBtn = styled.button`
-  position: absolute;
-  top: 80px;
-  left: 10px;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0);
-  border: none;
 `;

@@ -2,22 +2,26 @@ import Image from "next/image";
 import styled from "styled-components";
 import menue from "../public/images/menü_btn.jpg";
 import logo from "../public/images/logoSpotifinder.png";
+import UmMichHerum from "../public/images/UmMichHerum.png";
 
-export default function Header({ onMapShown }) {
+export default function Header({ onMapShown, onLocateMe }) {
   return (
     <>
       <StyledHeader>
-        <StyledLogo>
-          <Image src={logo} alt="Menü_Btn" width={433} height={91} />
-        </StyledLogo>
-
-        <StyledImage
+        <Image
+          onClick={onLocateMe}
+          src={UmMichHerum}
+          alt="UmMichHerum"
+          width={111}
+          height={50}
+        ></Image>
+        <Image
           onClick={onMapShown}
           src={menue}
           alt="Menü_Btn"
           width={40}
           height={40}
-        ></StyledImage>
+        ></Image>
       </StyledHeader>
     </>
   );
@@ -43,7 +47,9 @@ const StyledHeader = styled.section`
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
 `;
 
 const StyledImage = styled(Image)`
