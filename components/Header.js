@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
-import menue from "../public/images/menü_btn.jpg";
+import menue from "../public/images/menü_btn.png";
 import logo from "../public/images/logoSpotifinder.png";
 import UmMichHerum from "../public/images/UmMichHerum.png";
 
@@ -17,10 +17,17 @@ export default function Header({ onMapShown, onLocateMe }) {
         ></Image>
         <Image
           onClick={onMapShown}
+          src={logo}
+          alt="Menü_Btn"
+          width={180}
+          height={40}
+        ></Image>
+        <Image
+          onClick={onMapShown}
           src={menue}
           alt="Menü_Btn"
-          width={40}
-          height={40}
+          width={111}
+          height={52}
         ></Image>
       </StyledHeader>
     </>
