@@ -17,13 +17,6 @@ export default function Header({ onMapShown, onLocateMe }) {
         ></Image>
         <Image
           onClick={onMapShown}
-          src={logo}
-          alt="Menü_Btn"
-          width={180}
-          height={40}
-        ></Image>
-        <Image
-          onClick={onMapShown}
           src={menue}
           alt="Menü_Btn"
           width={111}
