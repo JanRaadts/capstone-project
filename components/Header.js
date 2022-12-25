@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
-import menue from "../public/images/menü.png";
+import menue from "../public/images/Menü.png";
 import UmMichHerum from "../public/images/UmMichHerum.png";
 
 export default function Header({ onMapShown, onLocateMe }) {
