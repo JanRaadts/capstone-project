@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -22,9 +22,13 @@ export default function Map() {
   const myLocation = useGeoLocation();
 
   function handleSetView() {
-    const { current = {} } = mapRef;
-    const map = current;
-    map.flyTo(myLocation);
+    if (myLocation == "error") {
+      alert("standort nicht gefunden");
+    } else {
+      const { current = {} } = mapRef;
+      const map = current;
+      map.flyTo(myLocation);
+    }
   }
 
   return (
@@ -68,7 +72,7 @@ export default function Map() {
       <StyledPositionBtn onClick={handleSetView}>
         <Image
           src={locateMeButton}
-          alt="locateMeButton"
+          alt="locate my position"
           width={40}
           height={40}
         ></Image>

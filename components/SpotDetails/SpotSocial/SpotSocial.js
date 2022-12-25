@@ -1,6 +1,7 @@
 import SpotSocialComment from "./SpotSocialComment";
 import SpotSocialForm from "./SpotSocialForm";
 import styled from "styled-components";
+import { nanoid } from "nanoid";
 
 export default function SpotSocial({ spotData, loadAgain }) {
   function handleNewComment(comment) {
@@ -35,7 +36,7 @@ export default function SpotSocial({ spotData, loadAgain }) {
     <>
       <StyledCommentsList>
         {reverseComments.map((comment) => {
-          return <SpotSocialComment text={comment.text} key={comment.text} />;
+          return <SpotSocialComment text={comment.text} key={nanoid()} />;
         })}
       </StyledCommentsList>
 
