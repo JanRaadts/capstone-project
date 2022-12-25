@@ -1,7 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
-import menue from "../public/images/menü_btn.png";
-import logo from "../public/images/logoSpotifinder.png";
+import menue from "../public/images/menü.png";
 import UmMichHerum from "../public/images/UmMichHerum.png";
 
 export default function Header({ onMapShown, onLocateMe }) {
@@ -12,28 +11,20 @@ export default function Header({ onMapShown, onLocateMe }) {
           onClick={onLocateMe}
           src={UmMichHerum}
           alt="UmMichHerum"
-          width={111}
-          height={50}
+          width={91}
+          height={51}
         ></Image>
         <Image
           onClick={onMapShown}
           src={menue}
           alt="Menü_Btn"
-          width={111}
-          height={52}
+          width={39}
+          height={53}
         ></Image>
       </StyledHeader>
     </>
   );
 }
-
-const StyledLogo = styled.div`
-  img {
-    width: 220px;
-    height: auto;
-  }
-  position: relative;
-`;
 
 const StyledHeader = styled.section`
   background-color: white;
@@ -48,12 +39,6 @@ const StyledHeader = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 30px;
-  padding-right: 30px;
-`;
-
-const StyledImage = styled(Image)`
-  position: absolute;
-  right: 20px;
-  top: 10px;
+  padding-left: 10px;
+  padding-right: 20px;
 `;
