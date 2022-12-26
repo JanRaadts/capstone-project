@@ -21,6 +21,8 @@ export default function Map() {
   const [center, setCenter] = useState([54.434051, 10.318242]);
   const myLocation = useGeoLocation();
 
+  const [usedLocateMe, setUsedLocateMe] = useState(false);
+
   function handleMapShown() {
     router.push(`/countries`);
   }
@@ -38,12 +40,18 @@ export default function Map() {
       const { current = {} } = mapRef;
       const map = current;
       map.flyTo(myLocation);
+      setUsedLocateMe(true);
     }
   }
 
   return (
     <>
-      <Header onMapShown={handleMapShown} onLocateMe={handleLocateMe} />
+      <Header
+        onMapShown={handleMapShown}
+        onLocateMe={handleLocateMe}
+        usedLocateMe={usedLocateMe}
+        usedMapShown={true}
+      />
       <StyledMapContainer
         ref={mapRef}
         center={center}

@@ -2,25 +2,57 @@ import Image from "next/image";
 import styled from "styled-components";
 import menue from "../public/images/Menü.png";
 import UmMichHerum from "../public/images/UmMichHerum.png";
+import UsedLocateMe from "../public/images/UsedLocateMe.png";
+import usedMenü from "../public/images/usedMenü.png";
 
-export default function Header({ onMapShown, onLocateMe }) {
+export default function Header({
+  onMapShown,
+  onLocateMe,
+  usedLocateMe,
+  usedMapShown,
+}) {
+  function onLocate() {
+    console.log("usedLocateMe");
+    onLocateMe();
+  }
+
   return (
     <>
       <StyledHeader>
-        <Image
-          onClick={onLocateMe}
-          src={UmMichHerum}
-          alt="UmMichHerum"
-          width={91}
-          height={51}
-        ></Image>
-        <Image
-          onClick={onMapShown}
-          src={menue}
-          alt="Menü_Btn"
-          width={39}
-          height={53}
-        ></Image>
+        {usedLocateMe ? (
+          <Image
+            onClick={onLocate}
+            src={UsedLocateMe}
+            alt="UmMichHerum"
+            width={91}
+            height={51}
+          ></Image>
+        ) : (
+          <Image
+            onClick={onLocate}
+            src={UmMichHerum}
+            alt="UmMichHerum"
+            width={91}
+            height={51}
+          ></Image>
+        )}
+        {usedMapShown ? (
+          <Image
+            onClick={onMapShown}
+            src={menue}
+            alt="Menü_Btn"
+            width={39}
+            height={53}
+          ></Image>
+        ) : (
+          <Image
+            onClick={onMapShown}
+            src={usedMenü}
+            alt="Menü_Btn"
+            width={39}
+            height={53}
+          ></Image>
+        )}
       </StyledHeader>
     </>
   );
@@ -28,7 +60,7 @@ export default function Header({ onMapShown, onLocateMe }) {
 
 const StyledHeader = styled.section`
   background-color: white;
-  height: 60px;
+  height: 80px;
   width: 100%;
   position: fixed;
   top: 0;

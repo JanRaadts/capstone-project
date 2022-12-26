@@ -26,7 +26,7 @@ export default function Countries() {
       <Head>
         <title>SpotiFinder</title>
       </Head>
-      <Header onMapShown={handleMapShown} />
+      <Header onMapShown={handleMapShown} usedMapShown={false} />
       <ListSurfspots>
         {uniqueCountrys.map((uniqueCountry) => {
           const countryName = capitalizeFirstLetter(uniqueCountry);
