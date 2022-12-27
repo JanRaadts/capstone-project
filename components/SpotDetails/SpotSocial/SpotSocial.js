@@ -1,8 +1,9 @@
 import SpotSocialComment from "./SpotSocialComment";
 import SpotSocialForm from "./SpotSocialForm";
 import styled from "styled-components";
+import { nanoid } from "nanoid";
 
-export default function SpotSocial({ spotData }) {
+export default function SpotSocial({ spotData, loadAgain }) {
   function handleNewComment(comment) {
     let dbComments = spotData.comments.map((comment) => {
       return { text: comment.text, _id: comment._id };
@@ -15,7 +16,7 @@ export default function SpotSocial({ spotData }) {
     };
 
     uploadChange(updatedSpot);
-    window.location.reload(false);
+    loadAgain();
   }
 
   async function uploadChange(data) {
@@ -28,11 +29,14 @@ export default function SpotSocial({ spotData }) {
     });
   }
 
+  const commentsArray = spotData.comments;
+  const reverseComments = [...commentsArray].reverse();
+
   return (
     <>
       <StyledCommentsList>
-        {spotData.comments.map((comment) => {
-          return <SpotSocialComment text={comment.text} key={comment.text} />;
+        {reverseComments.map((comment) => {
+          return <SpotSocialComment text={comment.text} key={nanoid()} />;
         })}
       </StyledCommentsList>
 

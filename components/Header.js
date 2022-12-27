@@ -1,39 +1,66 @@
 import Image from "next/image";
 import styled from "styled-components";
-import menue from "../public/images/menü_btn.jpg";
-import logo from "../public/images/logoSpotifinder.png";
+import menue from "../public/images/Menü.png";
+import UmMichHerum from "../public/images/UmMichHerum.png";
+import UsedLocateMe from "../public/images/UsedLocateMe.png";
+import usedMenü from "../public/images/usedMenü.png";
 
-export default function Header({ onMapShown }) {
+export default function Header({
+  onMapShown,
+  onLocateMe,
+  usedLocateMe,
+  usedMapShown,
+}) {
+  function onLocate() {
+    console.log("usedLocateMe");
+    onLocateMe();
+  }
+
   return (
     <>
       <StyledHeader>
-        <StyledLogo>
-          <Image src={logo} alt="Menü_Btn" width={433} height={91} />
-        </StyledLogo>
-
-        <StyledImage
-          onClick={onMapShown}
-          src={menue}
-          alt="Menü_Btn"
-          width={40}
-          height={40}
-        ></StyledImage>
+        {usedLocateMe ? (
+          <Image
+            onClick={onLocate}
+            src={UsedLocateMe}
+            alt="UmMichHerum"
+            width={91}
+            height={51}
+          ></Image>
+        ) : (
+          <Image
+            onClick={onLocate}
+            src={UmMichHerum}
+            alt="UmMichHerum"
+            width={91}
+            height={51}
+          ></Image>
+        )}
+        {usedMapShown ? (
+          <Image
+            onClick={onMapShown}
+            src={menue}
+            alt="Menü_Btn"
+            width={39}
+            height={53}
+          ></Image>
+        ) : (
+          <Image
+            onClick={onMapShown}
+            src={usedMenü}
+            alt="Menü_Btn"
+            width={39}
+            height={53}
+          ></Image>
+        )}
       </StyledHeader>
     </>
   );
 }
 
-const StyledLogo = styled.div`
-  img {
-    width: 220px;
-    height: auto;
-  }
-  position: relative;
-`;
-
 const StyledHeader = styled.section`
   background-color: white;
-  height: 60px;
+  height: 80px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -43,11 +70,7 @@ const StyledHeader = styled.section`
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
-  justify-content: center;
-`;
-
-const StyledImage = styled(Image)`
-  position: absolute;
-  right: 20px;
-  top: 10px;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 20px;
 `;

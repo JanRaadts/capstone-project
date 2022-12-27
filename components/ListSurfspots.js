@@ -10,5 +10,5 @@ const StyledListSection = styled.ul`
   list-style: none;
   margin-right: 20px;
   margin-left: 20px;
-  margin-top: 80px;
+  margin-top: 100px;
 `;

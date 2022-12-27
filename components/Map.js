@@ -1,3 +1,5 @@
+import { useState, useRef } from "react";
+import { useRouter } from "next/router";
 import {
   MapContainer,
   TileLayer,
@@ -10,14 +12,49 @@ import styled from "styled-components";
 import MarkerIcon from "./MarkerIcon";
 import Link from "next/link";
 import useFetch from "../lib/fetch";
+import useGeoLocation from "./Hooks/useGeoLocation";
+import Header from "./Header";
 
 export default function Map() {
+  const mapRef = useRef(0);
   const surfspots = useFetch("/api");
+  const [center, setCenter] = useState([54.434051, 10.318242]);
+  const myLocation = useGeoLocation();
+
+  const [usedLocateMe, setUsedLocateMe] = useState(false);
+
+  function handleMapShown() {
+    router.push(`/countries`);
+  }
+
+  function handleLocateMe() {
+    handleSetView();
+  }
+
+  const router = useRouter();
+
+  function handleSetView() {
+    if (myLocation == "error") {
+      alert("standort nicht gefunden");
+    } else {
+      const { current = {} } = mapRef;
+      const map = current;
+      map.flyTo(myLocation);
+      setUsedLocateMe(true);
+    }
+  }
 
   return (
     <>
+      <Header
+        onMapShown={handleMapShown}
+        onLocateMe={handleLocateMe}
+        usedLocateMe={usedLocateMe}
+        usedMapShown={true}
+      />
       <StyledMapContainer
-        center={[54.434051, 10.318242]}
+        ref={mapRef}
+        center={center}
         zoom={15}
         scrollWheelZoom={true}
         zoomControl={false}
