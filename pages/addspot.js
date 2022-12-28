@@ -28,6 +28,7 @@ export default function Addspot() {
       comments: [],
     });
     setFormSteps(false);
+    event.target.reset();
   }
 
   function handleNewSpotSecondStep(event) {
