@@ -3,7 +3,7 @@ import styled from "styled-components";
 import menue from "../public/images/Menü.svg";
 import UmMichHerum from "../public/images/UmMichHerum.svg";
 import UsedLocateMe from "../public/images/UsedLocateMe.svg";
-import usedMenü from "../public/images/usedMenü.svg";
+import usedMenü from "../public/images/UsedMenü.svg";
 
 export default function Header({
   onMapShown,
