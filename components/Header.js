@@ -1,9 +1,9 @@
 import Image from "next/image";
 import styled from "styled-components";
-import menue from "../public/images/Menü.png";
-import UmMichHerum from "../public/images/UmMichHerum.png";
-import UsedLocateMe from "../public/images/UsedLocateMe.png";
-import usedMenü from "../public/images/usedMenü.png";
+import menue from "../public/images/Menü.svg";
+import UmMichHerum from "../public/images/UmMichHerum.svg";
+import UsedLocateMe from "../public/images/UsedLocateMe.svg";
+import usedMenü from "../public/images/usedMenü.svg";
 
 export default function Header({
   onMapShown,
