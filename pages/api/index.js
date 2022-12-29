@@ -15,7 +15,6 @@ export default async function handler(req, res) {
 
   if (req.method === "POST") {
     const data = req.body;
-    console.log(data);
     try {
       const newSurfspot = await Surfspots.create(data);
       res.status(201).json(newSurfspot);

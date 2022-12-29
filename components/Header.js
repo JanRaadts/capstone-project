@@ -1,9 +1,9 @@
 import Image from "next/image";
 import styled from "styled-components";
-import menue from "../public/images/Menü.svg";
+import menue from "../public/images/Menue.svg";
 import UmMichHerum from "../public/images/UmMichHerum.svg";
 import UsedLocateMe from "../public/images/UsedLocateMe.svg";
-import usedMenü from "../public/images/UsedMenü.svg";
+import usedMenue from "../public/images/UsedMenue.svg";
 
 export default function Header({
   onMapShown,
@@ -47,7 +47,7 @@ export default function Header({
         ) : (
           <Image
             onClick={onMapShown}
-            src={usedMenü}
+            src={usedMenue}
             alt="Menü_Btn"
             width={39}
             height={53}

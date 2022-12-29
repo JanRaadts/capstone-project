@@ -39,7 +39,6 @@ export default function Addspot() {
       city: event.target.elements.city.value,
       zip: event.target.elements.zip.value,
       street: event.target.elements.street.value,
-      coordinates: "54.41557003297096, 10.41170060728538",
     };
 
     getGeo(secondStepData);
@@ -55,6 +54,7 @@ export default function Addspot() {
       ...data,
       latitude: `${geodata.results[0].lat}`,
       longitude: `${geodata.results[0].lon}`,
+      coordinates: `${geodata.results[0].lat}, ${geodata.results[0].lon}`,
     };
     handleNewSpotToDB(newSpot);
     router.push(`/`);
@@ -85,36 +85,50 @@ export default function Addspot() {
               Erzähl uns die wichtigsten Dinge über den Spot...
             </StyledText>
             <StyledInput
+              type="text"
+              aria-label="Eingabefeld Spotname"
               placeholder="Spot Name"
               name="name"
               required
             ></StyledInput>
             <StyledInput
+              type="text"
+              aria-label="Eingabefeld Spot Beschreibung"
               placeholder="Beschreibung"
               name="description"
               required
             ></StyledInput>
             <StyledInput
+              type="text"
+              aria-label="Eingabefeld gute windrichtungen am Spot"
               placeholder="Gute Windrichtungen"
               name="winddirection"
               required
             ></StyledInput>
             <StyledInput
+              type="text"
+              aria-label="Eingabefeld besonderheiten am surfspot"
               placeholder="Besonderheiten"
               name="particularities"
               required
             ></StyledInput>
             <StyledInput
+              type="text"
+              aria-label="Eingabefeld surfcenter in der nähe"
               placeholder="Surfcenter"
               name="surfcenter"
               required
             ></StyledInput>
             <StyledInput
+              type="text"
+              aria-label="Eingabefeld parken in der nähe"
               placeholder="Parken"
               name="parking"
               required
             ></StyledInput>
             <StyledInput
+              type="text"
+              aria-label="Eingabefeld übernachten in der nähe"
               placeholder="Camping"
               name="camping"
               required
@@ -134,17 +148,29 @@ export default function Addspot() {
           <StyledForm onSubmit={handleNewSpotSecondStep}>
             <StyledText>Wo befindet sich der Spot?</StyledText>
             <StyledInput
+              type="text"
+              aria-label="Eingabefeld Land"
               placeholder="Land"
               name="country"
               required
             ></StyledInput>
-            <StyledInput placeholder="Stadt" name="city" required></StyledInput>
             <StyledInput
+              type="text"
+              aria-label="Eingabefeld Stadt"
+              placeholder="Stadt"
+              name="city"
+              required
+            ></StyledInput>
+            <StyledInput
+              type="text"
+              aria-label="Eingabefeld Postleitzahl"
               placeholder="Postleitzahl"
               name="zip"
               required
             ></StyledInput>
             <StyledInput
+              type="text"
+              aria-label="Eingabefeld Straße und Hausnummer"
               placeholder="Straße und Hausnummer"
               name="street"
               required
@@ -167,15 +193,15 @@ const StyledTitle = styled.h1`
   font-weight: normal;
   border-bottom: 1.5px solid #d5d5d5;
   width: 90vw;
-  padding-bottom: 10px;
-  font-size: 36px;
+  padding-bottom: 1rem;
+  font-size: 2.25rem;
   color: #0f3375;
 `;
 
 const StyledLink = styled(Link)`
   position: absolute;
-  top: 30px;
-  left: 15px;
+  top: 2rem;
+  left: 1rem;
 `;
 
 const StyledForm = styled.form`
@@ -184,13 +210,13 @@ const StyledForm = styled.form`
 
 const StyledInput = styled.input`
   width: 100%;
-  height: 35px;
+  height: 2.5rem;
   background: #f8f6f4;
   border: none;
   border-bottom: 2px solid #699bf7;
-  margin-bottom: 30px;
-  margin-top: 2px;
-  font-size: 18px;
+  margin-bottom: 2rem;
+  margin-top: 0.2rem;
+  font-size: 1.3rem;
   &:focus {
     outline: none;
   }
@@ -200,11 +226,11 @@ const StyledSubmitButton = styled.button`
   background: #0f3375;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   border: none;
-  border-radius: 9px;
+  border-radius: 0.5rem;
   color: white;
-  font-size: 20px;
-  padding: 10px 30px;
-  margin: 20px 0px;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  margin: 1.5rem 0px;
 `;
 
 const StyledNextBtn = styled.button`
@@ -213,6 +239,6 @@ const StyledNextBtn = styled.button`
 `;
 
 const StyledText = styled.p`
-  font-size: 24px;
+  font-size: 1.5rem;
   color: #4371c5;
 `;
