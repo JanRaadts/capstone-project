@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import back_button from "../../public/images/back_button.png";
+import back_button from "../../public/images/back_button.svg";
 import Image from "next/image";
 import { useRouter } from "next/router";
 

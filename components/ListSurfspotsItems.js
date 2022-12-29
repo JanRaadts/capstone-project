@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
-import arrow from "../public/images/arrow.png";
+import arrow from "../public/images/arrow.svg";
 
 export default function ListSurfspotsItems({ name, link }) {
   return (

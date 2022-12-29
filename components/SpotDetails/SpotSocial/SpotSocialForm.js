@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
-import addMessage from "../../../public/images/addMessage.png";
+import addMessage from "../../../public/images/addMessage.svg";
 
 export default function SpotSocialForm({ newComment, spotData }) {
   function handleNewEntry(event) {
