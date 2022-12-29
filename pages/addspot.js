@@ -33,15 +33,28 @@ export default function Addspot() {
 
   function handleNewSpotSecondStep(event) {
     event.preventDefault();
-    const newSpot = {
+    const secondStepData = {
       ...firstStepData,
       country: event.target.elements.country.value,
       city: event.target.elements.city.value,
       zip: event.target.elements.zip.value,
       street: event.target.elements.street.value,
       coordinates: "54.41557003297096, 10.41170060728538",
-      latitude: event.target.elements.lat.value,
-      longitude: event.target.elements.long.value,
+    };
+
+    getGeo(secondStepData);
+  }
+
+  async function getGeo(data) {
+    const response = await fetch(
+      `https://api.geoapify.com/v1/geocode/search?street=${data.street}&postcode=${data.zip}&city=${data.city}&country=${data.country}&format=json&apiKey=e9e1604216e7465488692640e2190af5`
+    );
+    const geodata = await response.json();
+
+    const newSpot = {
+      ...data,
+      latitude: `${geodata.results[0].lat}`,
+      longitude: `${geodata.results[0].lon}`,
     };
     console.log(newSpot);
     handleNewSpotToDB(newSpot);
@@ -137,16 +150,6 @@ export default function Addspot() {
               name="street"
               required
             ></StyledInput>
-            <StyledInput
-              placeholder="Longitude"
-              name="long"
-              required
-            ></StyledInput>
-            <StyledInput
-              placeholder="Latitude"
-              name="lat"
-              required
-            ></StyledInput>
             <StyledSubmitButton type="submit">Hinzufügen</StyledSubmitButton>
           </StyledForm>
         )}
@@ -158,7 +161,6 @@ export default function Addspot() {
 const StyledSection = styled.section`
   display: flex;
   justify-content: center;
-  /* background-color: white; */
 `;
 
 const StyledTitle = styled.h1`
