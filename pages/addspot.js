@@ -56,7 +56,6 @@ export default function Addspot() {
       latitude: `${geodata.results[0].lat}`,
       longitude: `${geodata.results[0].lon}`,
     };
-    console.log(newSpot);
     handleNewSpotToDB(newSpot);
     router.push(`/`);
   }
