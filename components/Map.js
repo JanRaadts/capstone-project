@@ -62,7 +62,7 @@ export default function Map() {
     const long = `${geodata.results[0].lon}`;
     const { current = {} } = mapRef;
     const map = current;
-    map.flyTo([lat, long]);
+    map.setView([lat, long]);
   }
 
   return (
