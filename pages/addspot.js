@@ -147,13 +147,14 @@ export default function Addspot() {
         ) : (
           <StyledForm onSubmit={handleNewSpotSecondStep}>
             <StyledText>Wo befindet sich der Spot?</StyledText>
-            <StyledInput
-              type="text"
-              aria-label="Eingabefeld Land"
-              placeholder="Land"
-              name="country"
-              required
-            ></StyledInput>
+            <StyledDropDown name="country" id="chooseCountry">
+              <option value="deutschland">Deutschland</option>
+              <option value="spanien">Spanien</option>
+              <option value="niederlande">Niederlande</option>
+              <option value="dänemark">Dänemark</option>
+              <option value="frankreich">Frankreich</option>
+              <option value="italien">Italien</option>
+            </StyledDropDown>
             <StyledInput
               type="text"
               aria-label="Eingabefeld Stadt"
@@ -241,4 +242,18 @@ const StyledNextBtn = styled.button`
 const StyledText = styled.p`
   font-size: 1.5rem;
   color: #4371c5;
+`;
+
+const StyledDropDown = styled.select`
+  width: 100%;
+  height: 2.5rem;
+  background: #f8f6f4;
+  border: none;
+  border-bottom: 2px solid #699bf7;
+  margin-bottom: 2rem;
+  margin-top: 0.2rem;
+  font-size: 1.3rem;
+  &:focus {
+    outline: none;
+  }
 `;
