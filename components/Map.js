@@ -23,6 +23,8 @@ export default function Map() {
 
   const [usedLocateMe, setUsedLocateMe] = useState(false);
 
+  const [usedSearchAround, setUsedSearchAround] = useState(false);
+
   function handleMapShown() {
     router.push(`/countries`);
   }
@@ -39,9 +41,28 @@ export default function Map() {
     } else {
       const { current = {} } = mapRef;
       const map = current;
-      map.flyTo(myLocation);
+      map.setView(myLocation);
       setUsedLocateMe(true);
+      setUsedSearchAround(false);
     }
+  }
+
+  function handleSearchAround(data) {
+    getGeo(data);
+    setUsedSearchAround(true);
+    setUsedLocateMe(false);
+  }
+
+  async function getGeo(data) {
+    const response = await fetch(
+      `https://api.geoapify.com/v1/geocode/search?text=${data}&format=json&apiKey=e9e1604216e7465488692640e2190af5`
+    );
+    const geodata = await response.json();
+    const lat = `${geodata.results[0].lat}`;
+    const long = `${geodata.results[0].lon}`;
+    const { current = {} } = mapRef;
+    const map = current;
+    map.setView([lat, long]);
   }
 
   return (
@@ -51,6 +72,8 @@ export default function Map() {
         onLocateMe={handleLocateMe}
         usedLocateMe={usedLocateMe}
         usedMapShown={true}
+        usedSearchAround={usedSearchAround}
+        onSearchAround={handleSearchAround}
       />
       <StyledMapContainer
         ref={mapRef}
