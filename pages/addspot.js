@@ -215,6 +215,7 @@ const StyledInput = styled.input`
   background: #f8f6f4;
   border: none;
   border-bottom: 2px solid #699bf7;
+  border-radius: 0px;
   margin-bottom: 2rem;
   margin-top: 0.2rem;
   font-size: 1.3rem;
