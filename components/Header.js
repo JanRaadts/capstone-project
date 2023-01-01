@@ -2,8 +2,8 @@ import { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import menue from "../public/images/Menue.svg";
-import UmMichHerum from "../public/images/UmMichHerum.svg";
-import UsedLocateMe from "../public/images/UsedLocateMe.svg";
+import aroundMe from "../public/images/aroundMe.svg";
+import usedAroundMe from "../public/images/usedAroundMe.svg";
 import usedMenue from "../public/images/UsedMenue.svg";
 import searchAround from "../public/images/searchAround.svg";
 import usedSearchAroundIcon from "../public/images/usedSearchAround.svg";
@@ -53,6 +53,7 @@ export default function Header({
               />
             </StyledButton>
             <StyledInputText
+              autoFocus
               type="text"
               name="place"
               placeholder="Gib einen Ort ein"
@@ -72,18 +73,18 @@ export default function Header({
           {usedLocateMe ? (
             <Image
               onClick={onLocate}
-              src={UsedLocateMe}
+              src={usedAroundMe}
               alt="UmMichHerum"
-              width={91}
-              height={51}
+              width={111}
+              height={49}
             ></Image>
           ) : (
             <Image
               onClick={onLocate}
-              src={UmMichHerum}
+              src={aroundMe}
               alt="UmMichHerum"
-              width={91}
-              height={51}
+              width={111}
+              height={49}
             ></Image>
           )}
           {usedSearchAround ? (
@@ -91,16 +92,16 @@ export default function Header({
               onClick={onInput}
               src={usedSearchAroundIcon}
               alt="Im Bereich eines Ortes suchen"
-              width={91}
-              height={51}
+              width={111}
+              height={49}
             ></Image>
           ) : (
             <Image
               onClick={onInput}
               src={searchAround}
               alt="Im Bereich eines Ortes suchen"
-              width={91}
-              height={51}
+              width={111}
+              height={49}
             ></Image>
           )}
           {usedMapShown ? (
@@ -108,16 +109,16 @@ export default function Header({
               onClick={onMapShown}
               src={menue}
               alt="Button um das Menü zu öffnen"
-              width={91}
-              height={51}
+              width={111}
+              height={49}
             ></Image>
           ) : (
             <Image
               onClick={onMapShown}
               src={usedMenue}
               alt="Button um das Menü zu öffnen"
-              width={91}
-              height={51}
+              width={111}
+              height={49}
             ></Image>
           )}
         </StyledHeader>
@@ -139,8 +140,6 @@ const StyledHeader = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 15px;
-  padding-right: 0px;
 `;
 
 const StyledForm = styled.form`
