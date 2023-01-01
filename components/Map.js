@@ -41,7 +41,7 @@ export default function Map() {
     } else {
       const { current = {} } = mapRef;
       const map = current;
-      map.flyTo(myLocation);
+      map.setView(myLocation);
       setUsedLocateMe(true);
       setUsedSearchAround(false);
     }

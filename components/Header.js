@@ -30,7 +30,7 @@ export default function Header({
 
   function handleSearchAroundData(event) {
     event.preventDefault();
-    let searchInput = event.target.elements.ort.value;
+    let searchInput = event.target.elements.place.value;
     setShowInput(false);
     onSearchAround(searchInput);
   }
@@ -47,18 +47,23 @@ export default function Header({
             <StyledButton type="button" onClick={back}>
               <Image
                 src={backIcon}
-                alt="addMessageButton"
+                alt="zurück button"
                 width={30}
                 height={30}
               />
             </StyledButton>
             <StyledInputText
               type="text"
-              name="ort"
+              name="place"
               placeholder="Gib einen Ort ein"
             ></StyledInputText>
             <StyledButton type="submit">
-              <Image src={lupe} alt="addMessageButton" width={30} height={30} />
+              <Image
+                src={lupe}
+                alt="button zum abfragen der eingegebenen suche"
+                width={30}
+                height={30}
+              />
             </StyledButton>
           </StyledForm>
         </StyledHeader>
@@ -85,16 +90,16 @@ export default function Header({
             <Image
               onClick={onInput}
               src={usedSearchAroundIcon}
-              alt="Menü_Btn"
-              width={76}
+              alt="Im Bereich eines Ortes suchen"
+              width={91}
               height={51}
             ></Image>
           ) : (
             <Image
               onClick={onInput}
               src={searchAround}
-              alt="Menü_Btn"
-              width={76}
+              alt="Im Bereich eines Ortes suchen"
+              width={91}
               height={51}
             ></Image>
           )}
@@ -102,17 +107,17 @@ export default function Header({
             <Image
               onClick={onMapShown}
               src={menue}
-              alt="Menü_Btn"
-              width={39}
-              height={53}
+              alt="Button um das Menü zu öffnen"
+              width={91}
+              height={51}
             ></Image>
           ) : (
             <Image
               onClick={onMapShown}
               src={usedMenue}
-              alt="Menü_Btn"
-              width={39}
-              height={53}
+              alt="Button um das Menü zu öffnen"
+              width={91}
+              height={51}
             ></Image>
           )}
         </StyledHeader>
@@ -134,8 +139,8 @@ const StyledHeader = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 10px;
-  padding-right: 20px;
+  padding-left: 15px;
+  padding-right: 0px;
 `;
 
 const StyledForm = styled.form`
@@ -155,8 +160,6 @@ const StyledInputText = styled.input`
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
   border-radius: 33.5px;
   font-size: 18px;
-  ::placeholder {
-  }
   &:focus {
     outline: none;
   }
