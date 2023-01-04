@@ -14,11 +14,12 @@ import Link from "next/link";
 import useFetch from "../lib/fetch";
 import useGeoLocation from "./Hooks/useGeoLocation";
 import Header from "./Header";
+import Image from "next/image";
+import addNewSpotBtn from "../public/images/addSpotButton.svg";
 
-export default function Map() {
+export default function Map({ center, changeCenter }) {
   const mapRef = useRef(0);
   const surfspots = useFetch("/api");
-  const [center, setCenter] = useState([54.434051, 10.318242]);
   const myLocation = useGeoLocation();
 
   const [usedLocateMe, setUsedLocateMe] = useState(false);
@@ -27,6 +28,10 @@ export default function Map() {
 
   function handleMapShown() {
     router.push(`/countries`);
+    const { current = {} } = mapRef;
+    const map = current;
+    const coordinates = map.getCenter();
+    changeCenter([coordinates.lat, coordinates.lng]);
   }
 
   function handleLocateMe() {
@@ -65,6 +70,13 @@ export default function Map() {
     map.setView([lat, long]);
   }
 
+  function handleNewSpotBtnClick() {
+    const { current = {} } = mapRef;
+    const map = current;
+    const coordinates = map.getCenter();
+    changeCenter([coordinates.lat, coordinates.lng]);
+  }
+
   return (
     <>
       <Header
@@ -75,10 +87,13 @@ export default function Map() {
         usedSearchAround={usedSearchAround}
         onSearchAround={handleSearchAround}
       />
+      <StyledAddSpotBtn href={"/addspot"} onClick={handleNewSpotBtnClick}>
+        <Image src={addNewSpotBtn} alt="addSpot" width={50} height={50} />
+      </StyledAddSpotBtn>
       <StyledMapContainer
         ref={mapRef}
         center={center}
-        zoom={15}
+        zoom={11}
         scrollWheelZoom={true}
         zoomControl={false}
       >
@@ -97,7 +112,12 @@ export default function Map() {
               icon={MarkerIcon}
             >
               <Popup keepInView={true}>
-                <StyledLink href={surfspot.slug}>
+                <StyledLink
+                  href={surfspot.slug}
+                  onClick={() =>
+                    changeCenter([surfspot.latitude, surfspot.longitude])
+                  }
+                >
                   <StyledPopupContent>
                     <h1>{surfspot.name}</h1>
                     <p>
@@ -137,4 +157,11 @@ const StyledPopupContent = styled.div`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+`;
+
+const StyledAddSpotBtn = styled(Link)`
+  z-index: 4;
+  position: absolute;
+  bottom: 30px;
+  left: 10px;
 `;
