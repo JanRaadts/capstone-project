@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-export default function Addspot() {
+export default function Addspot({ changeCenter }) {
   const router = useRouter();
   const [formSteps, setFormSteps] = useState(true);
   const [firstStepData, setFirstStepData] = useState();
@@ -57,6 +57,7 @@ export default function Addspot() {
       coordinates: `${geodata.results[0].lat}, ${geodata.results[0].lon}`,
     };
     handleNewSpotToDB(newSpot);
+    changeCenter([geodata.results[0].lat, geodata.results[0].lon]);
     router.push(`/`);
   }
 
