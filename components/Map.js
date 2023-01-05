@@ -11,15 +11,19 @@ import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import MarkerIcon from "./MarkerIcon";
 import Link from "next/link";
-import useFetch from "../lib/fetch";
 import useGeoLocation from "./Hooks/useGeoLocation";
 import Header from "./Header";
 import Image from "next/image";
 import addNewSpotBtn from "../public/images/addSpotButton.svg";
 
-export default function Map({ center, changeCenter, zoom, changeZoom }) {
+export default function Map({
+  center,
+  changeCenter,
+  zoom,
+  changeZoom,
+  surfspots,
+}) {
   const mapRef = useRef(0);
-  const surfspots = useFetch("/api");
   const myLocation = useGeoLocation();
 
   const [usedLocateMe, setUsedLocateMe] = useState(false);
@@ -109,8 +113,6 @@ export default function Map({ center, changeCenter, zoom, changeZoom }) {
           url={`https://api.mapbox.com/styles/v1/jarakle/clbpbe5ii000z14msirbrwos5/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamFyYWtsZSIsImEiOiJjbGJtbzlsYXkwNnY3M29yeDZhOGFsZW15In0.RFqqOxiya31Sjc70F1fmFg`}
           attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
         />
-
-        <ZoomControl position="bottomright" />
         {surfspots.map((surfspot) => {
           return (
             <Marker

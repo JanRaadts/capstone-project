@@ -3,7 +3,13 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 const Map = dynamic(() => import("../components/Map"), { ssr: false });
 
-export default function Home({ center, changeCenter, zoom, changeZoom }) {
+export default function Home({
+  center,
+  changeCenter,
+  zoom,
+  changeZoom,
+  surfspots,
+}) {
   return (
     <>
       <Head>
@@ -14,6 +20,7 @@ export default function Home({ center, changeCenter, zoom, changeZoom }) {
         changeCenter={changeCenter}
         zoom={zoom}
         changeZoom={changeZoom}
+        surfspots={surfspots}
       ></Map>
     </>
   );
