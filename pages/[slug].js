@@ -6,7 +6,7 @@ import SpotSocial from "../components/SpotDetails/SpotSocial/SpotSocial";
 import SpotInfo from "../components/SpotDetails/SpotInfo";
 import SpotDetailsHead from "../components/SpotDetails/SpotDetailsHead";
 
-export default function SpotDetails() {
+export default function SpotDetails({ favoriteSpots, setFavoriteSpots }) {
   const [surfspots, setSurfspots] = useState([]);
 
   async function getSurfspots() {
@@ -52,6 +52,11 @@ export default function SpotDetails() {
           surfcenter={currentSpot.surfcenter}
           parking={currentSpot.parking}
           camping={currentSpot.camping}
+          lat={currentSpot.latitude}
+          lon={currentSpot.longitude}
+          id={currentSpot._id}
+          favoriteSpots={favoriteSpots}
+          setFavoriteSpots={setFavoriteSpots}
         />
       ) : (
         <SpotSocial spotData={currentSpot} loadAgain={getSurfspots} />

@@ -3,11 +3,9 @@ import ListSurfspots from "../../components/ListSurfspots";
 import ListSurfspotsItems from "../../components/ListSurfspotsItems";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import useFetch from "../../lib/fetch";
 
-export default function Countries() {
+export default function Countries({ surfspots }) {
   const router = useRouter();
-  const surfspots = useFetch("/api");
   const allCountrys = surfspots.map((surfspot) => {
     return surfspot.country;
   });
@@ -28,6 +26,7 @@ export default function Countries() {
       </Head>
       <Header onMapShown={handleMapShown} usedMapShown={false} />
       <ListSurfspots>
+        <ListSurfspotsItems name={"Favoriten"} link={`/favoritespots`} />
         {uniqueCountrys.map((uniqueCountry) => {
           const countryName = capitalizeFirstLetter(uniqueCountry);
           return (

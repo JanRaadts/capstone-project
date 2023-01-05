@@ -17,7 +17,7 @@ import Header from "./Header";
 import Image from "next/image";
 import addNewSpotBtn from "../public/images/addSpotButton.svg";
 
-export default function Map({ center, changeCenter }) {
+export default function Map({ center, changeCenter, zoom, changeZoom }) {
   const mapRef = useRef(0);
   const surfspots = useFetch("/api");
   const myLocation = useGeoLocation();
@@ -31,7 +31,9 @@ export default function Map({ center, changeCenter }) {
     const { current = {} } = mapRef;
     const map = current;
     const coordinates = map.getCenter();
+    const zoom = map.getZoom();
     changeCenter([coordinates.lat, coordinates.lng]);
+    changeZoom(zoom);
   }
 
   function handleLocateMe() {
@@ -46,7 +48,9 @@ export default function Map({ center, changeCenter }) {
     } else {
       const { current = {} } = mapRef;
       const map = current;
+      const zoom = map.getZoom();
       map.setView(myLocation);
+      changeZoom(zoom);
       setUsedLocateMe(true);
       setUsedSearchAround(false);
     }
@@ -68,13 +72,17 @@ export default function Map({ center, changeCenter }) {
     const { current = {} } = mapRef;
     const map = current;
     map.setView([lat, long]);
+    const zoom = map.getZoom();
+    changeZoom(zoom);
   }
 
   function handleNewSpotBtnClick() {
     const { current = {} } = mapRef;
     const map = current;
     const coordinates = map.getCenter();
+    const zoom = map.getZoom();
     changeCenter([coordinates.lat, coordinates.lng]);
+    changeZoom(zoom);
   }
 
   return (
@@ -93,7 +101,7 @@ export default function Map({ center, changeCenter }) {
       <StyledMapContainer
         ref={mapRef}
         center={center}
-        zoom={11}
+        zoom={zoom}
         scrollWheelZoom={true}
         zoomControl={false}
       >
