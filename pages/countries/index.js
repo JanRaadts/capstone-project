@@ -3,6 +3,7 @@ import ListSurfspots from "../../components/ListSurfspots";
 import ListSurfspotsItems from "../../components/ListSurfspotsItems";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import FavoriteSpotsListItem from "../../components/FavoriteSpotsListItem";
 
 export default function Countries({ surfspots }) {
   const router = useRouter();
@@ -26,7 +27,7 @@ export default function Countries({ surfspots }) {
       </Head>
       <Header onMapShown={handleMapShown} usedMapShown={false} />
       <ListSurfspots>
-        <ListSurfspotsItems name={"Favoriten"} link={`/favoritespots`} />
+        <FavoriteSpotsListItem name={"Favoriten"} link={`/favoritespots`} />
         {uniqueCountrys.map((uniqueCountry) => {
           const countryName = capitalizeFirstLetter(uniqueCountry);
           return (

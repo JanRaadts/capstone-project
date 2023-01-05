@@ -1,14 +1,15 @@
 import GlobalStyles from "../components/GlobalStyles";
 import { useState } from "react";
 import { useEffect } from "react";
-import useFetch from "../lib/fetch";
+import { useLocalStorage } from "../components/Hooks/useLocalStorage";
 
 function MyApp({ Component, pageProps }) {
-  const [center, setCenter] = useState([54.434051, 10.318242]);
-  const [zoom, changeZoom] = useState(11);
-  const [favoriteSpots, setFavoriteSpots] = useState([]);
-
-  // const surfspots = useFetch("/api");
+  const [center, setCenter] = useLocalStorage("center", [54.434051, 10.318242]);
+  const [zoom, changeZoom] = useLocalStorage("zoom", 11);
+  const [favoriteSpots, setFavoriteSpots] = useLocalStorage(
+    "favoriteSpots",
+    []
+  );
 
   const [surfspots, setSurfspots] = useState([]);
 
