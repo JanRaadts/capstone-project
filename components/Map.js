@@ -23,6 +23,7 @@ export default function Map({
   changeZoom,
   surfspots,
 }) {
+  const mapboxKey = process.env.mapboxKey;
   const mapRef = useRef(0);
   const myLocation = useGeoLocation();
 
@@ -68,7 +69,7 @@ export default function Map({
 
   async function getGeo(data) {
     const response = await fetch(
-      `https://api.geoapify.com/v1/geocode/search?text=${data}&format=json&apiKey=e9e1604216e7465488692640e2190af5`
+      `https://api.geoapify.com/v1/geocode/search?text=${data}&format=json&apiKey=${mapboxKey}`
     );
     const geodata = await response.json();
     const lat = `${geodata.results[0].lat}`;
