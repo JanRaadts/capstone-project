@@ -15,16 +15,16 @@ function MyApp({ Component, pageProps }) {
     defaultValue: [11],
   });
 
-  // const [favoriteSpots, setFavoriteSpots] = useLocalStorage(
-  //   "favoriteSpots",
-  //   []
-  // );
-  const [favoriteSpots, setFavoriteSpots] = useLocalStorageState(
+  const [favoriteSpots, setFavoriteSpots] = useLocalStorage(
     "favoriteSpots",
-    {
-      defaultValue: [[]],
-    }
+    []
   );
+  // const [favoriteSpots, setFavoriteSpots] = useLocalStorageState(
+  //   "favoriteSpots",
+  //   {
+  //     defaultValue: [[]],
+  //   }
+  // );
 
   const [surfspots, setSurfspots] = useState([]);
 
