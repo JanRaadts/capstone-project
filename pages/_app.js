@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps }) {
         center={center}
         changeCenter={setCenter}
         zoom={zoom}
-        changeZoom={setZoom}
+        changeZoom={changeZoom}
         favoriteSpots={favoriteSpots}
         setFavoriteSpots={setFavoriteSpots}
         listFavSpots={listFavSpots}
