@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
   const [favoriteSpots, setFavoriteSpots] = useLocalStorageState(
     "favoriteSpots",
     {
-      defaultValue: [[]],
+      defaultValue: [],
     }
   );
 
