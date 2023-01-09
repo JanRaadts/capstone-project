@@ -10,8 +10,6 @@ import Header from "./Header";
 import Image from "next/image";
 import addNewSpotBtn from "../public/images/addSpotButton.svg";
 
-const GEO_API = process.env.GEO_API;
-
 export default function Map({
   center,
   changeCenter,
