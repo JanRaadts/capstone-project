@@ -16,14 +16,14 @@ function MyApp({ Component, pageProps }) {
 
   // const [zoom, changeZoom] = useState(11);
 
-  // const [favoriteSpots, setFavoriteSpots] = useLocalStorageState(
-  //   "favoriteSpots",
-  //   {
-  //     defaultValue: [],
-  //   }
-  // );
+  const [favoriteSpots, setFavoriteSpots] = useLocalStorageState(
+    "favoriteSpots",
+    {
+      defaultValue: [],
+    }
+  );
 
-  const [favoriteSpots, setFavoriteSpots] = useState([]);
+  // const [favoriteSpots, setFavoriteSpots] = useState([]);
 
   const [surfspots, setSurfspots] = useState([]);
 
