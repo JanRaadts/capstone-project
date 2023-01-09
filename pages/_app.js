@@ -4,26 +4,26 @@ import { useEffect } from "react";
 import useLocalStorageState from "use-local-storage-state";
 
 function MyApp({ Component, pageProps }) {
-  // const [center, setCenter] = useLocalStorageState("center", {
-  //   defaultValue: [[54.434051, 10.318242]],
-  // });
+  const [center, setCenter] = useLocalStorageState("center", {
+    defaultValue: [[54.434051, 10.318242]],
+  });
 
-  const [center, setCenter] = useState([54.434051, 10.318242]);
+  // const [center, setCenter] = useState([54.434051, 10.318242]);
 
-  // const [zoom, changeZoom] = useLocalStorageState("zoom", {
-  //   defaultValue: [11],
-  // });
+  const [zoom, changeZoom] = useLocalStorageState("zoom", {
+    defaultValue: [11],
+  });
 
-  const [zoom, changeZoom] = useState(11);
+  // const [zoom, changeZoom] = useState(11);
 
-  // const [favoriteSpots, setFavoriteSpots] = useLocalStorageState(
-  //   "favoriteSpots",
-  //   {
-  //     defaultValue: [],
-  //   }
-  // );
+  const [favoriteSpots, setFavoriteSpots] = useLocalStorageState(
+    "favoriteSpots",
+    {
+      defaultValue: [[]],
+    }
+  );
 
-  const [favoriteSpots, setFavoriteSpots] = useState([]);
+  // const [favoriteSpots, setFavoriteSpots] = useState([]);
 
   const [surfspots, setSurfspots] = useState([]);
 
