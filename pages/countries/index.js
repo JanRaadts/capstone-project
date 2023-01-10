@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Header from "../../components/Header";
 import ListSurfspots from "../../components/ListSurfspots";
 import ListSurfspotsItems from "../../components/ListSurfspotsItems";
 import Head from "next/head";

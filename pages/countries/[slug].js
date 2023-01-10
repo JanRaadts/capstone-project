@@ -20,11 +20,11 @@ export default function SpotDetails({ surfspots }) {
     router.push(`/`);
   }
 
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+  // function capitalizeFirstLetter(string) {
+  //   return string.charAt(0).toUpperCase() + string.slice(1);
+  // }
 
-  const title = capitalizeFirstLetter(slug);
+  // const title = capitalizeFirstLetter(slug);
 
   return (
     <>
@@ -37,7 +37,7 @@ export default function SpotDetails({ surfspots }) {
           <StyledLink href={"/countries"}>
             <Image src={backButton} alt="backButton" width={35} height={35} />
           </StyledLink>
-          <StyledTitle>{title}</StyledTitle>
+          <StyledTitle>{slug}</StyledTitle>
         </StyledSection>
         {spotsincountry.map((surfspot) => {
           return (
