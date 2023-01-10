@@ -20,13 +20,11 @@ export default function SpotDetails({ surfspots }) {
     router.push(`/`);
   }
 
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+  // function capitalizeFirstLetter(string) {
+  //   return string.charAt(0).toUpperCase() + string.slice(1);
+  // }
 
-  const title = capitalizeFirstLetter(slug);
-
-  console.log(title);
+  const title = slug.charAt(0).toUpperCase() + slug.slice(1);
 
   return (
     <>
