@@ -49,7 +49,6 @@ export default function Countries({ surfspots }) {
         <SearchSpot onChange={handleChange} />
         {searchTerm ? (
           <>
-            {" "}
             {searchedSpots.map((spot) => {
               return (
                 <ListSurfspotsItems
