@@ -20,6 +20,8 @@ export default function SpotDetails({ surfspots }) {
     router.push(`/`);
   }
 
+  const title = slug.toUpperCase();
+
   return (
     <>
       <Head>
@@ -31,7 +33,7 @@ export default function SpotDetails({ surfspots }) {
           <StyledLink href={"/countries"}>
             <Image src={backButton} alt="backButton" width={25} height={25} />
           </StyledLink>
-          <StyledTitle>{slug.toUpperCase()}</StyledTitle>
+          <StyledTitle>{title}</StyledTitle>
         </StyledSection>
         {spotsincountry.map((surfspot) => {
           return (

@@ -39,8 +39,6 @@ export default function Countries({ surfspots }) {
     }
   }
 
-  console.log(searchTerm);
-
   return (
     <>
       <Head>
