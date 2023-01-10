@@ -24,7 +24,7 @@ export default function SpotDetails({ surfspots }) {
   //   return string.charAt(0).toUpperCase() + string.slice(1);
   // }
 
-  const title = slug.charAt(0).toUpperCase() + slug.slice(1);
+  // const title = slug.charAt(0).toUpperCase() + slug.slice(1);
 
   return (
     <>
@@ -37,7 +37,9 @@ export default function SpotDetails({ surfspots }) {
           <StyledLink href={"/countries"}>
             <Image src={backButton} alt="backButton" width={35} height={35} />
           </StyledLink>
-          <StyledTitle>{title}</StyledTitle>
+          <StyledTitle>
+            {slug.charAt(0).toUpperCase() + slug.slice(1)}
+          </StyledTitle>
         </StyledSection>
         {spotsincountry.map((surfspot) => {
           return (
