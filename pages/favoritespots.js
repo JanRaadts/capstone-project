@@ -1,18 +1,11 @@
 import { useRouter } from "next/router.js";
-import ListSurfspots from "../../components/ListSurfspots";
-import ListSurfspotsItems from "../../components/ListSurfspotsItems";
-import Header from "../../components/Header";
+import ListSurfspots from "../components/ListSurfspots";
+import ListSurfspotsItems from "../components/ListSurfspotsItems";
+import Header from "../components/Header";
 import Head from "next/head";
 
-export default function SpotDetails({ surfspots }) {
+export default function favoritespots({ listFavSpots }) {
   const router = useRouter();
-  const { slug } = router.query;
-
-  const spotsincountry = surfspots.filter(
-    (surfspot) => surfspot.country === slug
-  );
-
-  console.log(spotsincountry);
 
   function handleMapShown() {
     router.push(`/`);
@@ -25,7 +18,7 @@ export default function SpotDetails({ surfspots }) {
       </Head>
       <Header onMapShown={handleMapShown} />
       <ListSurfspots>
-        {spotsincountry.map((surfspot) => {
+        {listFavSpots.map((surfspot) => {
           return (
             <ListSurfspotsItems
               link={`/${surfspot.slug}`}

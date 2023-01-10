@@ -1,25 +1,25 @@
 import { useState, useRef } from "react";
 import { useRouter } from "next/router";
-import {
-  MapContainer,
-  TileLayer,
-  ZoomControl,
-  Marker,
-  Popup,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import MarkerIcon from "./MarkerIcon";
 import Link from "next/link";
-import useFetch from "../lib/fetch";
 import useGeoLocation from "./Hooks/useGeoLocation";
 import Header from "./Header";
 import Image from "next/image";
 import addNewSpotBtn from "../public/images/addSpotButton.svg";
 
-export default function Map({ center, changeCenter }) {
+export default function Map({
+  center,
+  changeCenter,
+  zoom,
+  changeZoom,
+  surfspots,
+}) {
+  const GEO_API = process.env.NEXT_PUBLIC_GEO_KEY;
+  const MAPBOX_KEY = process.env.NEXT_PUBLIC_MAPBOX_KEY;
   const mapRef = useRef(0);
-  const surfspots = useFetch("/api");
   const myLocation = useGeoLocation();
 
   const [usedLocateMe, setUsedLocateMe] = useState(false);
@@ -31,7 +31,9 @@ export default function Map({ center, changeCenter }) {
     const { current = {} } = mapRef;
     const map = current;
     const coordinates = map.getCenter();
+    const zoom = map.getZoom();
     changeCenter([coordinates.lat, coordinates.lng]);
+    changeZoom(zoom);
   }
 
   function handleLocateMe() {
@@ -46,7 +48,9 @@ export default function Map({ center, changeCenter }) {
     } else {
       const { current = {} } = mapRef;
       const map = current;
+      const zoom = map.getZoom();
       map.setView(myLocation);
+      changeZoom(zoom);
       setUsedLocateMe(true);
       setUsedSearchAround(false);
     }
@@ -60,7 +64,7 @@ export default function Map({ center, changeCenter }) {
 
   async function getGeo(data) {
     const response = await fetch(
-      `https://api.geoapify.com/v1/geocode/search?text=${data}&format=json&apiKey=e9e1604216e7465488692640e2190af5`
+      `https://api.geoapify.com/v1/geocode/search?text=${data}&format=json&apiKey=${GEO_API}`
     );
     const geodata = await response.json();
     const lat = `${geodata.results[0].lat}`;
@@ -68,13 +72,17 @@ export default function Map({ center, changeCenter }) {
     const { current = {} } = mapRef;
     const map = current;
     map.setView([lat, long]);
+    const zoom = map.getZoom();
+    changeZoom(zoom);
   }
 
   function handleNewSpotBtnClick() {
     const { current = {} } = mapRef;
     const map = current;
     const coordinates = map.getCenter();
+    const zoom = map.getZoom();
     changeCenter([coordinates.lat, coordinates.lng]);
+    changeZoom(zoom);
   }
 
   return (
@@ -93,16 +101,14 @@ export default function Map({ center, changeCenter }) {
       <StyledMapContainer
         ref={mapRef}
         center={center}
-        zoom={11}
+        zoom={zoom}
         scrollWheelZoom={true}
         zoomControl={false}
       >
         <TileLayer
-          url={`https://api.mapbox.com/styles/v1/jarakle/clbpbe5ii000z14msirbrwos5/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamFyYWtsZSIsImEiOiJjbGJtbzlsYXkwNnY3M29yeDZhOGFsZW15In0.RFqqOxiya31Sjc70F1fmFg`}
+          url={`https://api.mapbox.com/styles/v1/jarakle/clbpbe5ii000z14msirbrwos5/tiles/256/{z}/{x}/{y}@2x?access_token=${MAPBOX_KEY}`}
           attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
         />
-
-        <ZoomControl position="bottomright" />
         {surfspots.map((surfspot) => {
           return (
             <Marker

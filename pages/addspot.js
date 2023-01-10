@@ -7,16 +7,18 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-export default function Addspot({ changeCenter }) {
+export default function Addspot({ changeCenter, loadSurfspots }) {
   const router = useRouter();
   const [formSteps, setFormSteps] = useState(true);
   const [firstStepData, setFirstStepData] = useState();
 
   function handleNewSpotFirstStep(event) {
     event.preventDefault();
+    const createSlug = event.target.elements.name.value.toLowerCase();
+    const slugWithoutSpace = createSlug.replaceAll(" ", "");
     setFirstStepData({
       ID: nanoid(),
-      slug: event.target.elements.name.value.toLowerCase(),
+      slug: slugWithoutSpace.toLowerCase(),
       name: event.target.elements.name.value,
       image:
         "https://res.cloudinary.com/dac3s5ere/image/upload/v1671110554/mysurfspot/DSCF2772_uchd0r.jpg",
@@ -58,7 +60,10 @@ export default function Addspot({ changeCenter }) {
     };
     handleNewSpotToDB(newSpot);
     changeCenter([geodata.results[0].lat, geodata.results[0].lon]);
-    router.push(`/`);
+    setTimeout(function () {
+      loadSurfspots();
+      router.push(`/`);
+    }, 50);
   }
 
   async function handleNewSpotToDB(data) {
