@@ -2,8 +2,9 @@ import GlobalStyles from "../components/GlobalStyles";
 import { useState } from "react";
 import { useEffect } from "react";
 import useLocalStorageState from "use-local-storage-state";
+import { SessionProvider } from "next-auth/react";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const [center, setCenter] = useState([54.434051, 10.318242]);
   const [zoom, changeZoom] = useState(11);
   const [favoriteSpots, setFavoriteSpots] = useLocalStorageState(
@@ -30,7 +31,7 @@ function MyApp({ Component, pageProps }) {
     return surfspots.find((surfspot) => surfspot._id == spot);
   });
   return (
-    <>
+    <SessionProvider session={session}>
       <GlobalStyles />
       <Component
         {...pageProps}
@@ -44,7 +45,7 @@ function MyApp({ Component, pageProps }) {
         surfspots={surfspots}
         loadSurfspots={getSurfspots}
       />
-    </>
+    </SessionProvider>
   );
 }
 

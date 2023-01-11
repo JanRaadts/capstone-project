@@ -25,6 +25,10 @@ export default function Countries({ surfspots }) {
     router.push(`/`);
   }
 
+  function handleUserShown() {
+    router.push(`/user`);
+  }
+
   function handleChange(event) {
     let searchValue = event.target.value;
     setSearchedSpots(
@@ -43,7 +47,11 @@ export default function Countries({ surfspots }) {
       <Head>
         <title>SpotiFinder</title>
       </Head>
-      <MenueHeader onMapShown={handleMapShown} />
+      <MenueHeader
+        onMapShown={handleMapShown}
+        onUserShown={handleUserShown}
+        setMenuIcon={true}
+      />
       <ListSurfspots>
         <SearchSpot onChange={handleChange} />
         {showSearch ? (
