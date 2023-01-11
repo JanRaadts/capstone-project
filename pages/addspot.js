@@ -6,8 +6,12 @@ import arrow from "../public/images/arrow.svg";
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
 export default function Addspot({ changeCenter, loadSurfspots }) {
+  const { data: session } = useSession();
+  console.log(session);
+
   const router = useRouter();
   const [formSteps, setFormSteps] = useState(true);
   const [firstStepData, setFirstStepData] = useState();
@@ -84,108 +88,128 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
           <Image src={backButton} alt="backButton" width={35} height={35} />
         </StyledLink>
       </StyledSection>
-      <StyledSection>
-        {formSteps ? (
-          <StyledForm onSubmit={handleNewSpotFirstStep}>
-            <StyledText>
-              Erzähl uns die wichtigsten Dinge über den Spot...
-            </StyledText>
-            <StyledInput
-              type="text"
-              aria-label="Eingabefeld Spotname"
-              placeholder="Spot Name"
-              name="name"
-              required
-            ></StyledInput>
-            <StyledInput
-              type="text"
-              aria-label="Eingabefeld Spot Beschreibung"
-              placeholder="Beschreibung"
-              name="description"
-              required
-            ></StyledInput>
-            <StyledInput
-              type="text"
-              aria-label="Eingabefeld gute windrichtungen am Spot"
-              placeholder="Gute Windrichtungen"
-              name="winddirection"
-              required
-            ></StyledInput>
-            <StyledInput
-              type="text"
-              aria-label="Eingabefeld besonderheiten am surfspot"
-              placeholder="Besonderheiten"
-              name="particularities"
-              required
-            ></StyledInput>
-            <StyledInput
-              type="text"
-              aria-label="Eingabefeld surfcenter in der nähe"
-              placeholder="Surfcenter"
-              name="surfcenter"
-              required
-            ></StyledInput>
-            <StyledInput
-              type="text"
-              aria-label="Eingabefeld parken in der nähe"
-              placeholder="Parken"
-              name="parking"
-              required
-            ></StyledInput>
-            <StyledInput
-              type="text"
-              aria-label="Eingabefeld übernachten in der nähe"
-              placeholder="Camping"
-              name="camping"
-              required
-            ></StyledInput>
-            <StyledSection>
-              <StyledNextBtn type="submit">
-                <Image
-                  src={arrow}
-                  alt="next site of the form"
-                  width={50}
-                  height={50}
-                />
-              </StyledNextBtn>
-            </StyledSection>
-          </StyledForm>
-        ) : (
-          <StyledForm onSubmit={handleNewSpotSecondStep}>
-            <StyledText>Wo befindet sich der Spot?</StyledText>
-            <StyledDropDown name="country" id="chooseCountry">
-              <option value="deutschland">Deutschland</option>
-              <option value="spanien">Spanien</option>
-              <option value="niederlande">Niederlande</option>
-              <option value="dänemark">Dänemark</option>
-              <option value="frankreich">Frankreich</option>
-              <option value="italien">Italien</option>
-            </StyledDropDown>
-            <StyledInput
-              type="text"
-              aria-label="Eingabefeld Stadt"
-              placeholder="Stadt"
-              name="city"
-              required
-            ></StyledInput>
-            <StyledInput
-              type="text"
-              aria-label="Eingabefeld Postleitzahl"
-              placeholder="Postleitzahl"
-              name="zip"
-              required
-            ></StyledInput>
-            <StyledInput
-              type="text"
-              aria-label="Eingabefeld Straße und Hausnummer"
-              placeholder="Straße und Hausnummer"
-              name="street"
-              required
-            ></StyledInput>
-            <StyledSubmitButton type="submit">Hinzufügen</StyledSubmitButton>
-          </StyledForm>
-        )}
-      </StyledSection>
+
+      {session ? (
+        <>
+          <StyledSection>
+            {formSteps ? (
+              <StyledForm onSubmit={handleNewSpotFirstStep}>
+                <StyledText>
+                  Erzähl uns die wichtigsten Dinge über den Spot...
+                </StyledText>
+                <StyledInput
+                  type="text"
+                  aria-label="Eingabefeld Spotname"
+                  placeholder="Spot Name"
+                  name="name"
+                  required
+                ></StyledInput>
+                <StyledInput
+                  type="text"
+                  aria-label="Eingabefeld Spot Beschreibung"
+                  placeholder="Beschreibung"
+                  name="description"
+                  required
+                ></StyledInput>
+                <StyledInput
+                  type="text"
+                  aria-label="Eingabefeld gute windrichtungen am Spot"
+                  placeholder="Gute Windrichtungen"
+                  name="winddirection"
+                  required
+                ></StyledInput>
+                <StyledInput
+                  type="text"
+                  aria-label="Eingabefeld besonderheiten am surfspot"
+                  placeholder="Besonderheiten"
+                  name="particularities"
+                  required
+                ></StyledInput>
+                <StyledInput
+                  type="text"
+                  aria-label="Eingabefeld surfcenter in der nähe"
+                  placeholder="Surfcenter"
+                  name="surfcenter"
+                  required
+                ></StyledInput>
+                <StyledInput
+                  type="text"
+                  aria-label="Eingabefeld parken in der nähe"
+                  placeholder="Parken"
+                  name="parking"
+                  required
+                ></StyledInput>
+                <StyledInput
+                  type="text"
+                  aria-label="Eingabefeld übernachten in der nähe"
+                  placeholder="Camping"
+                  name="camping"
+                  required
+                ></StyledInput>
+                <StyledSection>
+                  <StyledNextBtn type="submit">
+                    <Image
+                      src={arrow}
+                      alt="next site of the form"
+                      width={50}
+                      height={50}
+                    />
+                  </StyledNextBtn>
+                </StyledSection>
+              </StyledForm>
+            ) : (
+              <StyledForm onSubmit={handleNewSpotSecondStep}>
+                <StyledText>Wo befindet sich der Spot?</StyledText>
+                <StyledDropDown name="country" id="chooseCountry">
+                  <option value="deutschland">Deutschland</option>
+                  <option value="spanien">Spanien</option>
+                  <option value="niederlande">Niederlande</option>
+                  <option value="dänemark">Dänemark</option>
+                  <option value="frankreich">Frankreich</option>
+                  <option value="italien">Italien</option>
+                </StyledDropDown>
+                <StyledInput
+                  type="text"
+                  aria-label="Eingabefeld Stadt"
+                  placeholder="Stadt"
+                  name="city"
+                  required
+                ></StyledInput>
+                <StyledInput
+                  type="text"
+                  aria-label="Eingabefeld Postleitzahl"
+                  placeholder="Postleitzahl"
+                  name="zip"
+                  required
+                ></StyledInput>
+                <StyledInput
+                  type="text"
+                  aria-label="Eingabefeld Straße und Hausnummer"
+                  placeholder="Straße und Hausnummer"
+                  name="street"
+                  required
+                ></StyledInput>
+                <StyledSubmitButton type="submit">
+                  Hinzufügen
+                </StyledSubmitButton>
+              </StyledForm>
+            )}
+          </StyledSection>
+        </>
+      ) : (
+        <>
+          <StyledSection>
+            <StyledLoginText>
+              Bitte logge dich ein um einen Spot hinzuzufügen.
+            </StyledLoginText>
+          </StyledSection>
+          <StyledSection>
+            <StyledSubmitButton onClick={(window.location.href = "/user")}>
+              Zur Login Seite
+            </StyledSubmitButton>
+          </StyledSection>
+        </>
+      )}
     </>
   );
 }
@@ -264,4 +288,11 @@ const StyledDropDown = styled.select`
   &:focus {
     outline: none;
   }
+`;
+
+const StyledLoginText = styled.p`
+  font-size: 1.5rem;
+  color: #4371c5;
+  width: 90vw;
+  text-align: center;
 `;
