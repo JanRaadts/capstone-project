@@ -26,7 +26,7 @@ export default function user() {
             <StyledText>{session.user.name}</StyledText>
             <StyledImage
               src={session.user.image}
-              alt="test"
+              alt="Profilbild"
               width={200}
               height={200}
             />
