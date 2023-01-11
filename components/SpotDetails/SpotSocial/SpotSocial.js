@@ -6,7 +6,13 @@ import { nanoid } from "nanoid";
 export default function SpotSocial({ spotData, loadAgain }) {
   function handleNewComment(comment) {
     let dbComments = spotData.comments.map((comment) => {
-      return { text: comment.text, _id: comment._id };
+      return {
+        text: comment.text,
+        _id: comment._id,
+        name: comment.name,
+        date: comment.date,
+        avatar: comment.avatar,
+      };
     });
     dbComments.push(comment);
 
@@ -38,7 +44,15 @@ export default function SpotSocial({ spotData, loadAgain }) {
     <>
       <StyledCommentsList>
         {reverseComments.map((comment) => {
-          return <SpotSocialComment text={comment.text} key={nanoid()} />;
+          return (
+            <SpotSocialComment
+              text={comment.text}
+              name={comment.name}
+              date={comment.date}
+              profilImage={comment.avatar}
+              key={nanoid()}
+            />
+          );
         })}
       </StyledCommentsList>
 

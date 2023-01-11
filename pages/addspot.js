@@ -10,7 +10,6 @@ import { useSession } from "next-auth/react";
 
 export default function Addspot({ changeCenter, loadSurfspots }) {
   const { data: session } = useSession();
-  console.log(session);
 
   const router = useRouter();
   const [formSteps, setFormSteps] = useState(true);

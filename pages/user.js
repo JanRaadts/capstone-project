@@ -10,8 +10,6 @@ export default function user() {
 
   const { data: session } = useSession();
 
-  console.log(session);
-
   function handleMapShown() {
     router.push(`/countries`);
   }
@@ -27,7 +25,7 @@ export default function user() {
             <StyledText>Wilkommen zurück</StyledText>
             <StyledText>{session.user.name}</StyledText>
             <StyledImage
-              src="https://avatars.githubusercontent.com/u/115305668?v=4"
+              src={session.user.image}
               alt="test"
               width={200}
               height={200}
