@@ -204,9 +204,7 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
             </StyledLoginText>
           </StyledSection>
           <StyledSection>
-            <StyledSubmitButton onClick={(window.location.href = "/user")}>
-              Zur Login Seite
-            </StyledSubmitButton>
+            <StyledSubmitButton>Zur Login Seite</StyledSubmitButton>
           </StyledSection>
         </>
       )}
