@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import Image from "next/image";
-import lupe from "../public/images/lupe.svg";
 
 export default function SearchSpot({ onChange }) {
   return (
@@ -13,14 +11,6 @@ export default function SearchSpot({ onChange }) {
           placeholder="Spot suchen"
           onChange={onChange}
         ></StyledInputText>
-        <StyledButton type="submit">
-          <Image
-            src={lupe}
-            alt="button zum abfragen der eingegebenen suche"
-            width={30}
-            height={30}
-          />
-        </StyledButton>
       </StyledForm>
     </StyledLi>
   );
@@ -30,9 +20,10 @@ const StyledLi = styled.li`
   margin: 10px 0px;
   padding: 10px;
   font-weight: normal;
-  border-bottom: 2px solid #699bf7;
+  border-bottom: 2px solid #3965b7;
   display: flex;
   align-items: center;
+  margin-bottom: 25px;
 `;
 
 const StyledForm = styled.form`
@@ -51,12 +42,4 @@ const StyledInputText = styled.input`
     outline: none;
   }
   background-color: #f8f6f4;
-`;
-
-const StyledButton = styled.button`
-  background: rgba(255, 255, 255, 0);
-  border: none;
-  position: absolute;
-  right: 55px;
-  transform: rotate(-45deg);
 `;

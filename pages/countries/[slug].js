@@ -29,7 +29,12 @@ export default function SpotDetails({ surfspots }) {
       <ListSurfspots>
         <StyledSection>
           <StyledLink href={"/countries"}>
-            <Image src={backButton} alt="backButton" width={25} height={25} />
+            <Image
+              src={backButton}
+              alt="zurück Button"
+              width={25}
+              height={25}
+            />
           </StyledLink>
           <StyledTitle>{slug}</StyledTitle>
         </StyledSection>

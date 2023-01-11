@@ -8,7 +8,7 @@ import SearchSpot from "../../components/SearchSpot";
 import MenueHeader from "../../components/MenueHeader";
 
 export default function Countries({ surfspots }) {
-  const [searchTerm, setSearchTerm] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
   const [searchedSpots, setSearchedSpots] = useState([]);
 
   const router = useRouter();
@@ -26,16 +26,15 @@ export default function Countries({ surfspots }) {
   }
 
   function handleChange(event) {
-    setSearchTerm(event.target.value);
     let searchValue = event.target.value;
     setSearchedSpots(
       surfspots.filter((spot) => spot.slug.includes(searchValue.toLowerCase()))
     );
 
     if (event.target.value === "") {
-      setSearchTerm(false);
+      setShowSearch(false);
     } else {
-      setSearchTerm(true);
+      setShowSearch(true);
     }
   }
 
@@ -44,10 +43,10 @@ export default function Countries({ surfspots }) {
       <Head>
         <title>SpotiFinder</title>
       </Head>
-      <MenueHeader onMapShown={handleMapShown} usedMapShown={false} />
+      <MenueHeader onMapShown={handleMapShown} />
       <ListSurfspots>
         <SearchSpot onChange={handleChange} />
-        {searchTerm ? (
+        {showSearch ? (
           <>
             {searchedSpots.map((spot) => {
               return (

@@ -2,7 +2,7 @@ import Image from "next/image";
 import styled from "styled-components";
 import usedMenue from "../public/images/UsedMenue.svg";
 
-export default function MenueHeader({ onMapShown, usedMapShown }) {
+export default function MenueHeader({ onMapShown }) {
   return (
     <>
       <StyledHeader>
