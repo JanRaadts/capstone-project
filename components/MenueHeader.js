@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styled from "styled-components";
 import usedMenue from "../public/images/UsedMenue.svg";
-import menue from "../public/images/menue.svg";
+import menue from "../public/images/Menue.svg";
 import userIcon from "../public/images/userIcon.svg";
 import usedUserIcon from "../public/images/usedUserIcon.svg";
 
