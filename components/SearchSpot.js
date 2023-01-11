@@ -3,15 +3,14 @@ import styled from "styled-components";
 export default function SearchSpot({ onChange }) {
   return (
     <StyledLi>
-      <StyledForm>
-        <StyledInputText
-          autoFocus
-          type="text"
-          name="place"
-          placeholder="Spot suchen"
-          onChange={onChange}
-        ></StyledInputText>
-      </StyledForm>
+      <StyledInputText
+        autoFocus
+        type="text"
+        name="place"
+        placeholder="Spot suchen"
+        onChange={onChange}
+        onSubmit={onChange}
+      ></StyledInputText>
     </StyledLi>
   );
 }
@@ -24,13 +23,6 @@ const StyledLi = styled.li`
   display: flex;
   align-items: center;
   margin-bottom: 25px;
-`;
-
-const StyledForm = styled.form`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const StyledInputText = styled.input`
