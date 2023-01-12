@@ -8,8 +8,12 @@ import Link from "next/link";
 import Image from "next/image";
 import backButton from "../public/images/back_button.svg";
 
-export default function favoritespots({ listFavSpots }) {
+export default function favoritespots({ favoriteSpots, surfspots }) {
   const router = useRouter();
+
+  const listFavSpots = favoriteSpots.map((spot) => {
+    return surfspots.find((surfspot) => surfspot._id == spot);
+  });
 
   function handleMapShown() {
     router.push(`/`);

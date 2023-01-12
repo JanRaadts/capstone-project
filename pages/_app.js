@@ -32,10 +32,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     }, 2000);
   }, []);
 
-  const listFavSpots = favoriteSpots.map((spot) => {
-    return surfspots.find((surfspot) => surfspot._id == spot);
-  });
-
   return (
     <SessionProvider session={session}>
       <GlobalStyles />
@@ -53,7 +49,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
           changeZoom={changeZoom}
           favoriteSpots={favoriteSpots}
           setFavoriteSpots={setFavoriteSpots}
-          listFavSpots={listFavSpots}
           surfspots={surfspots}
           setSurfspots={setSurfspots}
           loadSurfspots={getSurfspots}
