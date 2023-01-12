@@ -203,7 +203,7 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
             </StyledLoginText>
           </StyledSection>
           <StyledSection>
-            <StyledSubmitButton>Zur Login Seite</StyledSubmitButton>
+            <StyledToUser href={"/user"}>Zur Login Seite</StyledToUser>
           </StyledSection>
         </>
       )}
@@ -292,4 +292,16 @@ const StyledLoginText = styled.p`
   color: #4371c5;
   width: 90vw;
   text-align: center;
+`;
+
+const StyledToUser = styled(Link)`
+  text-decoration: none;
+  background: #699bf7;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.25);
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  margin: 1.5rem 0px;
 `;
