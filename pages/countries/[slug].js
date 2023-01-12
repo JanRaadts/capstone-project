@@ -7,6 +7,7 @@ import Head from "next/head";
 import Image from "next/image";
 import backButton from "../../public/images/back_button.svg";
 import Link from "next/link";
+import MenueHeader from "../../components/MenueHeader";
 
 export default function SpotDetails({ surfspots }) {
   const router = useRouter();
@@ -20,12 +21,20 @@ export default function SpotDetails({ surfspots }) {
     router.push(`/`);
   }
 
+  function handleUserShown() {
+    router.push(`/user`);
+  }
+
   return (
     <>
       <Head>
         <title>SpotiFinder</title>
       </Head>
-      <Header onMapShown={handleMapShown} />
+      <MenueHeader
+        onMapShown={handleMapShown}
+        onUserShown={handleUserShown}
+        setMenuIcon={true}
+      />
       <ListSurfspots>
         <StyledSection>
           <StyledLink href={"/countries"}>

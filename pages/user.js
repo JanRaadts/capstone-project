@@ -11,7 +11,7 @@ export default function user() {
   const { data: session } = useSession();
 
   function handleMapShown() {
-    router.push(`/countries`);
+    router.back();
   }
   return (
     <>
