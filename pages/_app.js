@@ -33,7 +33,26 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
       <GlobalStyles />
-      <Component
+
+      {!surfspots ? (
+        <h3 style={{ color: "black" }}>loading...</h3>
+      ) : (
+        <Component
+          {...pageProps}
+          center={center}
+          changeCenter={setCenter}
+          zoom={zoom}
+          changeZoom={changeZoom}
+          favoriteSpots={favoriteSpots}
+          setFavoriteSpots={setFavoriteSpots}
+          listFavSpots={listFavSpots}
+          surfspots={surfspots}
+          setSurfspots={setSurfspots}
+          loadSurfspots={getSurfspots}
+        />
+      )}
+
+      {/* <Component
         {...pageProps}
         center={center}
         changeCenter={setCenter}
@@ -43,8 +62,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         setFavoriteSpots={setFavoriteSpots}
         listFavSpots={listFavSpots}
         surfspots={surfspots}
+        setSurfspots={setSurfspots}
         loadSurfspots={getSurfspots}
-      />
+      /> */}
     </SessionProvider>
   );
 }
