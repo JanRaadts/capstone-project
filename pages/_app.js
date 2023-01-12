@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     }
   );
 
-  const [surfspots, setSurfspots] = useState(false);
+  const [surfspots, setSurfspots] = useState();
 
   async function getSurfspots() {
     const response = await fetch("/api");
@@ -35,6 +35,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const listFavSpots = favoriteSpots.map((spot) => {
     return surfspots.find((surfspot) => surfspot._id == spot);
   });
+
   return (
     <SessionProvider session={session}>
       <GlobalStyles />
