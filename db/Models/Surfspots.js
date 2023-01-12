@@ -4,6 +4,9 @@ const { Schema } = mongoose;
 
 const commentsChildren = new Schema({
   text: { type: String, required: true },
+  name: { type: String, required: true },
+  date: { type: String, required: true },
+  avatar: { type: String, required: true },
 });
 
 const surfspotsSchema = new Schema({

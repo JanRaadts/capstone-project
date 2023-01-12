@@ -1,13 +1,26 @@
+import { useSession } from "next-auth/react";
 import styled from "styled-components";
 import Image from "next/image";
 import addMessage from "../../../public/images/addMessage.svg";
 
 export default function SpotSocialForm({ newComment, spotData }) {
+  const { data: session } = useSession();
+  const today = new Date();
+  const now = today.toLocaleString();
+
+  const user = session ? session.user.name : "Gast";
+  const avatar = session
+    ? session.user.image
+    : "https://res.cloudinary.com/dac3s5ere/image/upload/v1673470866/mysurfspot/guestUser_ezwpvs.jpg";
+
   function handleNewEntry(event) {
     event.preventDefault();
     let inputData = {
       text: event.target.elements.varText.value,
       _id: spotData._id,
+      name: user,
+      date: now,
+      avatar: avatar,
     };
     event.target.reset();
     event.target.elements.varText.focus();
