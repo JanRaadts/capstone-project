@@ -24,7 +24,7 @@ export default function SpotSocial({ spotData, loadAgain }) {
     uploadChange(updatedSpot);
     setTimeout(function () {
       loadAgain();
-    }, 100);
+    }, 150);
   }
 
   async function uploadChange(data) {

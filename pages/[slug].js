@@ -6,9 +6,12 @@ import SpotSocial from "../components/SpotDetails/SpotSocial/SpotSocial";
 import SpotInfo from "../components/SpotDetails/SpotInfo";
 import SpotDetailsHead from "../components/SpotDetails/SpotDetailsHead";
 
-export default function SpotDetails({ favoriteSpots, setFavoriteSpots }) {
-  const [surfspots, setSurfspots] = useState([]);
-
+export default function SpotDetails({
+  favoriteSpots,
+  setFavoriteSpots,
+  surfspots,
+  setSurfspots,
+}) {
   async function getSurfspots() {
     const response = await fetch("/api");
     const surfspotList = await response.json();
