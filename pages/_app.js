@@ -1,8 +1,8 @@
-import GlobalStyles from "../components/GlobalStyles";
 import { useState } from "react";
 import { useEffect } from "react";
-import useLocalStorageState from "use-local-storage-state";
 import { SessionProvider } from "next-auth/react";
+import GlobalStyles from "../components/GlobalStyles";
+import useLocalStorageState from "use-local-storage-state";
 import styled from "styled-components";
 import Lottie from "lottie-react";
 import windLottie from "../public/windLottie.json";
@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   useEffect(() => {
     setTimeout(function () {
       getSurfspots();
-    }, 1500);
+    }, 2000);
   }, []);
 
   const listFavSpots = favoriteSpots.map((spot) => {
