@@ -60,7 +60,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 
 const StyledSplashScreen = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
