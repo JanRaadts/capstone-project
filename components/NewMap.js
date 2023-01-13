@@ -21,8 +21,6 @@ export default function NewMap({
   const router = useRouter();
   const GEO_API = process.env.NEXT_PUBLIC_GEO_KEY;
   const mapRef = useRef(0);
-  const heightReal = `${window.innerHeight - 57}px`;
-  console.log(heightReal);
 
   const [usedLocateMe, setUsedLocateMe] = useState(false);
 
@@ -96,9 +94,11 @@ export default function NewMap({
         usedSearchAround={usedSearchAround}
         onSearchAround={handleSearchAround}
       />
-      <StyledAddSpotBtn href={"/addspot"}>
-        <Image src={addNewSpotBtn} alt="addSpot" width={50} height={50} />
-      </StyledAddSpotBtn>
+      {!showPopUp ? (
+        <StyledAddSpotBtn href={"/addspot"}>
+          <Image src={addNewSpotBtn} alt="addSpot" width={50} height={50} />
+        </StyledAddSpotBtn>
+      ) : null}
 
       <StyledMapContainer>
         <Map
@@ -178,7 +178,6 @@ const StyledMapContainer = styled.div`
   position: absolute;
   top: 0;
   height: calc(100svh - 57px);
-
   width: 100vw;
   margin: 0 auto;
   z-index: 0;
@@ -200,8 +199,8 @@ const StyledPopUpContainer = styled.div`
   position: absolute;
   bottom: 0;
   width: 100vw;
-  height: calc(100vh - 57px);
-  height: calc(heightReal - 57px);
+  height: calc(100svh - 57px);
+
   display: flex;
   justify-content: center;
   align-items: center;
