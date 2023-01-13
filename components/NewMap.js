@@ -21,6 +21,7 @@ export default function NewMap({
   const router = useRouter();
   const GEO_API = process.env.NEXT_PUBLIC_GEO_KEY;
   const mapRef = useRef(0);
+  const heightReal = window.innerHeight;
 
   const [usedLocateMe, setUsedLocateMe] = useState(false);
 
@@ -173,7 +174,9 @@ export default function NewMap({
 }
 
 const StyledMapContainer = styled.div`
-  height: calc(100vh - 57px) !important;
+  height: calc(100vh - 57px);
+  height: calc(heightReal - 57px);
+
   width: 100vw;
   margin: 0 auto;
   z-index: 0;
