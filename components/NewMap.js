@@ -176,7 +176,6 @@ export default function NewMap({
 const StyledMapContainer = styled.div`
   height: calc(100vh - 57px);
   height: calc(heightReal - 57px);
-
   width: 100vw;
   margin: 0 auto;
   z-index: 0;
@@ -196,7 +195,8 @@ const StyledAddSpotBtn = styled(Link)`
 
 const StyledPopUpContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 57px);
+  height: calc(heightReal - 57px);
   display: flex;
   justify-content: center;
   align-items: center;
