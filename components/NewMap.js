@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/router";
-import { Marker, Popup } from "react-map-gl";
+import { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Map from "react-map-gl";
 import styled from "styled-components";
@@ -8,8 +8,9 @@ import Link from "next/link";
 import Header from "./Header";
 import Image from "next/image";
 import addNewSpotBtn from "../public/images/addSpotButton.svg";
-import closeButton from "../public/images/closeButton.svg";
 import marker from "../public/images/mapBoxMarkerRound.svg";
+import markerRound from "../public/images/markerRound.svg";
+import PopUp from "./PopUp";
 
 export default function NewMap({
   center,
@@ -28,6 +29,7 @@ export default function NewMap({
 
   function handleMapShown() {
     router.push(`/countries`);
+    savePosition();
   }
 
   function handleLocateMe() {
@@ -70,16 +72,12 @@ export default function NewMap({
       essential: false,
     });
   }
-
-  useEffect(() => {
-    if (!mapRef.current) return;
-    mapRef.current.on("move", () => {
-      const lat = mapRef.current.getCenter().lat.toFixed(4);
-      const lng = mapRef.current.getCenter().lng.toFixed(4);
-      changeCenter([lat, lng]);
-      changeZoom(mapRef.current.getZoom().toFixed(2));
-    });
-  });
+  function savePosition() {
+    const lat = mapRef.current.getCenter().lat.toFixed(4);
+    const lng = mapRef.current.getCenter().lng.toFixed(4);
+    changeCenter([lat, lng]);
+    changeZoom(mapRef.current.getZoom().toFixed(2));
+  }
 
   const [selectedSpot, setSelectedSpot] = useState(null);
   const [showPopUp, setShowPopUp] = useState(false);
@@ -95,7 +93,7 @@ export default function NewMap({
         onSearchAround={handleSearchAround}
       />
       {!showPopUp ? (
-        <StyledAddSpotBtn href={"/addspot"}>
+        <StyledAddSpotBtn href={"/addspot"} onClick={savePosition}>
           <Image src={addNewSpotBtn} alt="addSpot" width={50} height={50} />
         </StyledAddSpotBtn>
       ) : null}
@@ -123,6 +121,7 @@ export default function NewMap({
                 <StyledButton
                   onClick={(event) => {
                     event.preventDefault();
+                    savePosition();
                     setSelectedSpot(surfspot);
                     setShowPopUp(!showPopUp);
                     mapRef.current.flyTo({
@@ -133,41 +132,23 @@ export default function NewMap({
                   }}
                 >
                   <Image
-                    src={marker}
+                    src={markerRound}
                     alt="Marker auf der Karte"
-                    width={43}
-                    height={43}
+                    width={33}
+                    height={33}
                   />
                 </StyledButton>
               </Marker>
             );
           })}
           {showPopUp ? (
-            <>
-              <StyledPopUpContainer>
-                <StyledPopUp>
-                  <StyledLink href={selectedSpot.slug}>
-                    <StyledPopupContent>
-                      <h1>{selectedSpot.name}</h1>
-                      <p>{`${selectedSpot.description.slice(0, 150)}...`}</p>
-                    </StyledPopupContent>
-                  </StyledLink>
-
-                  <StyledCloseButton
-                    onClick={() => {
-                      setShowPopUp(false);
-                    }}
-                  >
-                    <Image
-                      src={closeButton}
-                      alt="Button um das Pop-Up zu schließen"
-                      width={35}
-                      height={35}
-                    />
-                  </StyledCloseButton>
-                </StyledPopUp>
-              </StyledPopUpContainer>
-            </>
+            <PopUp
+              slug={selectedSpot.slug}
+              name={selectedSpot.name}
+              image={selectedSpot.image}
+              description={selectedSpot.description}
+              setShowPopUp={setShowPopUp}
+            />
           ) : null}
         </Map>
       </StyledMapContainer>
@@ -185,10 +166,6 @@ const StyledMapContainer = styled.div`
   margin-top: 57px;
 `;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-`;
-
 const StyledAddSpotBtn = styled(Link)`
   z-index: 4;
   position: absolute;
@@ -196,52 +173,7 @@ const StyledAddSpotBtn = styled(Link)`
   left: 10px;
 `;
 
-const StyledPopUpContainer = styled.div`
-  width: 100vw;
-  height: calc(100svh - 57px);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledPopUp = styled.div`
-  margin: 1rem;
-  z-index: 4;
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  width: 90vw;
-  height: 30vh;
-  border-radius: 40px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 10px;
-`;
-
-const StyledPopupContent = styled.div`
-  h1 {
-    text-align: center;
-    font-weight: 400;
-    color: black;
-  }
-  p {
-    color: #787777;
-  }
-  font-size: medium;
-`;
-
 const StyledButton = styled.button`
   background: rgba(120, 119, 119, 0);
   border: none;
-`;
-
-const StyledCloseButton = styled.button`
-  background: rgba(120, 119, 119, 0);
-  border: none;
-  position: absolute;
-  right: 10px;
-  top: 10px;
 `;
