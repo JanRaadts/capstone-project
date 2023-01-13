@@ -118,6 +118,7 @@ export default function NewMap({
                 latitude={surfspot.latitude}
                 mapboxAccessToken="pk.eyJ1Ijoiam9uYXRzdWppIiwiYSI6ImNsY3Jpamc3MjAxNXYzcG14ZWhsZjJpcTkifQ.J65lhDbm_-LV0-exyyKFlA"
                 key={surfspot._id}
+                anchor="bottom"
               >
                 <StyledButton
                   onClick={(event) => {
