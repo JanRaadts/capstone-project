@@ -21,7 +21,8 @@ export default function NewMap({
   const router = useRouter();
   const GEO_API = process.env.NEXT_PUBLIC_GEO_KEY;
   const mapRef = useRef(0);
-  const heightReal = window.innerHeight;
+  const heightReal = `${window.innerHeight - 57}px`;
+  console.log(heightReal);
 
   const [usedLocateMe, setUsedLocateMe] = useState(false);
 
@@ -174,8 +175,10 @@ export default function NewMap({
 }
 
 const StyledMapContainer = styled.div`
+  position: absolute;
+  top: 0;
   height: calc(100vh - 57px);
-  height: calc(heightReal - 57px);
+  /* height: calc(heightReal -0px); */
   width: 100vw;
   margin: 0 auto;
   z-index: 0;
@@ -194,6 +197,8 @@ const StyledAddSpotBtn = styled(Link)`
 `;
 
 const StyledPopUpContainer = styled.div`
+  position: absolute;
+  bottom: 0;
   width: 100vw;
   height: calc(100vh - 57px);
   height: calc(heightReal - 57px);
