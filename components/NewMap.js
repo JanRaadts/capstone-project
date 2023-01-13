@@ -9,7 +9,7 @@ import Header from "./Header";
 import Image from "next/image";
 import addNewSpotBtn from "../public/images/addSpotButton.svg";
 import closeButton from "../public/images/closeButton.svg";
-import marker from "../public/images/marker_blue_shadow.svg";
+import marker from "../public/images/mapBoxMarker.svg";
 
 export default function NewMap({
   center,
@@ -134,8 +134,8 @@ export default function NewMap({
                   <Image
                     src={marker}
                     alt="Marker auf der Karte"
-                    width={50}
-                    height={50}
+                    width={48}
+                    height={48}
                   />
                 </StyledButton>
               </Marker>
@@ -196,8 +196,6 @@ const StyledAddSpotBtn = styled(Link)`
 `;
 
 const StyledPopUpContainer = styled.div`
-  position: absolute;
-  bottom: 0;
   width: 100vw;
   height: calc(100svh - 57px);
 
