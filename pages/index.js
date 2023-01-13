@@ -20,13 +20,6 @@ export default function Home({
       <Head>
         <title>SpotiFinder</title>
       </Head>
-      {/* <Map
-        center={center}
-        changeCenter={changeCenter}
-        zoom={zoom}
-        changeZoom={changeZoom}
-        surfspots={surfspots}
-      ></Map> */}
       <NewMap
         center={center}
         changeCenter={changeCenter}
