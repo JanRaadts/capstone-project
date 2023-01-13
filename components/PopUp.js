@@ -24,8 +24,7 @@ export default function PopUp({
           </StyledPopUpImageSection>
           <StyledTitle>{name}</StyledTitle>
           <StyledPopupContent>
-            {/* <h1>{selectedSpot.name}</h1> */}
-            <p>{`${description.slice(0, 80)}...`}</p>
+            <p>{`${description.slice(0, 110)}...`}</p>
           </StyledPopupContent>
         </StyledLink>
 

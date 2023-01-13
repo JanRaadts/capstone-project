@@ -10,6 +10,10 @@ export default function Home({
   zoom,
   changeZoom,
   surfspots,
+  selectedSpot,
+  setSelectedSpot,
+  setShowPopUp,
+  showPopUp,
 }) {
   return (
     <>
@@ -29,6 +33,10 @@ export default function Home({
         zoom={zoom}
         changeZoom={changeZoom}
         surfspots={surfspots}
+        selectedSpot={selectedSpot}
+        setSelectedSpot={setSelectedSpot}
+        showPopUp={showPopUp}
+        setShowPopUp={setShowPopUp}
       />
     </>
   );

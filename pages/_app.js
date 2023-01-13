@@ -16,6 +16,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       defaultValue: [],
     }
   );
+  const [selectedSpot, setSelectedSpot] = useState(null);
+  const [showPopUp, setShowPopUp] = useState(false);
 
   const [surfspots, setSurfspots] = useState();
 
@@ -52,6 +54,10 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
           surfspots={surfspots}
           setSurfspots={setSurfspots}
           loadSurfspots={getSurfspots}
+          selectedSpot={selectedSpot}
+          setSelectedSpot={setSelectedSpot}
+          showPopUp={showPopUp}
+          setShowPopUp={setShowPopUp}
         />
       )}
     </SessionProvider>

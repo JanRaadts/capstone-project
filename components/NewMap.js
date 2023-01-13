@@ -18,6 +18,10 @@ export default function NewMap({
   zoom,
   changeZoom,
   surfspots,
+  selectedSpot,
+  setSelectedSpot,
+  setShowPopUp,
+  showPopUp,
 }) {
   const router = useRouter();
   const GEO_API = process.env.NEXT_PUBLIC_GEO_KEY;
@@ -79,8 +83,8 @@ export default function NewMap({
     changeZoom(mapRef.current.getZoom().toFixed(2));
   }
 
-  const [selectedSpot, setSelectedSpot] = useState(null);
-  const [showPopUp, setShowPopUp] = useState(false);
+  //   const [selectedSpot, setSelectedSpot] = useState(null);
+  //   const [showPopUp, setShowPopUp] = useState(false);
 
   return (
     <>
@@ -121,7 +125,6 @@ export default function NewMap({
                 <StyledButton
                   onClick={(event) => {
                     event.preventDefault();
-                    savePosition();
                     setSelectedSpot(surfspot);
                     setShowPopUp(!showPopUp);
                     mapRef.current.flyTo({
@@ -129,6 +132,8 @@ export default function NewMap({
                       zoom: 12,
                       essential: false,
                     });
+                    changeZoom(12);
+                    changeCenter([surfspot.latitude, surfspot.longitude]);
                   }}
                 >
                   <Image
