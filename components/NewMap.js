@@ -9,7 +9,7 @@ import Header from "./Header";
 import Image from "next/image";
 import addNewSpotBtn from "../public/images/addSpotButton.svg";
 import closeButton from "../public/images/closeButton.svg";
-import marker from "../public/images/mapBoxMarker.svg";
+import marker from "../public/images/mapBoxMarkerRound.svg";
 
 export default function NewMap({
   center,
@@ -135,8 +135,8 @@ export default function NewMap({
                   <Image
                     src={marker}
                     alt="Marker auf der Karte"
-                    width={48}
-                    height={48}
+                    width={43}
+                    height={43}
                   />
                 </StyledButton>
               </Marker>
