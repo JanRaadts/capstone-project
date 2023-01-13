@@ -177,8 +177,8 @@ export default function NewMap({
 const StyledMapContainer = styled.div`
   position: absolute;
   top: 0;
-  height: calc(100vh - 57px);
-  /* height: calc(heightReal -0px); */
+  height: calc(100svh - 57px);
+
   width: 100vw;
   margin: 0 auto;
   z-index: 0;
