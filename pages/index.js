@@ -1,6 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import NewMap from "../components/NewMap";
 const Map = dynamic(() => import("../components/Map"), { ssr: false });
 
 export default function Home({
@@ -9,19 +10,27 @@ export default function Home({
   zoom,
   changeZoom,
   surfspots,
+  selectedSpot,
+  setSelectedSpot,
+  setShowPopUp,
+  showPopUp,
 }) {
   return (
     <>
       <Head>
         <title>SpotiFinder</title>
       </Head>
-      <Map
+      <NewMap
         center={center}
         changeCenter={changeCenter}
         zoom={zoom}
         changeZoom={changeZoom}
         surfspots={surfspots}
-      ></Map>
+        selectedSpot={selectedSpot}
+        setSelectedSpot={setSelectedSpot}
+        showPopUp={showPopUp}
+        setShowPopUp={setShowPopUp}
+      />
     </>
   );
 }

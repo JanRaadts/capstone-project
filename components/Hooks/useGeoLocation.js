@@ -4,7 +4,7 @@ const useGeoLocation = () => {
   const [location, setLocation] = useState("error");
 
   const onSuccess = (location) => {
-    setLocation([location.coords.latitude, location.coords.longitude]);
+    setLocation([location.coords.longitude, location.coords.latitude]);
   };
 
   const onError = (error) => {

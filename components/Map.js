@@ -20,7 +20,7 @@ export default function Map({
   const GEO_API = process.env.NEXT_PUBLIC_GEO_KEY;
   const MAPBOX_KEY = process.env.NEXT_PUBLIC_MAPBOX_KEY;
   const mapRef = useRef(0);
-  const myLocation = useGeoLocation();
+  // const myLocation = useGeoLocation();
 
   const [usedLocateMe, setUsedLocateMe] = useState(false);
 

@@ -16,6 +16,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       defaultValue: [],
     }
   );
+  const [selectedSpot, setSelectedSpot] = useState(null);
+  const [showPopUp, setShowPopUp] = useState(false);
 
   const [surfspots, setSurfspots] = useState();
 
@@ -52,6 +54,10 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
           surfspots={surfspots}
           setSurfspots={setSurfspots}
           loadSurfspots={getSurfspots}
+          selectedSpot={selectedSpot}
+          setSelectedSpot={setSelectedSpot}
+          showPopUp={showPopUp}
+          setShowPopUp={setShowPopUp}
         />
       )}
     </SessionProvider>
@@ -60,7 +66,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 
 const StyledSplashScreen = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
