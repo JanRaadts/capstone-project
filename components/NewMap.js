@@ -83,9 +83,6 @@ export default function NewMap({
     changeZoom(mapRef.current.getZoom().toFixed(2));
   }
 
-  //   const [selectedSpot, setSelectedSpot] = useState(null);
-  //   const [showPopUp, setShowPopUp] = useState(false);
-
   return (
     <>
       <Header
