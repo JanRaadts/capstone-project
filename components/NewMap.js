@@ -37,23 +37,23 @@ export default function NewMap({
   }
 
   function handleLocateMe() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      let newViewport = {
-        height: "100vh",
-        width: "100vw",
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-        zoom: 12,
-      };
-      const loc = [newViewport.longitude, newViewport.latitude];
+    const onSuccess = (position) => {
+      const loc = [position.coords.longitude, position.coords.latitude];
+      console.log(navigator.geolocation);
       mapRef.current.flyTo({
         center: loc,
         zoom: 12,
         essential: false,
       });
-    });
-    setUsedLocateMe(true);
-    setUsedSearchAround(false);
+      setUsedLocateMe(true);
+      setUsedSearchAround(false);
+    };
+
+    const onError = () => {
+      alert("standort nicht gefunden");
+    };
+
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
   }
 
   function handleSearchAround(data) {
