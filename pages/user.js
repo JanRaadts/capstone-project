@@ -11,14 +11,23 @@ export default function user() {
   const { data: session } = useSession();
 
   function handleMapShown() {
+    router.push("/");
+  }
+
+  function handleListShown() {
     router.push(`/countries`);
   }
+
   return (
     <>
       <Head>
         <title>SpotiFinder - Dein Profil</title>
       </Head>
-      <MenueHeader onMapShown={handleMapShown} setUserIcon={true} />
+      <MenueHeader
+        onMapShown={handleMapShown}
+        setUserIcon={true}
+        onListShown={handleListShown}
+      />
       <StyledSection>
         {session ? (
           <>

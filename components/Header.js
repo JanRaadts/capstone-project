@@ -4,7 +4,7 @@ import styled from "styled-components";
 import menue from "../public/images/Menue.svg";
 import aroundMe from "../public/images/aroundMe.svg";
 import usedAroundMe from "../public/images/usedAroundMe.svg";
-import usedMenue from "../public/images/UsedMenue.svg";
+import map from "../public/images/map.svg";
 import searchAround from "../public/images/searchAround.svg";
 import usedSearchAroundIcon from "../public/images/usedSearchAround.svg";
 import backIcon from "../public/images/back_button.svg";
@@ -76,7 +76,7 @@ export default function Header({
               src={usedAroundMe}
               alt="UmMichHerum"
               width={111}
-              height={49}
+              height={52}
             ></Image>
           ) : (
             <Image
@@ -84,7 +84,7 @@ export default function Header({
               src={aroundMe}
               alt="UmMichHerum"
               width={111}
-              height={49}
+              height={52}
             ></Image>
           )}
           {usedSearchAround ? (
@@ -115,7 +115,7 @@ export default function Header({
           ) : (
             <Image
               onClick={onMapShown}
-              src={usedMenue}
+              src={map}
               alt="Button um das Menü zu öffnen"
               width={111}
               height={49}

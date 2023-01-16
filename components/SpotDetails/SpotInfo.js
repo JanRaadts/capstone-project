@@ -5,8 +5,11 @@ import onFavorite from "../../public/images/onFavorite.svg";
 import share from "../../public/images/share.svg";
 import navigateTo from "../../public/images/navigateTo.svg";
 import Link from "next/link";
+import SpotDetailsHead from "./SpotDetailsHead";
 
 export default function SpotInfo({
+  image,
+  name,
   description,
   winddirection,
   surfcenter,
@@ -50,6 +53,7 @@ export default function SpotInfo({
 
   return (
     <>
+      <SpotDetailsHead name={name} image={image} />
       <StyledButtonSection>
         <Link href={link} target="_blank">
           <Image
@@ -113,10 +117,9 @@ export default function SpotInfo({
 
 const StyledButtonSection = styled.section`
   margin: 0 20px;
-  margin-top: 10px;
+  margin-top: 35px;
   padding: 10px 0;
   border-bottom: 2px solid #d4d4d4;
-  border-top: 2px solid #d4d4d4;
   display: flex;
   justify-content: space-around;
   align-items: center;

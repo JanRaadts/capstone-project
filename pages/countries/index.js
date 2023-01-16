@@ -50,7 +50,7 @@ export default function Countries({ surfspots }) {
       <MenueHeader
         onMapShown={handleMapShown}
         onUserShown={handleUserShown}
-        setMenuIcon={true}
+        setListIcon={true}
       />
       <ListSurfspots>
         <SearchSpot onChange={handleChange} />

@@ -39,7 +39,6 @@ export default function NewMap({
   function handleLocateMe() {
     const onSuccess = (position) => {
       const loc = [position.coords.longitude, position.coords.latitude];
-      console.log(navigator.geolocation);
       mapRef.current.flyTo({
         center: loc,
         zoom: 12,
