@@ -69,6 +69,7 @@ const StyledPopUp = styled.div`
   align-items: center;
   background-color: white;
   width: 90vw;
+  max-width: 400px;
   height: 40vh;
   border-radius: 40px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -110,6 +111,7 @@ const StyledPopUpImage = styled(Image)`
   object-position: bottom;
   height: auto;
   width: 90vw;
+  max-width: 400px;
 `;
 
 const StyledPopUpImageSection = styled.section`

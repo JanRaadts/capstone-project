@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
+import { useSession, signIn, signOut } from "next-auth/react";
 import Head from "next/head";
 import styled from "styled-components";
 import MenueHeader from "../components/MenueHeader";
-import { useSession, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
 
 export default function user() {
@@ -16,6 +16,10 @@ export default function user() {
 
   function handleListShown() {
     router.push(`/countries`);
+  }
+
+  function handleAddSpot() {
+    router.push(`/addspot`);
   }
 
   return (
@@ -39,6 +43,9 @@ export default function user() {
               width={200}
               height={200}
             />
+            <StyledAddSpot onClick={handleAddSpot}>
+              Spot hinzufügen
+            </StyledAddSpot>
           </>
         ) : (
           <StyledText>
@@ -81,10 +88,27 @@ const StyledLoginButton = styled.button`
   background: #699bf7;
   border: none;
   border-radius: 23px;
-  width: 70vw;
+  padding: 20px;
   height: 40px;
   color: white;
   font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledAddSpot = styled.button`
+  margin-top: 20px;
+  background: pink;
+  border: none;
+  border-radius: 23px;
+  padding: 10px;
+  height: 40px;
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledImage = styled(Image)`

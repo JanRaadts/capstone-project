@@ -76,7 +76,7 @@ export default function Header({
               src={usedAroundMe}
               alt="UmMichHerum"
               width={111}
-              height={52}
+              height={54}
             ></Image>
           ) : (
             <Image
@@ -84,7 +84,7 @@ export default function Header({
               src={aroundMe}
               alt="UmMichHerum"
               width={111}
-              height={52}
+              height={54}
             ></Image>
           )}
           {usedSearchAround ? (
@@ -93,7 +93,7 @@ export default function Header({
               src={usedSearchAroundIcon}
               alt="Im Bereich eines Ortes suchen"
               width={111}
-              height={49}
+              height={54}
             ></Image>
           ) : (
             <Image
@@ -101,7 +101,7 @@ export default function Header({
               src={searchAround}
               alt="Im Bereich eines Ortes suchen"
               width={111}
-              height={49}
+              height={54}
             ></Image>
           )}
           {usedMapShown ? (
@@ -110,7 +110,7 @@ export default function Header({
               src={menue}
               alt="Button um das Menü zu öffnen"
               width={111}
-              height={49}
+              height={54}
             ></Image>
           ) : (
             <Image
@@ -118,7 +118,7 @@ export default function Header({
               src={map}
               alt="Button um das Menü zu öffnen"
               width={111}
-              height={49}
+              height={54}
             ></Image>
           )}
         </StyledHeader>

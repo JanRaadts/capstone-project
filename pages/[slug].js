@@ -6,6 +6,7 @@ import SpotSocial from "../components/SpotDetails/SpotSocial/SpotSocial";
 import SpotInfo from "../components/SpotDetails/SpotInfo";
 import SpotDetailsHead from "../components/SpotDetails/SpotDetailsHead";
 import SpotDetailsHeader from "../components/SpotDetails/SpotDetailsHeader";
+import SpotInfoDesktop from "../components/SpotDetails/SpotinfoDesktop";
 
 export default function SpotDetails({
   favoriteSpots,
@@ -50,6 +51,29 @@ export default function SpotDetails({
     setUsedInfoOrSocial(!usedInfoOrSocial);
   }
 
+  function windowWidth() {
+    if (window.innerWidth >= 700) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  const [mobile, setMobile] = useState(windowWidth());
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth >= 700) {
+        setMobile(false);
+      } else setMobile(true);
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  console.log(mobile);
+
   return (
     <>
       <Head>
@@ -62,22 +86,41 @@ export default function SpotDetails({
       />
 
       {infoOrSocial ? (
-        <StyledInfoContainer>
-          <SpotInfo
-            image={currentSpot.image}
-            name={currentSpot.name}
-            description={currentSpot.description}
-            winddirection={currentSpot.winddirection}
-            surfcenter={currentSpot.surfcenter}
-            parking={currentSpot.parking}
-            camping={currentSpot.camping}
-            lat={currentSpot.latitude}
-            lon={currentSpot.longitude}
-            id={currentSpot._id}
-            favoriteSpots={favoriteSpots}
-            setFavoriteSpots={setFavoriteSpots}
-          />
-        </StyledInfoContainer>
+        <>
+          {mobile ? (
+            <StyledInfoContainer>
+              <SpotInfo
+                image={currentSpot.image}
+                name={currentSpot.name}
+                description={currentSpot.description}
+                winddirection={currentSpot.winddirection}
+                surfcenter={currentSpot.surfcenter}
+                parking={currentSpot.parking}
+                camping={currentSpot.camping}
+                lat={currentSpot.latitude}
+                lon={currentSpot.longitude}
+                id={currentSpot._id}
+                favoriteSpots={favoriteSpots}
+                setFavoriteSpots={setFavoriteSpots}
+              />
+            </StyledInfoContainer>
+          ) : (
+            <SpotInfoDesktop
+              image={currentSpot.image}
+              name={currentSpot.name}
+              description={currentSpot.description}
+              winddirection={currentSpot.winddirection}
+              surfcenter={currentSpot.surfcenter}
+              parking={currentSpot.parking}
+              camping={currentSpot.camping}
+              lat={currentSpot.latitude}
+              lon={currentSpot.longitude}
+              id={currentSpot._id}
+              favoriteSpots={favoriteSpots}
+              setFavoriteSpots={setFavoriteSpots}
+            />
+          )}
+        </>
       ) : (
         <StyledSocialContainer>
           <SpotSocial spotData={currentSpot} loadAgain={getSurfspots} />
@@ -92,5 +135,5 @@ const StyledInfoContainer = styled.section`
 `;
 
 const StyledSocialContainer = styled.section`
-  margin-top: 95px;
+  margin-top: 105px;
 `;

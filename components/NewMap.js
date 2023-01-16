@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -92,12 +92,6 @@ export default function NewMap({
         usedSearchAround={usedSearchAround}
         onSearchAround={handleSearchAround}
       />
-      {!showPopUp ? (
-        <StyledAddSpotBtn href={"/addspot"} onClick={savePosition}>
-          <Image src={addNewSpotBtn} alt="addSpot" width={50} height={50} />
-        </StyledAddSpotBtn>
-      ) : null}
-
       <StyledMapContainer>
         <Map
           ref={mapRef}
