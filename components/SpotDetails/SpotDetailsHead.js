@@ -1,10 +1,7 @@
 import styled from "styled-components";
-import back_button from "../../public/images/back_button.svg";
 import Image from "next/image";
-import { useRouter } from "next/router";
 
 export default function SpotDetailsHead({ image, name }) {
-  const router = useRouter();
   return (
     <>
       <StyledImage>
@@ -16,9 +13,6 @@ export default function SpotDetailsHead({ image, name }) {
         />
         <StyledTitle>{name}</StyledTitle>
       </StyledImage>
-      <StyledBackButton onClick={() => router.back()}>
-        <Image src={back_button} alt="Back_Btn" width={30} height={30} />{" "}
-      </StyledBackButton>
     </>
   );
 }
@@ -43,12 +37,4 @@ const StyledTitle = styled.h1`
   bottom: -25px;
   left: 50%;
   transform: translate(-50%);
-`;
-
-const StyledBackButton = styled.button`
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  border: none;
-  background: rgba(255, 255, 255, 0);
 `;

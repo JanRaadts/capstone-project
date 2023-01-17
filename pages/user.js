@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
+import { useSession, signIn, signOut } from "next-auth/react";
 import Head from "next/head";
 import styled from "styled-components";
 import MenueHeader from "../components/MenueHeader";
-import { useSession, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
 
 export default function user() {
@@ -10,15 +10,31 @@ export default function user() {
 
   const { data: session } = useSession();
 
+  //function to switch back to the map
   function handleMapShown() {
+    router.push("/");
+  }
+
+  //function to switch back to the list
+  function handleListShown() {
     router.push(`/countries`);
   }
+
+  //function to switch to the site, where the user is able to add a surfspot
+  function handleAddSpot() {
+    router.push(`/addspot`);
+  }
+
   return (
     <>
       <Head>
         <title>SpotiFinder - Dein Profil</title>
       </Head>
-      <MenueHeader onMapShown={handleMapShown} setUserIcon={true} />
+      <MenueHeader
+        onMapShown={handleMapShown}
+        setUserIcon={true}
+        onListShown={handleListShown}
+      />
       <StyledSection>
         {session ? (
           <>
@@ -30,6 +46,9 @@ export default function user() {
               width={200}
               height={200}
             />
+            <StyledAddSpot onClick={handleAddSpot}>
+              Spot hinzufügen
+            </StyledAddSpot>
           </>
         ) : (
           <StyledText>
@@ -72,10 +91,27 @@ const StyledLoginButton = styled.button`
   background: #699bf7;
   border: none;
   border-radius: 23px;
-  width: 70vw;
+  padding: 20px;
   height: 40px;
   color: white;
   font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledAddSpot = styled.button`
+  margin-top: 20px;
+  background: #0f3375;
+  border: none;
+  border-radius: 23px;
+  padding: 20px;
+  height: 40px;
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledImage = styled(Image)`

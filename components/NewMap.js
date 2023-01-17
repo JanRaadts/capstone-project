@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -39,7 +39,6 @@ export default function NewMap({
   function handleLocateMe() {
     const onSuccess = (position) => {
       const loc = [position.coords.longitude, position.coords.latitude];
-      console.log(navigator.geolocation);
       mapRef.current.flyTo({
         center: loc,
         zoom: 12,
@@ -83,6 +82,10 @@ export default function NewMap({
     changeZoom(mapRef.current.getZoom().toFixed(2));
   }
 
+  function closePopUp() {
+    setShowPopUp(false);
+  }
+
   return (
     <>
       <Header
@@ -93,12 +96,6 @@ export default function NewMap({
         usedSearchAround={usedSearchAround}
         onSearchAround={handleSearchAround}
       />
-      {!showPopUp ? (
-        <StyledAddSpotBtn href={"/addspot"} onClick={savePosition}>
-          <Image src={addNewSpotBtn} alt="addSpot" width={50} height={50} />
-        </StyledAddSpotBtn>
-      ) : null}
-
       <StyledMapContainer>
         <Map
           ref={mapRef}
@@ -166,13 +163,6 @@ const StyledMapContainer = styled.div`
   margin: 0 auto;
   z-index: 0;
   margin-top: 57px;
-`;
-
-const StyledAddSpotBtn = styled(Link)`
-  z-index: 4;
-  position: absolute;
-  bottom: 30px;
-  left: 10px;
 `;
 
 const StyledButton = styled.button`

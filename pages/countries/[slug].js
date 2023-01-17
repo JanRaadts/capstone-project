@@ -33,7 +33,7 @@ export default function SpotDetails({ surfspots }) {
       <MenueHeader
         onMapShown={handleMapShown}
         onUserShown={handleUserShown}
-        setMenuIcon={true}
+        setListIcon={true}
       />
       <ListSurfspots>
         <StyledSection>

@@ -1,26 +1,45 @@
 import Image from "next/image";
 import styled from "styled-components";
-import usedMenue from "../public/images/UsedMenue.svg";
-import menue from "../public/images/Menue.svg";
+import map from "../public/images/map.svg";
 import userIcon from "../public/images/userIcon.svg";
 import usedUserIcon from "../public/images/usedUserIcon.svg";
+import list from "../public/images/list.svg";
+import usedList from "../public/images/usedList.svg";
 
 export default function MenueHeader({
   onMapShown,
   onUserShown,
   setUserIcon,
-  setMenuIcon,
+  onListShown,
+  setListIcon,
 }) {
   return (
     <>
       <StyledHeader>
+        {setListIcon ? (
+          <Image
+            onClick={onListShown}
+            src={usedList}
+            alt="Button um auf die List seite zu kommen"
+            width={111}
+            height={54}
+          ></Image>
+        ) : (
+          <Image
+            onClick={onListShown}
+            src={list}
+            alt="Button um auf die List seite zu kommen"
+            width={111}
+            height={54}
+          ></Image>
+        )}
         {setUserIcon ? (
           <Image
             onClick={onUserShown}
             src={usedUserIcon}
             alt="Button um auf die Profilseite zu gelangen"
             width={111}
-            height={49}
+            height={54}
           ></Image>
         ) : (
           <Image
@@ -28,26 +47,16 @@ export default function MenueHeader({
             src={userIcon}
             alt="Button um auf die Profilseite zu gelangen"
             width={111}
-            height={49}
+            height={54}
           ></Image>
         )}
-        {setMenuIcon ? (
-          <Image
-            onClick={onMapShown}
-            src={usedMenue}
-            alt="Button um das Menü zu öffnen"
-            width={111}
-            height={49}
-          ></Image>
-        ) : (
-          <Image
-            onClick={onMapShown}
-            src={menue}
-            alt="Button um das Menü zu öffnen"
-            width={111}
-            height={49}
-          ></Image>
-        )}
+        <Image
+          onClick={onMapShown}
+          src={map}
+          alt="Button um die Map zu öffnen"
+          width={111}
+          height={49}
+        ></Image>
       </StyledHeader>
     </>
   );

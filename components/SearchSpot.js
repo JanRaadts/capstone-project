@@ -33,5 +33,5 @@ const StyledInputText = styled.input`
   &:focus {
     outline: none;
   }
-  background-color: #f8f6f4;
+  background-color: white;
 `;
