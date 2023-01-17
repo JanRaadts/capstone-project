@@ -72,8 +72,6 @@ export default function SpotDetails({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  console.log(mobile);
-
   return (
     <>
       <Head>

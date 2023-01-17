@@ -82,6 +82,10 @@ export default function NewMap({
     changeZoom(mapRef.current.getZoom().toFixed(2));
   }
 
+  function closePopUp() {
+    setShowPopUp(false);
+  }
+
   return (
     <>
       <Header
@@ -159,13 +163,6 @@ const StyledMapContainer = styled.div`
   margin: 0 auto;
   z-index: 0;
   margin-top: 57px;
-`;
-
-const StyledAddSpotBtn = styled(Link)`
-  z-index: 4;
-  position: absolute;
-  bottom: 30px;
-  left: 10px;
 `;
 
 const StyledButton = styled.button`

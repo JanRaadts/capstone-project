@@ -68,7 +68,7 @@ const StyledPopUp = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: white;
-  width: 90vw;
+  width: 80vw;
   max-width: 400px;
   height: 40vh;
   border-radius: 40px;
@@ -92,11 +92,6 @@ const StyledPopupContent = styled.div`
   font-size: medium;
 `;
 
-const StyledButton = styled.button`
-  background: rgba(120, 119, 119, 0);
-  border: none;
-`;
-
 const StyledCloseButton = styled.button`
   background: rgba(120, 119, 119, 0);
   border: none;
@@ -110,7 +105,7 @@ const StyledPopUpImage = styled(Image)`
   object-fit: cover;
   object-position: bottom;
   height: auto;
-  width: 90vw;
+  width: 80vw;
   max-width: 400px;
 `;
 
@@ -131,7 +126,7 @@ const StyledTitle = styled.h1`
   border-radius: 10px;
   font-weight: normal;
   position: absolute;
-  top: 42%;
+  top: 38%;
   left: 50%;
   transform: translate(-50%);
   z-index: 400;
