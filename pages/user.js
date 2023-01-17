@@ -10,14 +10,17 @@ export default function user() {
 
   const { data: session } = useSession();
 
+  //function to switch back to the map
   function handleMapShown() {
     router.push("/");
   }
 
+  //function to switch back to the list
   function handleListShown() {
     router.push(`/countries`);
   }
 
+  //function to switch to the site, where the user is able to add a surfspot
   function handleAddSpot() {
     router.push(`/addspot`);
   }
@@ -99,10 +102,10 @@ const StyledLoginButton = styled.button`
 
 const StyledAddSpot = styled.button`
   margin-top: 20px;
-  background: pink;
+  background: #0f3375;
   border: none;
   border-radius: 23px;
-  padding: 10px;
+  padding: 20px;
   height: 40px;
   color: white;
   font-size: 1.5rem;

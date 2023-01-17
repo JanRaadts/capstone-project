@@ -10,17 +10,17 @@ import windLottie from "../public/windLottie.json";
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const [center, setCenter] = useState([54.434051, 10.318242]);
   const [zoom, changeZoom] = useState(11);
+  const [selectedSpot, setSelectedSpot] = useState(null);
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [surfspots, setSurfspots] = useState();
   const [favoriteSpots, setFavoriteSpots] = useLocalStorageState(
     "favoriteSpots",
     {
       defaultValue: [],
     }
   );
-  const [selectedSpot, setSelectedSpot] = useState(null);
-  const [showPopUp, setShowPopUp] = useState(false);
 
-  const [surfspots, setSurfspots] = useState();
-
+  // Function to fetch from the DB to get the Surfspots data
   async function getSurfspots() {
     const response = await fetch("/api");
     const surfspotList = await response.json();
@@ -28,10 +28,11 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     setSurfspots(surfspotList);
   }
 
+  //Calling the Fetch with a timeout, to let the user see the loading spinner
   useEffect(() => {
     setTimeout(function () {
       getSurfspots();
-    }, 2000);
+    }, 1000);
   }, []);
 
   return (
@@ -64,6 +65,8 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   );
 }
 
+export default MyApp;
+
 const StyledSplashScreen = styled.div`
   width: 100vw;
   height: 100svh;
@@ -71,5 +74,3 @@ const StyledSplashScreen = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
-export default MyApp;

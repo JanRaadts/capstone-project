@@ -83,9 +83,9 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
     <>
       <StyledSection>
         <StyledTitle>Neuer Spot</StyledTitle>
-        <StyledLink onClick={() => router.back()}>
+        <StyledBackBtn onClick={() => router.back()}>
           <Image src={backButton} alt="backButton" width={35} height={35} />
-        </StyledLink>
+        </StyledBackBtn>
       </StyledSection>
 
       {session ? (
@@ -226,7 +226,7 @@ const StyledTitle = styled.h1`
   color: #0f3375;
 `;
 
-const StyledLink = styled.button`
+const StyledBackBtn = styled.button`
   border: none;
   background-color: white;
   position: absolute;

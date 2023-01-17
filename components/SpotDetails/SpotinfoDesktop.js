@@ -56,7 +56,7 @@ export default function SpotInfoDesktop({
         <StyledContainer>
           <StyledImage
             src={image}
-            alt={`cover image of ${name}`}
+            alt={`surfspot ${name}`}
             width={800}
             height={600}
           />

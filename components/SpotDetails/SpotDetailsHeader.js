@@ -20,7 +20,7 @@ export default function SpotDetailsHeader({
           <Image
             onClick={showInformation}
             src={usedInformation}
-            alt="Button um auf die Informationsseite zu kommen"
+            alt="Informationen icon"
             width={111}
             height={46}
           ></Image>
@@ -28,7 +28,7 @@ export default function SpotDetailsHeader({
           <Image
             src={information}
             onClick={showInformation}
-            alt="Button um auf die Informationsseite zu kommen"
+            alt="Informationen icon"
             width={111}
             height={46}
           ></Image>
@@ -37,7 +37,7 @@ export default function SpotDetailsHeader({
           <Image
             onClick={showSocial}
             src={social}
-            alt="Button um auf die Social-Seite zu kommen"
+            alt="Kommentar icon"
             width={111}
             height={46}
           ></Image>
@@ -45,7 +45,7 @@ export default function SpotDetailsHeader({
           <Image
             onClick={showSocial}
             src={usedSocial}
-            alt="Button um auf die Social-Seite zu kommen"
+            alt="Kommentar icon"
             width={111}
             height={46}
           ></Image>

@@ -6,7 +6,10 @@ This is my Capstone Project from my Bootcamp by neue Fische
 
 ## ABOUT
 
-The FamilyHub facilitates the organizational daily life of the peer group. With any number of registered users in a peer group, the app is particularly concerned with getting an overview of one's notes as easily as possible without getting bogged down in one's message groups. Each user has his own notes, which it can view, delete, edit and create from anywhere. Other planned features include a timestamp, a reminder function or the connection to calendar systems and the creation of multiple peer groups. The shared shopping list allows all users in the group to quickly and easily add items they need to the list.
+Spotcheck is a webapp based on an interactive map. The various surf spots are indicated on the map by markers. If you click on a surf spot marker, a pop-up window opens with a picture of the surf spot and a short description. If you click on the popup, you get to the detail page of the surf spot.
+You can change the map position to the user's location via the header or enter a location and search around it.
+You can also use the header to switch to the menu in which the spots are displayed in a list sorted by country. In addition, you can then switch to the profile page via the header, where you can log in with your Github account to add new spots.
+The detail page of a surf spot is divided into an information page and a social page. Users can leave comments on the spot on the social page. On the information page, the user will find all relevant information about the surf spot.
 
 ### Tech Stack
 
