@@ -18,44 +18,60 @@ export default function SpotSocialForm({ newComment, spotData }) {
     : "https://res.cloudinary.com/dac3s5ere/image/upload/v1673470866/mysurfspot/guestUser_ezwpvs.jpg";
 
   async function handleNewEntry(event) {
-    event.preventDefault();
+    if (image == null) {
+      event.preventDefault();
 
-    // Picture upload
-    const formData = new FormData(event.target);
-    formData.append("file", image);
-    formData.append("upload_preset", process.env.NEXT_PUBLIC_UPLOAD_PRESET);
-
-    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDNAME}/upload`;
-    const response = await fetch(url, {
-      method: "POST",
-      body: formData,
-    });
-    const json = await response.json();
-    setImage(null);
-
-    let pictureOrNull = "";
-
-    if (image === null) {
-      pictureOrNull = "null";
+      let inputData = {
+        text: event.target.elements.varText.value,
+        _id: spotData._id,
+        name: user,
+        date: now,
+        avatar: avatar,
+        picture: "null",
+      };
+      event.target.reset();
+      event.target.elements.varText.focus();
+      newComment(inputData);
     } else {
-      pictureOrNull = json.url;
+      event.preventDefault();
+
+      // Picture upload
+      const formData = new FormData(event.target);
+      formData.append("file", image);
+      formData.append("upload_preset", process.env.NEXT_PUBLIC_UPLOAD_PRESET);
+
+      const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDNAME}/upload`;
+      const response = await fetch(url, {
+        method: "POST",
+        body: formData,
+      });
+      const json = await response.json();
+      setImage(null);
+
+      let pictureOrNull = "";
+
+      if (image === null) {
+        pictureOrNull = "null";
+      } else {
+        pictureOrNull = json.url;
+      }
+
+      const formValues = Object.fromEntries(formData);
+
+      //picture upload ende
+
+      let inputData = {
+        text: event.target.elements.varText.value,
+        _id: spotData._id,
+        name: user,
+        date: now,
+        avatar: avatar,
+        picture: pictureOrNull,
+      };
+      event.target.reset();
+      event.target.elements.varText.focus();
+      newComment(inputData);
     }
-
-    const formValues = Object.fromEntries(formData);
-
-    //picture upload ende
-
-    let inputData = {
-      text: event.target.elements.varText.value,
-      _id: spotData._id,
-      name: user,
-      date: now,
-      avatar: avatar,
-      picture: pictureOrNull,
-    };
-    event.target.reset();
-    event.target.elements.varText.focus();
-    newComment(inputData);
   }
 
   return (
