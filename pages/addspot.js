@@ -42,8 +42,6 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
     formData.append("file", image);
     formData.append("upload_preset", process.env.NEXT_PUBLIC_UPLOAD_PRESET);
 
-    setIsUploading(true);
-
     const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDNAME}/upload`;
     const response = await fetch(url, {
       method: "POST",
@@ -52,7 +50,6 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
     const json = await response.json();
     setImageUrl(json.url);
     setImage(null);
-    setIsUploading(false);
 
     const formValues = Object.fromEntries(formData);
 

@@ -13,7 +13,7 @@ export default function ImagePreview({
   return (
     <StyledContainer>
       <StyledDiv>
-        <StyledImage src={src} width="100" height="50" />
+        <StyledImage src={src} width="100" height="50" alt="Upload preview" />
       </StyledDiv>
     </StyledContainer>
   );
