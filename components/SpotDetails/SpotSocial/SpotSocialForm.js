@@ -11,7 +11,6 @@ export default function SpotSocialForm({ newComment, spotData }) {
   const today = new Date();
   const now = today.toLocaleString();
   const [image, setImage] = useState(null);
-  // const [imageValue, setImageValue] = useState("");
 
   const user = session ? session.user.name : "Gast";
   const avatar = session
