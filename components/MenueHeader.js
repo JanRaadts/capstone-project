@@ -23,6 +23,7 @@ export default function MenueHeader({
             alt="Button um auf die List seite zu kommen"
             width={111}
             height={54}
+            priority
           ></Image>
         ) : (
           <Image
@@ -31,6 +32,7 @@ export default function MenueHeader({
             alt="Button um auf die List seite zu kommen"
             width={111}
             height={54}
+            priority
           ></Image>
         )}
         {setUserIcon ? (
@@ -40,6 +42,7 @@ export default function MenueHeader({
             alt="Button um auf die Profilseite zu gelangen"
             width={111}
             height={54}
+            priority
           ></Image>
         ) : (
           <Image
@@ -48,6 +51,7 @@ export default function MenueHeader({
             alt="Button um auf die Profilseite zu gelangen"
             width={111}
             height={54}
+            priority
           ></Image>
         )}
         <Image
@@ -56,6 +60,7 @@ export default function MenueHeader({
           alt="Button um die Map zu öffnen"
           width={111}
           height={49}
+          priority
         ></Image>
       </StyledHeader>
     </>

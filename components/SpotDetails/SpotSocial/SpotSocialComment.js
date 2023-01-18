@@ -1,7 +1,20 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-export default function SpotSocialComment({ text, name, date, profilImage }) {
+export default function SpotSocialComment({
+  text,
+  name,
+  date,
+  profilImage,
+  picture,
+}) {
+  let pictureOrNot = false;
+  if (picture == "null") {
+    pictureOrNot = false;
+  } else {
+    pictureOrNot = true;
+  }
+
   return (
     <StyledEntry>
       <StyledSection>
@@ -17,6 +30,14 @@ export default function SpotSocialComment({ text, name, date, profilImage }) {
         </StyledInnerSection>
       </StyledSection>
       <StyledText>{text}</StyledText>
+      {pictureOrNot ? (
+        <StyledCommentImage
+          src={picture}
+          width={1200}
+          height={1000}
+          alt="kommentar bild"
+        />
+      ) : null}
     </StyledEntry>
   );
 }
@@ -68,4 +89,11 @@ const StyledDate = styled.p`
   margin-left: 10px;
   font-size: 10px;
   color: #495f73;
+`;
+
+const StyledCommentImage = styled(Image)`
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
 `;

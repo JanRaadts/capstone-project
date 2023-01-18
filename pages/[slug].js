@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Head from "next/head";
 import SpotSocial from "../components/SpotDetails/SpotSocial/SpotSocial";
 import SpotInfo from "../components/SpotDetails/SpotInfo";
-import SpotDetailsHead from "../components/SpotDetails/SpotDetailsHead";
 import SpotDetailsHeader from "../components/SpotDetails/SpotDetailsHeader";
 import SpotInfoDesktop from "../components/SpotDetails/SpotinfoDesktop";
 
@@ -12,19 +11,7 @@ export default function SpotDetails({
   favoriteSpots,
   setFavoriteSpots,
   surfspots,
-  setSurfspots,
 }) {
-  async function getSurfspots() {
-    const response = await fetch("/api");
-    const surfspotList = await response.json();
-
-    setSurfspots(surfspotList);
-  }
-
-  useEffect(() => {
-    getSurfspots();
-  }, []);
-
   const [infoOrSocial, setInfoOrSocial] = useState(true);
   const [usedInfoOrSocial, setUsedInfoOrSocial] = useState(true);
   const router = useRouter();
@@ -32,13 +19,6 @@ export default function SpotDetails({
   const currentSpot = surfspots.find((spot) => spot.slug === slug);
   if (!currentSpot) {
     return <p></p>;
-  }
-
-  function handleInfo() {
-    setInfoOrSocial(true);
-  }
-  function handleSocial() {
-    setInfoOrSocial(false);
   }
 
   function handleShowInformation() {
@@ -121,7 +101,7 @@ export default function SpotDetails({
         </>
       ) : (
         <StyledSocialContainer>
-          <SpotSocial spotData={currentSpot} loadAgain={getSurfspots} />
+          <SpotSocial spotData={currentSpot} />
         </StyledSocialContainer>
       )}
     </>

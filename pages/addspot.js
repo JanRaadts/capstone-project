@@ -4,9 +4,11 @@ import styled from "styled-components";
 import backButton from "../public/images/back_button.svg";
 import arrow from "../public/images/arrow.svg";
 import Image from "next/image";
+import pictureUpload from "../public/images/pictureUpload.svg";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import ImagePreview from "../components/PreviewImage";
 
 export default function Addspot({ changeCenter, loadSurfspots }) {
   const { data: session } = useSession();
@@ -14,8 +16,12 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
   const router = useRouter();
   const [formSteps, setFormSteps] = useState(true);
   const [firstStepData, setFirstStepData] = useState();
+  const [images, setImages] = useState([]);
+  const [image, setImage] = useState(null);
+  const [imageValue, setImageValue] = useState("");
+  const [imageUrl, setImageUrl] = useState(null);
 
-  function handleNewSpotFirstStep(event) {
+  async function handleNewSpotFirstStep(event) {
     event.preventDefault();
     const createSlug = event.target.elements.name.value.toLowerCase();
     const slugWithoutSpace = createSlug.replaceAll(" ", "");
@@ -23,8 +29,6 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
       ID: nanoid(),
       slug: slugWithoutSpace.toLowerCase(),
       name: event.target.elements.name.value,
-      image:
-        "https://res.cloudinary.com/dac3s5ere/image/upload/v1671110554/mysurfspot/DSCF2772_uchd0r.jpg",
       description: event.target.elements.description.value,
       winddirection: event.target.elements.winddirection.value,
       surfcenter: event.target.elements.surfcenter.value,
@@ -32,6 +36,23 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
       camping: event.target.elements.camping.value,
       comments: [],
     });
+
+    const formData = new FormData(event.target);
+
+    formData.append("file", image);
+    formData.append("upload_preset", process.env.NEXT_PUBLIC_UPLOAD_PRESET);
+
+    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDNAME}/upload`;
+    const response = await fetch(url, {
+      method: "POST",
+      body: formData,
+    });
+    const json = await response.json();
+    setImageUrl(json.url);
+    setImage(null);
+
+    const formValues = Object.fromEntries(formData);
+
     setFormSteps(false);
     event.target.reset();
   }
@@ -40,6 +61,7 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
     event.preventDefault();
     const secondStepData = {
       ...firstStepData,
+      image: imageUrl,
       country: event.target.elements.country.value,
       city: event.target.elements.city.value,
       zip: event.target.elements.zip.value,
@@ -145,6 +167,48 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
                   name="camping"
                   required
                 ></StyledInput>
+                <section>
+                  <StyledPictureUploadContainer>
+                    <StyledLabelPicture htmlFor="avatar">
+                      {!image && (
+                        <StyledLabelSection>
+                          <Image
+                            src={pictureUpload}
+                            width={32}
+                            height={32}
+                            alt="bild hochladen"
+                          />
+                          Bild hochladen
+                        </StyledLabelSection>
+                      )}
+                      {image && (
+                        <StyledLabelSection>
+                          <Image
+                            src={pictureUpload}
+                            width={32}
+                            height={32}
+                            alt="bild hochladen"
+                          />
+                          Bild ändern
+                        </StyledLabelSection>
+                      )}
+                    </StyledLabelPicture>
+                    <StyledPictureInput
+                      required
+                      type="file"
+                      name="avatar"
+                      id="avatar"
+                      accept="image/png, image/gif, image/jpeg"
+                      value={imageValue}
+                      onChange={(event) => {
+                        setImageValue(event.target.value);
+                        console.log(imageValue);
+                        setImage(event.target.files[0]);
+                      }}
+                    />
+                    {image && <ImagePreview file={image} />}
+                  </StyledPictureUploadContainer>
+                </section>
                 <StyledSection>
                   <StyledNextBtn type="submit">
                     <Image
@@ -277,7 +341,7 @@ const StyledText = styled.p`
 const StyledDropDown = styled.select`
   width: 100%;
   height: 2.5rem;
-  background: #f8f6f4;
+  background: white;
   border: none;
   border-bottom: 2px solid #699bf7;
   border-radius: 0px;
@@ -306,4 +370,27 @@ const StyledToUser = styled(Link)`
   font-size: 1.5rem;
   padding: 1rem 2rem;
   margin: 1.5rem 0px;
+`;
+
+const StyledPictureInput = styled.input`
+  display: none;
+`;
+
+const StyledPictureUploadContainer = styled.div`
+  width: 100%;
+  min-height: 2.5rem;
+  background: white;
+  border: none;
+  border-bottom: 2px solid #699bf7;
+  border-radius: 0px;
+  margin-bottom: 2rem;
+`;
+const StyledLabelPicture = styled.label`
+  font-size: 1.3rem;
+`;
+
+const StyledLabelSection = styled.div`
+  display: flex;
+  align-items: center;
+  color: #757575;
 `;

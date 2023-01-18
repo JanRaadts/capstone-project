@@ -7,6 +7,7 @@ const commentsChildren = new Schema({
   name: { type: String, required: true },
   date: { type: String, required: true },
   avatar: { type: String, required: true },
+  picture: { type: String, required: false },
 });
 
 const surfspotsSchema = new Schema({
