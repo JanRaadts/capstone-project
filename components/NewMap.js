@@ -65,7 +65,6 @@ export default function NewMap({
       `https://api.geoapify.com/v1/geocode/search?text=${data}&format=json&apiKey=${GEO_API}`
     );
     const geodata = await response.json();
-    console.log(geodata);
     if (geodata.results.length === 0) {
       alert(`Keinen Ort mit dem Namen ${geodata.query.text} gefunden`);
     } else {

@@ -23,6 +23,7 @@ export default function SpotDetailsHeader({
             alt="Informationen icon"
             width={111}
             height={46}
+            priority
           ></Image>
         ) : (
           <Image
@@ -31,6 +32,7 @@ export default function SpotDetailsHeader({
             alt="Informationen icon"
             width={111}
             height={46}
+            priority
           ></Image>
         )}
         {usedInfoOrSocial ? (
@@ -40,6 +42,7 @@ export default function SpotDetailsHeader({
             alt="Kommentar icon"
             width={111}
             height={46}
+            priority
           ></Image>
         ) : (
           <Image
@@ -48,6 +51,7 @@ export default function SpotDetailsHeader({
             alt="Kommentar icon"
             width={111}
             height={46}
+            priority
           ></Image>
         )}
         <StyledBackButton onClick={() => router.back()}>

@@ -50,6 +50,7 @@ export default function Header({
                 alt="zurück button"
                 width={30}
                 height={30}
+                priority
               />
             </StyledButton>
             <StyledInputText
@@ -57,6 +58,7 @@ export default function Header({
               type="text"
               name="place"
               placeholder="Gib einen Ort ein"
+              priority
             ></StyledInputText>
             <StyledButton type="submit">
               <Image
@@ -64,6 +66,7 @@ export default function Header({
                 alt="button zum abfragen der eingegebenen suche"
                 width={30}
                 height={30}
+                priority
               />
             </StyledButton>
           </StyledForm>
@@ -77,6 +80,7 @@ export default function Header({
               alt="UmMichHerum"
               width={111}
               height={54}
+              priority
             ></Image>
           ) : (
             <Image
@@ -85,6 +89,7 @@ export default function Header({
               alt="UmMichHerum"
               width={111}
               height={54}
+              priority
             ></Image>
           )}
           {usedSearchAround ? (
@@ -94,6 +99,7 @@ export default function Header({
               alt="Im Bereich eines Ortes suchen"
               width={111}
               height={54}
+              priority
             ></Image>
           ) : (
             <Image
@@ -102,6 +108,7 @@ export default function Header({
               alt="Im Bereich eines Ortes suchen"
               width={111}
               height={54}
+              priority
             ></Image>
           )}
           {usedMapShown ? (
@@ -111,6 +118,7 @@ export default function Header({
               alt="Button um das Menü zu öffnen"
               width={111}
               height={54}
+              priority
             ></Image>
           ) : (
             <Image
@@ -119,6 +127,7 @@ export default function Header({
               alt="Button um das Menü zu öffnen"
               width={111}
               height={54}
+              priority
             ></Image>
           )}
         </StyledHeader>
