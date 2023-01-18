@@ -2,7 +2,6 @@ import { useRouter } from "next/router.js";
 import styled from "styled-components";
 import ListSurfspots from "../../components/ListSurfspots";
 import ListSurfspotsItems from "../../components/ListSurfspotsItems";
-import Header from "../../components/Header";
 import Head from "next/head";
 import Image from "next/image";
 import backButton from "../../public/images/back_button.svg";
@@ -45,7 +44,7 @@ export default function SpotDetails({ surfspots }) {
               height={25}
             />
           </StyledLink>
-          <StyledTitle>{slug}</StyledTitle>
+          <StyledTitle>{slug.toUpperCase()}</StyledTitle>
         </StyledSection>
         {spotsincountry.map((surfspot) => {
           return (
