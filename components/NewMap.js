@@ -1,10 +1,9 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/router";
 import { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Map from "react-map-gl";
 import styled from "styled-components";
-import Link from "next/link";
 import Header from "./Header";
 import Image from "next/image";
 import addNewSpotBtn from "../public/images/addSpotButton.svg";
@@ -66,14 +65,19 @@ export default function NewMap({
       `https://api.geoapify.com/v1/geocode/search?text=${data}&format=json&apiKey=${GEO_API}`
     );
     const geodata = await response.json();
-    const lat = `${geodata.results[0].lat}`;
-    const long = `${geodata.results[0].lon}`;
+    console.log(geodata);
+    if (geodata.results.length === 0) {
+      alert(`Keinen Ort mit dem Namen ${geodata.query.text} gefunden`);
+    } else {
+      const lat = `${geodata.results[0].lat}`;
+      const long = `${geodata.results[0].lon}`;
 
-    mapRef.current.flyTo({
-      center: [long, lat],
-      zoom: 12,
-      essential: false,
-    });
+      mapRef.current.flyTo({
+        center: [long, lat],
+        zoom: 12,
+        essential: false,
+      });
+    }
   }
   function savePosition() {
     const lat = mapRef.current.getCenter().lat.toFixed(4);
