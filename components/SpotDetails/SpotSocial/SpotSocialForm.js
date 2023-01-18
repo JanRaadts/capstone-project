@@ -43,7 +43,7 @@ export default function SpotSocialForm({ newComment, spotData }) {
 
     const formValues = Object.fromEntries(formData);
 
-    //picture upload end
+    //picture upload ende
 
     let inputData = {
       text: event.target.elements.varText.value,
