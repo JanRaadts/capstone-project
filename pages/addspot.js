@@ -198,6 +198,7 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
                       type="file"
                       name="avatar"
                       id="avatar"
+                      accept="image/png, image/gif, image/jpeg"
                       value={imageValue}
                       onChange={(event) => {
                         setImageValue(event.target.value);

@@ -102,6 +102,7 @@ export default function SpotSocialForm({ newComment, spotData }) {
             type="file"
             name="avatar"
             id="avatar"
+            accept="image/png, image/gif, image/jpeg"
             onChange={(event) => {
               setImage(event.target.files[0]);
             }}
