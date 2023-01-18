@@ -24,6 +24,10 @@ export default function SpotDetails({ surfspots }) {
     router.push(`/user`);
   }
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   return (
     <>
       <Head>
@@ -44,7 +48,7 @@ export default function SpotDetails({ surfspots }) {
               height={25}
             />
           </StyledLink>
-          <StyledTitle>{slug.toUpperCase()}</StyledTitle>
+          <StyledTitle>{capitalizeFirstLetter(slug)}</StyledTitle>
         </StyledSection>
         {spotsincountry.map((surfspot) => {
           return (
