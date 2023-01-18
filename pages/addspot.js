@@ -201,6 +201,7 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
                       value={imageValue}
                       onChange={(event) => {
                         setImageValue(event.target.value);
+                        console.log(imageValue);
                         setImage(event.target.files[0]);
                       }}
                     />

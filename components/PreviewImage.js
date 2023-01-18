@@ -2,12 +2,7 @@ import Image from "next/image";
 import { useMemo } from "react";
 import styled from "styled-components";
 
-export default function ImagePreview({
-  file,
-  height = 400,
-  width = 400,
-  objectFit = "cover",
-}) {
+export default function ImagePreview({ file }) {
   const src = useMemo(() => URL.createObjectURL(file), [file]);
 
   return (
@@ -26,6 +21,7 @@ const StyledDiv = styled.div`
 
 const StyledImage = styled(Image)`
   width: 100%;
+  max-width: 600px;
   height: auto;
   border-radius: 5px;
 `;

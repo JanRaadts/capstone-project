@@ -12,6 +12,7 @@ export default function SpotSocial({ spotData, loadAgain }) {
         name: comment.name,
         date: comment.date,
         avatar: comment.avatar,
+        picture: comment.picture,
       };
     });
     dbComments.push(comment);
@@ -50,6 +51,7 @@ export default function SpotSocial({ spotData, loadAgain }) {
               name={comment.name}
               date={comment.date}
               profilImage={comment.avatar}
+              picture={comment.picture}
               key={nanoid()}
             />
           );

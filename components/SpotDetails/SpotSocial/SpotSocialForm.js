@@ -1,26 +1,58 @@
 import { useSession } from "next-auth/react";
+import { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import addMessage from "../../../public/images/addMessage.svg";
+import pictureUpload from "../../../public/images/pictureUpload.svg";
+import ImagePreview from "../../PreviewImage";
 
 export default function SpotSocialForm({ newComment, spotData }) {
   const { data: session } = useSession();
   const today = new Date();
   const now = today.toLocaleString();
+  const [image, setImage] = useState(null);
+  // const [imageValue, setImageValue] = useState("");
 
   const user = session ? session.user.name : "Gast";
   const avatar = session
     ? session.user.image
     : "https://res.cloudinary.com/dac3s5ere/image/upload/v1673470866/mysurfspot/guestUser_ezwpvs.jpg";
 
-  function handleNewEntry(event) {
+  async function handleNewEntry(event) {
     event.preventDefault();
+
+    // Picture upload
+    const formData = new FormData(event.target);
+    formData.append("file", image);
+    formData.append("upload_preset", process.env.NEXT_PUBLIC_UPLOAD_PRESET);
+
+    const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDNAME}/upload`;
+    const response = await fetch(url, {
+      method: "POST",
+      body: formData,
+    });
+    const json = await response.json();
+    setImage(null);
+
+    let pictureOrNull = "";
+
+    if (image === null) {
+      pictureOrNull = "null";
+    } else {
+      pictureOrNull = json.url;
+    }
+
+    const formValues = Object.fromEntries(formData);
+
+    //picture upload end
+
     let inputData = {
       text: event.target.elements.varText.value,
       _id: spotData._id,
       name: user,
       date: now,
       avatar: avatar,
+      picture: pictureOrNull,
     };
     event.target.reset();
     event.target.elements.varText.focus();
@@ -29,12 +61,38 @@ export default function SpotSocialForm({ newComment, spotData }) {
 
   return (
     <StyledForm onSubmit={handleNewEntry}>
+      <StyledPreviewSection>
+        {image && <ImagePreview file={image} />}
+      </StyledPreviewSection>
+
       <StyledInputText
         type="text"
         name="varText"
-        placeholder="Tell us more about the Spot..."
+        placeholder="Write here.."
         required
       ></StyledInputText>
+      <section>
+        <StyledPictureUploadContainer>
+          <StyledLabelPicture htmlFor="avatar">
+            <div>
+              <Image
+                src={pictureUpload}
+                width={40}
+                height={40}
+                alt="bild hochladen"
+              />
+            </div>
+          </StyledLabelPicture>
+          <StyledPictureInput
+            type="file"
+            name="avatar"
+            id="avatar"
+            onChange={(event) => {
+              setImage(event.target.files[0]);
+            }}
+          />
+        </StyledPictureUploadContainer>
+      </section>
       <StyledButton type="submit">
         <Image src={addMessage} alt="addMessageButton" width={40} height={40} />
       </StyledButton>
@@ -56,7 +114,7 @@ const StyledForm = styled.form`
 
 const StyledInputText = styled.input`
   padding-left: 5%;
-  width: 80vw;
+  width: 60vw;
   height: 70%;
   border: none;
   background: #ffffff;
@@ -75,4 +133,21 @@ const StyledButton = styled.button`
   background: rgba(255, 255, 255, 0);
   border: none;
   margin-top: 5px;
+`;
+
+const StyledPictureInput = styled.input`
+  display: none;
+`;
+
+const StyledPictureUploadContainer = styled.div`
+  padding: 0 10px;
+`;
+const StyledLabelPicture = styled.label`
+  font-size: 1.3rem;
+`;
+
+const StyledPreviewSection = styled.section`
+  position: absolute;
+  bottom: 80%;
+  height: auto;
 `;
