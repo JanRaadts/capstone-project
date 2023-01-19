@@ -28,7 +28,14 @@ export default function user() {
   return (
     <>
       <Head>
-        <title>SpotiFinder - Dein Profil</title>
+      {session ? (
+          
+            <title>`SpotGuide - ${session.user.name}`</title>
+          
+        ) : (
+          <title>SpotGuide - Login</title>
+        )}
+        
       </Head>
       <MenueHeader
         onMapShown={handleMapShown}
@@ -45,6 +52,7 @@ export default function user() {
               alt="Profilbild"
               width={200}
               height={200}
+              priority
             />
             <StyledAddSpot onClick={handleAddSpot}>
               Spot hinzufügen

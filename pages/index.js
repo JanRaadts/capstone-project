@@ -16,7 +16,7 @@ export default function Home({
   return (
     <>
       <Head>
-        <title>SpotiFinder</title>
+        <title>SpotGuide</title>
       </Head>
       <NewMap
         center={center}

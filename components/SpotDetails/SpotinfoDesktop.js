@@ -59,6 +59,7 @@ export default function SpotInfoDesktop({
             alt={`surfspot ${name}`}
             width={800}
             height={600}
+            priority
           />
         </StyledContainer>
         <StyledContainer>
@@ -69,6 +70,7 @@ export default function SpotInfoDesktop({
                 alt="open Spot in map app"
                 width={87}
                 height={52}
+                priority
               />
             </Link>
 
@@ -78,6 +80,7 @@ export default function SpotInfoDesktop({
               width={87}
               height={52}
               onClick={handleShare}
+              priority
             />
             {isFavOrNot ? (
               <Image
@@ -86,6 +89,7 @@ export default function SpotInfoDesktop({
                 width={87}
                 height={52}
                 onClick={deleteFavorite}
+                priority
               />
             ) : (
               <Image
@@ -94,6 +98,7 @@ export default function SpotInfoDesktop({
                 width={87}
                 height={52}
                 onClick={addFavorite}
+                priority
               />
             )}
           </StyledButtonSection>

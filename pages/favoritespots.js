@@ -27,7 +27,7 @@ export default function favoritespots({ favoriteSpots, surfspots }) {
   return (
     <>
       <Head>
-        <title>SpotiFinder</title>
+        <title>SpotGuide</title>
       </Head>
       <MenueHeader
         onMapShown={handleMapShown}
@@ -37,7 +37,7 @@ export default function favoritespots({ favoriteSpots, surfspots }) {
       <ListSurfspots>
         <StyledSection>
           <StyledLink href={"/countries"}>
-            <Image src={backButton} alt="backButton" width={35} height={35} />
+            <Image src={backButton} alt="backButton" width={35} height={35} priority/>
           </StyledLink>
           <StyledTitle>Favoriten</StyledTitle>
         </StyledSection>

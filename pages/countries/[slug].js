@@ -31,7 +31,7 @@ export default function SpotDetails({ surfspots }) {
   return (
     <>
       <Head>
-        <title>SpotiFinder</title>
+        <title>SpotGuide</title>
       </Head>
       <MenueHeader
         onMapShown={handleMapShown}
@@ -46,6 +46,7 @@ export default function SpotDetails({ surfspots }) {
               alt="zurück Button"
               width={25}
               height={25}
+              priority
             />
           </StyledLink>
           <StyledTitle>{capitalizeFirstLetter(slug)}</StyledTitle>
