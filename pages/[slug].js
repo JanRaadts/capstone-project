@@ -55,7 +55,7 @@ export default function SpotDetails({
   return (
     <>
       <Head>
-        <title>SpotiFinder: {currentSpot.name}</title>
+        <title>SpotGuide: {currentSpot.name}</title>
       </Head>
       <SpotDetailsHeader
         usedInfoOrSocial={usedInfoOrSocial}

@@ -83,7 +83,7 @@ export default function SpotSocialForm({ newComment, spotData }) {
       <StyledInputText
         type="text"
         name="varText"
-        placeholder="Write here.."
+        placeholder="deine Nachricht.."
         required
       ></StyledInputText>
       <section>
@@ -95,6 +95,7 @@ export default function SpotSocialForm({ newComment, spotData }) {
                 width={40}
                 height={40}
                 alt="bild hochladen"
+                priority
               />
             </div>
           </StyledLabelPicture>
@@ -110,7 +111,7 @@ export default function SpotSocialForm({ newComment, spotData }) {
         </StyledPictureUploadContainer>
       </section>
       <StyledButton type="submit">
-        <Image src={addMessage} alt="addMessageButton" width={40} height={40} />
+        <Image src={addMessage} alt="addMessageButton" width={40} height={40} priority />
       </StyledButton>
     </StyledForm>
   );

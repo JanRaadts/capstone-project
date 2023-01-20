@@ -61,6 +61,7 @@ export default function SpotInfo({
             alt="open Spot in map app"
             width={87}
             height={52}
+            priority
           />
         </Link>
 
@@ -70,6 +71,7 @@ export default function SpotInfo({
           width={87}
           height={52}
           onClick={handleShare}
+          priority
         />
         {isFavOrNot ? (
           <Image
@@ -78,6 +80,7 @@ export default function SpotInfo({
             width={87}
             height={52}
             onClick={deleteFavorite}
+            priority
           />
         ) : (
           <Image
@@ -86,6 +89,7 @@ export default function SpotInfo({
             width={87}
             height={52}
             onClick={addFavorite}
+            priority
           />
         )}
       </StyledButtonSection>
@@ -132,7 +136,6 @@ const StyledDescriptionSection = styled.section`
 
 const StyledSpecsSection = styled.section`
   margin: 0 20px;
-  border-bottom: 2px solid #d4d4d4;
 `;
 
 const StyledSpan = styled.span`

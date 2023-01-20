@@ -35,7 +35,6 @@ export default function SpotSocial({ spotData }) {
       body: JSON.stringify(data),
     });
     const json = await response.json();
-    console.log(json);
     setCommentsArray(json.comments);
   }
 

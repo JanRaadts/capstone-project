@@ -2,7 +2,6 @@ import { useRouter } from "next/router.js";
 import styled from "styled-components";
 import ListSurfspots from "../../components/ListSurfspots";
 import ListSurfspotsItems from "../../components/ListSurfspotsItems";
-import Header from "../../components/Header";
 import Head from "next/head";
 import Image from "next/image";
 import backButton from "../../public/images/back_button.svg";
@@ -25,10 +24,14 @@ export default function SpotDetails({ surfspots }) {
     router.push(`/user`);
   }
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   return (
     <>
       <Head>
-        <title>SpotiFinder</title>
+        <title>SpotGuide</title>
       </Head>
       <MenueHeader
         onMapShown={handleMapShown}
@@ -43,9 +46,10 @@ export default function SpotDetails({ surfspots }) {
               alt="zurück Button"
               width={25}
               height={25}
+              priority
             />
           </StyledLink>
-          <StyledTitle>{slug}</StyledTitle>
+          <StyledTitle>{capitalizeFirstLetter(slug)}</StyledTitle>
         </StyledSection>
         {spotsincountry.map((surfspot) => {
           return (

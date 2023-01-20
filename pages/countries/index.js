@@ -45,7 +45,7 @@ export default function Countries({ surfspots }) {
   return (
     <>
       <Head>
-        <title>SpotiFinder</title>
+        <title>SpotGuide</title>
       </Head>
       <MenueHeader
         onMapShown={handleMapShown}

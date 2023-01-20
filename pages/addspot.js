@@ -9,8 +9,9 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import ImagePreview from "../components/PreviewImage";
+import Head from "next/head";
 
-export default function Addspot({ changeCenter, loadSurfspots }) {
+export default function Addspot({ changeCenter, loadSurfspots, setSurfspots, surfspots }) {
   const { data: session } = useSession();
 
   const router = useRouter();
@@ -51,6 +52,7 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
     setImageUrl(json.url);
     setImage(null);
 
+
     const formValues = Object.fromEntries(formData);
 
     setFormSteps(false);
@@ -85,28 +87,30 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
     };
     handleNewSpotToDB(newSpot);
     changeCenter([geodata.results[0].lat, geodata.results[0].lon]);
-    setTimeout(function () {
-      loadSurfspots();
-      router.push(`/`);
-    }, 50);
   }
 
   async function handleNewSpotToDB(data) {
-    await fetch("/api/", {
+    const response = await fetch("/api/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
+   const json = await response.json();
+    setSurfspots([...surfspots, json])
+    router.push(`/`);
   }
 
   return (
     <>
+    <Head>
+        <title>SpotGuide: Spot hinzufügen</title>
+      </Head>
       <StyledSection>
         <StyledTitle>Neuer Spot</StyledTitle>
         <StyledBackBtn onClick={() => router.back()}>
-          <Image src={backButton} alt="backButton" width={35} height={35} />
+          <Image src={backButton} alt="backButton" width={35} height={35}priority/>
         </StyledBackBtn>
       </StyledSection>
 
@@ -177,6 +181,7 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
                             width={32}
                             height={32}
                             alt="bild hochladen"
+                            priority
                           />
                           Bild hochladen
                         </StyledLabelSection>
@@ -188,6 +193,7 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
                             width={32}
                             height={32}
                             alt="bild hochladen"
+                            priority
                           />
                           Bild ändern
                         </StyledLabelSection>
@@ -216,6 +222,7 @@ export default function Addspot({ changeCenter, loadSurfspots }) {
                       alt="next site of the form"
                       width={50}
                       height={50}
+                      priority
                     />
                   </StyledNextBtn>
                 </StyledSection>

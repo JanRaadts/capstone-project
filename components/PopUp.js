@@ -16,7 +16,8 @@ export default function PopUp({
         <StyledLink href={slug}>
           <StyledPopUpImageSection>
             <StyledPopUpImage
-              src="https://res.cloudinary.com/dac3s5ere/image/upload/v1673624821/mysurfspot/refresher-kitesurfing-lessons-advanced-kiteriders-hero_e5vvqq.jpg"
+              // src="https://res.cloudinary.com/dac3s5ere/image/upload/v1673624821/mysurfspot/refresher-kitesurfing-lessons-advanced-kiteriders-hero_e5vvqq.jpg"
+              src={image}
               alt={`cover image of ${name}`}
               width={800}
               height={600}
@@ -111,7 +112,7 @@ const StyledPopUpImage = styled(Image)`
 
 const StyledPopUpImageSection = styled.section`
   position: relative;
-  width: 100%;
+  width: auto;
   height: 20vh;
   overflow: hidden;
 `;
