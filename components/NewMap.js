@@ -6,9 +6,7 @@ import Map from "react-map-gl";
 import styled from "styled-components";
 import Header from "./Header";
 import Image from "next/image";
-import addNewSpotBtn from "../public/images/addSpotButton.svg";
-import marker from "../public/images/mapBoxMarkerRound.svg";
-import markerRound from "../public/images/markerRound.svg";
+import marker from "../public/images/marker.svg";
 import PopUp from "./PopUp";
 
 export default function NewMap({
@@ -134,7 +132,7 @@ export default function NewMap({
                   }}
                 >
                   <Image
-                    src={markerRound}
+                    src={marker}
                     alt="Marker auf der Karte"
                     width={33}
                     height={33}

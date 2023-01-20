@@ -136,7 +136,6 @@ const StyledDescriptionSection = styled.section`
 
 const StyledSpecsSection = styled.section`
   margin: 0 20px;
-  border-bottom: 2px solid #d4d4d4;
 `;
 
 const StyledSpan = styled.span`
