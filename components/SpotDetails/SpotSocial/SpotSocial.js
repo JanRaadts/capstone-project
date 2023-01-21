@@ -5,8 +5,11 @@ import { nanoid } from "nanoid";
 import { useState } from "react";
 
 export default function SpotSocial({ spotData }) {
+
+  const [surfspots, setSurfspots] = useState(spotData)
+
   function handleNewComment(comment) {
-    let dbComments = spotData.comments.map((comment) => {
+    let dbComments = surfspots.comments.map((comment) => {
       return {
         text: comment.text,
         _id: comment._id,
@@ -19,11 +22,13 @@ export default function SpotSocial({ spotData }) {
     dbComments.push(comment);
 
     const updatedSpot = {
-      ...spotData,
+      ...surfspots,
       comments: dbComments,
     };
 
     uploadChange(updatedSpot);
+   setSurfspots(updatedSpot)
+
   }
 
   async function uploadChange(data) {

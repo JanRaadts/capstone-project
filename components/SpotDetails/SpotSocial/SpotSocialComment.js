@@ -36,6 +36,7 @@ export default function SpotSocialComment({
           width={1200}
           height={1000}
           alt="kommentar bild"
+          priority
         />
       ) : null}
     </StyledEntry>
