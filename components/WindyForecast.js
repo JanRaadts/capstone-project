@@ -21,8 +21,15 @@ setTimeout(() => {
   return (
     <>
     <Script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></Script>
-    <Script src="https://api.windy.com/assets/map-forecast/libBoot.js"></Script>
-    
+    <Script src="https://api.windy.com/assets/map-forecast/libBoot.js" onLoad={() => {
+          
+          console.log("test und test")
+        }}></Script>
+        <style jsx>{`
+         #windy {
+            border-radius: 25px
+            }
+      `}</style>
    <StyledContainer>
    <StyledDiv id="windy"></StyledDiv> 
    </StyledContainer>
