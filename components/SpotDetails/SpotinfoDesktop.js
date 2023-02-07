@@ -55,6 +55,7 @@ export default function SpotInfoDesktop({
     <>
       <StyledSection>
         <StyledContainer>
+         
           <StyledImage
             src={image}
             alt={`surfspot ${name}`}
@@ -62,9 +63,10 @@ export default function SpotInfoDesktop({
             height={600}
             priority
           />
-           <WindyForecast latData={lat} lonData={lon} ></WindyForecast>
+              <WindyForecast latData={lat} lonData={lon} ></WindyForecast>
         </StyledContainer>
         <StyledContainer>
+        <StyledTitle>{name}</StyledTitle>
           <StyledButtonSection>
             <Link href={link} target="_blank">
               <Image
@@ -125,6 +127,7 @@ export default function SpotInfoDesktop({
               {camping}
             </p>
           </StyledSpecsSection>
+        
         </StyledContainer>
       </StyledSection>
      
@@ -149,6 +152,7 @@ const StyledContainer = styled.section`
 const StyledImage = styled(Image)`
   width: 100%;
   height: auto;
+  max-height: 50vh;
   border-radius: 25px;
 `;
 
@@ -176,3 +180,10 @@ const StyledSpecsSection = styled.section`
 const StyledSpan = styled.span`
   color: #495f73;
 `;
+
+const StyledTitle = styled.h1`
+font-size: 60px;
+font-weight:normal;
+text-align: center;
+color: #699BF7;
+`

@@ -39,7 +39,6 @@ overflow: hidden;
 margin: 20px 0 20px 0;
 background-color: white;
 height: 30vh; 
-
 z-index: 1;
 `
 
