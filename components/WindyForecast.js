@@ -31,16 +31,14 @@ setTimeout(() => {
 }
 
 const StyledContainer = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
+border-radius: 25px;
+overflow: hidden;
+margin: 20px;
+background-color: white;
+height: 30vh; 
 `
 
 const StyledDiv = styled.div`
-margin: 20px;
-border-radius: 25px;
-background-color: green;
 width: 100%;
-height: 30vh; 
-overflow: hidden;
+height: 100%;
 `
