@@ -40,6 +40,7 @@ const StyledDiv = styled.div`
 margin: 20px;
 border-radius: 25px;
 background-color: green;
-width: 90vw;
-height: 30vh;        
+width: 100%;
+height: 30vh; 
+overflow: hidden;
 `
