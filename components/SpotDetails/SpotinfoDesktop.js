@@ -5,6 +5,7 @@ import onFavorite from "../../public/images/onFavorite.svg";
 import share from "../../public/images/share.svg";
 import navigateTo from "../../public/images/navigateTo.svg";
 import Link from "next/link";
+import WindyForecast from "../../components/WindyForecast";
 
 export default function SpotInfoDesktop({
   image,
@@ -125,6 +126,7 @@ export default function SpotInfoDesktop({
           </StyledSpecsSection>
         </StyledContainer>
       </StyledSection>
+      <WindyForecast latData={lat} lonData={lon} ></WindyForecast>
     </>
   );
 }

@@ -6,6 +6,7 @@ import share from "../../public/images/share.svg";
 import navigateTo from "../../public/images/navigateTo.svg";
 import Link from "next/link";
 import SpotDetailsHead from "./SpotDetailsHead";
+import WindyForecast from "../../components/WindyForecast";
 
 export default function SpotInfo({
   image,
@@ -115,6 +116,7 @@ export default function SpotInfo({
           {camping}
         </p>
       </StyledSpecsSection>
+      <WindyForecast latData={lat} lonData={lon} ></WindyForecast>
     </>
   );
 }

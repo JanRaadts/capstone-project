@@ -6,7 +6,7 @@ import SpotSocial from "../components/SpotDetails/SpotSocial/SpotSocial";
 import SpotInfo from "../components/SpotDetails/SpotInfo";
 import SpotDetailsHeader from "../components/SpotDetails/SpotDetailsHeader";
 import SpotInfoDesktop from "../components/SpotDetails/SpotinfoDesktop";
-import WindyForecast from "../components/WindyForecast";
+
 
 export default function SpotDetails({
   favoriteSpots,
@@ -105,7 +105,7 @@ export default function SpotDetails({
           <SpotSocial spotData={currentSpot} />
         </StyledSocialContainer>
       )}
-      <WindyForecast latData={currentSpot.latitude} lonData={currentSpot.longitude} ></WindyForecast>
+     
     </>
   );
 }
