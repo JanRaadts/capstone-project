@@ -25,13 +25,9 @@ setTimeout(() => {
           
           console.log("test und test")
         }}></Script>
-        <style jsx>{`
-         #windy {
-            border-radius: 25px
-            }
-      `}</style>
    <StyledContainer>
    <StyledDiv id="windy"></StyledDiv> 
+  
    </StyledContainer>
     </>
   )
@@ -43,9 +39,12 @@ overflow: hidden;
 margin: 20px 0 20px 0;
 background-color: white;
 height: 30vh; 
+
+z-index: 1;
 `
 
 const StyledDiv = styled.div`
 width: 100%;
 height: 100%;
+z-index: 0;
 `
