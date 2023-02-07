@@ -31,7 +31,7 @@ setTimeout(() => {
 }
 
 const StyledContainer = styled.div`
-border-radius: 25px;
+border-radius: 25px !important;
 overflow: hidden;
 margin: 20px 0 20px 0;
 background-color: white;

@@ -147,7 +147,6 @@ const StyledContainer = styled.section`
 `;
 
 const StyledImage = styled(Image)`
-  /* max-width: 50vw; */
   width: 100%;
   height: auto;
   border-radius: 25px;
