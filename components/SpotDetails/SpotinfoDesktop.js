@@ -62,6 +62,7 @@ export default function SpotInfoDesktop({
             height={600}
             priority
           />
+           <WindyForecast latData={lat} lonData={lon} ></WindyForecast>
         </StyledContainer>
         <StyledContainer>
           <StyledButtonSection>
@@ -126,7 +127,7 @@ export default function SpotInfoDesktop({
           </StyledSpecsSection>
         </StyledContainer>
       </StyledSection>
-      <WindyForecast latData={lat} lonData={lon} ></WindyForecast>
+     
     </>
   );
 }
@@ -146,7 +147,8 @@ const StyledContainer = styled.section`
 `;
 
 const StyledImage = styled(Image)`
-  max-width: 50vw;
+  /* max-width: 50vw; */
+  width: 100%;
   height: auto;
   border-radius: 25px;
 `;

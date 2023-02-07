@@ -115,8 +115,9 @@ export default function SpotInfo({
           <StyledSpan>Übernachten: </StyledSpan>
           {camping}
         </p>
+        <WindyForecast latData={lat} lonData={lon} ></WindyForecast>
       </StyledSpecsSection>
-      <WindyForecast latData={lat} lonData={lon} ></WindyForecast>
+      
     </>
   );
 }
