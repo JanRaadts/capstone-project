@@ -127,7 +127,7 @@ const StyledTitle = styled.h1`
   border-radius: 10px;
   font-weight: normal;
   position: absolute;
-  top: 38%;
+  top: 43%;
   left: 50%;
   transform: translate(-50%);
   z-index: 400;

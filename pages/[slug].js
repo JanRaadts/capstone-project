@@ -7,6 +7,7 @@ import SpotInfo from "../components/SpotDetails/SpotInfo";
 import SpotDetailsHeader from "../components/SpotDetails/SpotDetailsHeader";
 import SpotInfoDesktop from "../components/SpotDetails/SpotinfoDesktop";
 
+
 export default function SpotDetails({
   favoriteSpots,
   setFavoriteSpots,
@@ -104,6 +105,7 @@ export default function SpotDetails({
           <SpotSocial spotData={currentSpot} />
         </StyledSocialContainer>
       )}
+     
     </>
   );
 }

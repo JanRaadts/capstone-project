@@ -14,6 +14,10 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
         
     }
+
+    #windy{
+        border-radius:25px !important;
+    }
 `;
 
 export default GlobalStyles;
